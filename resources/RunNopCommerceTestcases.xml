@@ -2,7 +2,7 @@
 <suite parallel="false" name="Suite">
   <test name="Run on Firefox">
     <classes>
-      <class name="com.bankguru.account.Account_01_New_Account"/>
+      <class name="com.nopcommerce.account.Account_01_Register"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
