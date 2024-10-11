@@ -96,11 +96,13 @@ public class Account_01_Register extends BasePage {
 		registerPage.enterToConfirmPasswordTextbox("123456");
 
 		registerPage.clickToRegisterButton();
-
-		Assert.assertEquals(registerPage.getCompletedRegisterTextMessage(), "account.register.result.standard");
+		Assert.assertEquals(registerPage.getCompletedRegisterTextMessage(), "account.register.result.standard");		
+		registerPage.clickToMyAccountLink();
 		
-		registerPage.clickToLogoutLink();
-		homePage = new HomePageObject();
+		customerPage = new CustomerPageObject();
+		Assert.assertEquals(customerPage.getFirstNameTextboxAttributeValue(), "Hana");
+		Assert.assertEquals(customerPage.getLastNameTextboxAttributeValue(), "Hasta");
+		Assert.assertEquals(customerPage.getEmailAttributeValue(), emailAddress);
 
 	}
 

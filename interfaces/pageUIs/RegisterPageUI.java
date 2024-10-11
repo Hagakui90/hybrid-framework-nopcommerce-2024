@@ -18,5 +18,5 @@ public class RegisterPageUI {
 	public static final String EXISTING_EMAIL_ERROR_MSG ="//div[@class='message-error validation-summary-errors']";
 	public static final String INVALID_PASSWORD_ERROR_MSG ="//span[@data-valmsg-for='Password']";
 	
-
+	public final static String MY_ACCOUNT_LINK = "//a[@class='ico-account']";
 }
