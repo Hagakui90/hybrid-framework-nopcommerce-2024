@@ -42,14 +42,14 @@ public class Account_01_Register extends BasePage {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		driver.get("http://demo.nopcommerce/");
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 	}
 
 	@Test
 	public void Register_01_Empty() {
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 		
 		registerPage.clickToRegisterButton();
 		Assert.assertEquals(registerPage.getFirstNameErrorTextMessage(), "account.fields.firstname.required");
@@ -62,11 +62,11 @@ public class Account_01_Register extends BasePage {
 	@Test
 	public void Register_02_Invalid_Email() {
 		registerPage.clickToNopCommerceLogo();
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
 		registerPage.clickToRegisterButton();
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 		
 		registerPage.enterToFirstNameTextbox("Hana");
 		registerPage.enterToLastNameTextbox("Hasta");
@@ -83,11 +83,11 @@ public class Account_01_Register extends BasePage {
 	@Test
 	public void Register_03_Successful() {
 		registerPage.clickToNopCommerceLogo();
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
 		registerPage.clickToRegisterButton();
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
 		registerPage.enterToLastNameTextbox("Hasta");
@@ -110,7 +110,7 @@ public class Account_01_Register extends BasePage {
 	public void Register_04_Existing_Email() {
 		homePage.clickToRegisterLink();
 		registerPage.clickToRegisterButton();
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
 		registerPage.enterToLastNameTextbox("Olala");
@@ -127,11 +127,11 @@ public class Account_01_Register extends BasePage {
 	@Test
 	public void Register_05_Password_Less_Than_6_Characters() {
 		registerPage.clickToNopCommerceLogo();
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
 		registerPage.clickToRegisterButton();
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
 		registerPage.enterToLastNameTextbox("Hasta");
@@ -147,11 +147,11 @@ public class Account_01_Register extends BasePage {
 	@Test
 	public void Register_06_Not_Matching_Password() {
 		registerPage.clickToNopCommerceLogo();
-		homePage = new HomePageObject();
+		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
 		registerPage.clickToRegisterButton();
-		registerPage = new RegisterPageObject();
+		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
 		registerPage.enterToLastNameTextbox("Hasta");
