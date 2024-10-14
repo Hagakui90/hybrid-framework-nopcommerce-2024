@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
 import commons.BasePage;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
 public class Account_01_Register extends BasePage {
@@ -24,7 +23,6 @@ public class Account_01_Register extends BasePage {
 	
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
 	private CustomerPageObject customerPage;
 
 	@BeforeClass
@@ -99,11 +97,13 @@ public class Account_01_Register extends BasePage {
 		Assert.assertEquals(registerPage.getCompletedRegisterTextMessage(), "account.register.result.standard");		
 		registerPage.clickToMyAccountLink();
 		
-		customerPage = new CustomerPageObject();
+		customerPage = new CustomerPageObject(driver);
 		Assert.assertEquals(customerPage.getFirstNameTextboxAttributeValue(), "Hana");
 		Assert.assertEquals(customerPage.getLastNameTextboxAttributeValue(), "Hasta");
 		Assert.assertEquals(customerPage.getEmailAttributeValue(), emailAddress);
 
+		customerPage.clickToLogoutLink();
+		homePage = new HomePageObject(driver);
 	}
 
 	@Test

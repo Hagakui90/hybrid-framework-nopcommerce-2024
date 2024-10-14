@@ -1,20 +1,37 @@
 package pageObjects;
 
-public class CustomerPageObject {
+import org.openqa.selenium.WebDriver;
+
+import commons.BasePage;
+import pageUIs.CustomerPageUI;
+
+public class CustomerPageObject extends BasePage{
+
+	WebDriver driver;
+	
+	
+	public CustomerPageObject(WebDriver driver) {
+		this.driver = driver;
+	}
 
 	public String getEmailAttributeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.EMAIL_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.EMAIL_TEXTBOX, "value");
 	}
 
 	public String getLastNameTextboxAttributeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.LASTNAME_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.LASTNAME_TEXTBOX, "value");
 	}
 
 	public String getFirstNameTextboxAttributeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		waitForElementVisible(driver, CustomerPageUI.FIRSTNAME_TEXTBOX);
+		return getElementAttribute(driver, CustomerPageUI.FIRSTNAME_TEXTBOX, "value");
+	}
+
+	public void clickToLogoutLink() {
+		waitForElementVisible(driver, CustomerPageUI.LOGOUT_LINK);
+		clickToElement(driver, CustomerPageUI.LOGOUT_LINK);
 	}
 
 }
