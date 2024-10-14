@@ -63,7 +63,6 @@ public class Account_01_Register extends BasePage {
 		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
 		registerPage = new RegisterPageObject(driver);
 		
 		registerPage.enterToFirstNameTextbox("Hana");
@@ -84,7 +83,6 @@ public class Account_01_Register extends BasePage {
 		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
 		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
@@ -109,7 +107,6 @@ public class Account_01_Register extends BasePage {
 	@Test
 	public void Register_04_Existing_Email() {
 		homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
 		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
@@ -130,7 +127,6 @@ public class Account_01_Register extends BasePage {
 		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
 		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
@@ -150,7 +146,6 @@ public class Account_01_Register extends BasePage {
 		homePage = new HomePageObject(driver);
 		
 		homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
 		registerPage = new RegisterPageObject(driver);
 
 		registerPage.enterToFirstNameTextbox("Hana");
