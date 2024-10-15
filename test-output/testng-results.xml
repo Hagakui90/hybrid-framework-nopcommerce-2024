@@ -1,45 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="18" passed="18" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-14T05:14:42Z" name="Default suite" finished-at="2024-10-14T05:14:54Z" duration-ms="12162">
+  <suite started-at="2024-10-15T03:26:22Z" name="Suite" finished-at="2024-10-15T03:26:49Z" duration-ms="26862">
     <groups>
     </groups>
-    <test started-at="2024-10-14T05:14:42Z" name="Default test" finished-at="2024-10-14T05:14:54Z" duration-ms="12162">
+    <test started-at="2024-10-15T03:26:22Z" name="Run on Firefox" finished-at="2024-10-15T03:26:34Z" duration-ms="11913">
       <class name="com.nopcommerce.account.Account_01_Register">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:42Z" name="beforeClass" finished-at="2024-10-14T05:14:46Z" duration-ms="4160" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:22Z" name="beforeClass" finished-at="2024-10-15T03:26:27Z" duration-ms="4960" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Register_01_Empty()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:46Z" name="Register_01_Empty" finished-at="2024-10-14T05:14:47Z" duration-ms="743" status="PASS">
+        <test-method signature="Register_01_Empty()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:27Z" name="Register_01_Empty" finished-at="2024-10-15T03:26:28Z" duration-ms="699" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_01_Empty -->
-        <test-method signature="Register_02_Invalid_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:47Z" name="Register_02_Invalid_Email" finished-at="2024-10-14T05:14:49Z" duration-ms="1441" status="PASS">
+        <test-method signature="Register_02_Invalid_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:28Z" name="Register_02_Invalid_Email" finished-at="2024-10-15T03:26:29Z" duration-ms="1180" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_02_Invalid_Email -->
-        <test-method signature="Register_03_Successful()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:49Z" name="Register_03_Successful" finished-at="2024-10-14T05:14:50Z" duration-ms="1864" status="PASS">
+        <test-method signature="Register_03_Successful()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:29Z" name="Register_03_Successful" finished-at="2024-10-15T03:26:30Z" duration-ms="1557" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_03_Successful -->
-        <test-method signature="Register_04_Existing_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:50Z" name="Register_04_Existing_Email" finished-at="2024-10-14T05:14:52Z" duration-ms="1126" status="PASS">
+        <test-method signature="Register_04_Existing_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:30Z" name="Register_04_Existing_Email" finished-at="2024-10-15T03:26:31Z" duration-ms="826" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_04_Existing_Email -->
-        <test-method signature="Register_05_Password_Less_Than_6_Characters()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:52Z" name="Register_05_Password_Less_Than_6_Characters" finished-at="2024-10-14T05:14:53Z" duration-ms="1393" status="PASS">
+        <test-method signature="Register_05_Password_Less_Than_6_Characters()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:31Z" name="Register_05_Password_Less_Than_6_Characters" finished-at="2024-10-15T03:26:32Z" duration-ms="991" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_05_Password_Less_Than_6_Characters -->
-        <test-method signature="Register_06_Not_Matching_Password()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:53Z" name="Register_06_Not_Matching_Password" finished-at="2024-10-14T05:14:54Z" duration-ms="1423" status="PASS">
+        <test-method signature="Register_06_Not_Matching_Password()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:32Z" name="Register_06_Not_Matching_Password" finished-at="2024-10-15T03:26:34Z" duration-ms="1687" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Register_06_Not_Matching_Password -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_01_Register@302c971f]" started-at="2024-10-14T05:14:54Z" name="afterClass" finished-at="2024-10-14T05:14:54Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2bbf180e]" started-at="2024-10-15T03:26:34Z" name="afterClass" finished-at="2024-10-15T03:26:34Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
       </class> <!-- com.nopcommerce.account.Account_01_Register -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Run on Firefox -->
+    <test started-at="2024-10-15T03:26:34Z" name="Run on Chrome" finished-at="2024-10-15T03:26:41Z" duration-ms="6604">
+      <class name="com.nopcommerce.account.Account_01_Register">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:34Z" name="beforeClass" finished-at="2024-10-15T03:26:36Z" duration-ms="2102" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="Register_01_Empty()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:36Z" name="Register_01_Empty" finished-at="2024-10-15T03:26:36Z" duration-ms="352" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_01_Empty -->
+        <test-method signature="Register_02_Invalid_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:36Z" name="Register_02_Invalid_Email" finished-at="2024-10-15T03:26:37Z" duration-ms="740" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_02_Invalid_Email -->
+        <test-method signature="Register_03_Successful()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:37Z" name="Register_03_Successful" finished-at="2024-10-15T03:26:38Z" duration-ms="1240" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_03_Successful -->
+        <test-method signature="Register_04_Existing_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:38Z" name="Register_04_Existing_Email" finished-at="2024-10-15T03:26:39Z" duration-ms="617" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_04_Existing_Email -->
+        <test-method signature="Register_05_Password_Less_Than_6_Characters()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:39Z" name="Register_05_Password_Less_Than_6_Characters" finished-at="2024-10-15T03:26:40Z" duration-ms="827" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_05_Password_Less_Than_6_Characters -->
+        <test-method signature="Register_06_Not_Matching_Password()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:40Z" name="Register_06_Not_Matching_Password" finished-at="2024-10-15T03:26:41Z" duration-ms="721" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_06_Not_Matching_Password -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_01_Register@433d61fb]" started-at="2024-10-15T03:26:41Z" name="afterClass" finished-at="2024-10-15T03:26:41Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+    </test> <!-- Run on Chrome -->
+    <test started-at="2024-10-15T03:26:41Z" name="Run on Edge" finished-at="2024-10-15T03:26:49Z" duration-ms="8313">
+      <class name="com.nopcommerce.account.Account_01_Register">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:41Z" name="beforeClass" finished-at="2024-10-15T03:26:44Z" duration-ms="3611" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="Register_01_Empty()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:44Z" name="Register_01_Empty" finished-at="2024-10-15T03:26:45Z" duration-ms="342" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_01_Empty -->
+        <test-method signature="Register_02_Invalid_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:45Z" name="Register_02_Invalid_Email" finished-at="2024-10-15T03:26:45Z" duration-ms="759" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_02_Invalid_Email -->
+        <test-method signature="Register_03_Successful()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:45Z" name="Register_03_Successful" finished-at="2024-10-15T03:26:47Z" duration-ms="1283" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_03_Successful -->
+        <test-method signature="Register_04_Existing_Email()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:47Z" name="Register_04_Existing_Email" finished-at="2024-10-15T03:26:47Z" duration-ms="710" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_04_Existing_Email -->
+        <test-method signature="Register_05_Password_Less_Than_6_Characters()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:47Z" name="Register_05_Password_Less_Than_6_Characters" finished-at="2024-10-15T03:26:48Z" duration-ms="849" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_05_Password_Less_Than_6_Characters -->
+        <test-method signature="Register_06_Not_Matching_Password()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:48Z" name="Register_06_Not_Matching_Password" finished-at="2024-10-15T03:26:49Z" duration-ms="756" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Register_06_Not_Matching_Password -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_01_Register@2ea227af]" started-at="2024-10-15T03:26:49Z" name="afterClass" finished-at="2024-10-15T03:26:49Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+    </test> <!-- Run on Edge -->
+  </suite> <!-- Suite -->
 </testng-results>
