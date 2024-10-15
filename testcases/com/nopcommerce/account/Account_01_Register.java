@@ -1,27 +1,21 @@
 package com.nopcommerce.account;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
+import commons.BaseTest;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
-public class Account_01_Register extends BasePage {
+public class Account_01_Register extends BaseTest {
 	private WebDriver driver;
 	private String emailAddress;
-	private String projectPath = System.getProperty("user.dir");
 
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
@@ -30,25 +24,10 @@ public class Account_01_Register extends BasePage {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		if (browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-			driver = new FirefoxDriver();
-		} else if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
-			driver = new ChromeDriver();
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
-			driver = new EdgeDriver();
-		} else {
-			throw new RuntimeException("Browser name is not valid");
-		}
-
+		driver = getBrowserDriver(browserName);
+		homePage = new HomePageObject(driver);
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
-		driver.get("http://demo.nopcommerce/");
-		homePage = new HomePageObject(driver);
 	}
 
 	@Test
@@ -168,10 +147,7 @@ public class Account_01_Register extends BasePage {
 
 	}
 
-	public int generateFakeNumber() {
-		Random rand = new Random();
-		return rand.nextInt(9999);
-	}
+
 
 	@AfterClass
 	public void afterClass() {

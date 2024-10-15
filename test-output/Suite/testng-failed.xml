@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
   <test thread-count="5" name="Run on Firefox(failed)">
+    <parameter name="browser" value="firefox"/>
     <classes>
       <class name="com.nopcommerce.account.Account_01_Register">
         <methods>
@@ -17,4 +18,38 @@
       </class> <!-- com.nopcommerce.account.Account_01_Register -->
     </classes>
   </test> <!-- Run on Firefox(failed) -->
+  <test thread-count="5" name="Run on Chrome(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.nopcommerce.account.Account_01_Register">
+        <methods>
+          <include name="afterClass"/>
+          <include name="Register_03_Successful"/>
+          <include name="Register_02_Invalid_Email"/>
+          <include name="Register_04_Existing_Email"/>
+          <include name="beforeClass"/>
+          <include name="Register_05_Password_Less_Than_6_Characters"/>
+          <include name="Register_01_Empty"/>
+          <include name="Register_06_Not_Matching_Password"/>
+        </methods>
+      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+    </classes>
+  </test> <!-- Run on Chrome(failed) -->
+  <test thread-count="5" name="Run on Edge(failed)">
+    <parameter name="browser" value="edge"/>
+    <classes>
+      <class name="com.nopcommerce.account.Account_01_Register">
+        <methods>
+          <include name="afterClass"/>
+          <include name="Register_03_Successful"/>
+          <include name="Register_02_Invalid_Email"/>
+          <include name="Register_04_Existing_Email"/>
+          <include name="beforeClass"/>
+          <include name="Register_05_Password_Less_Than_6_Characters"/>
+          <include name="Register_01_Empty"/>
+          <include name="Register_06_Not_Matching_Password"/>
+        </methods>
+      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+    </classes>
+  </test> <!-- Run on Edge(failed) -->
 </suite> <!-- Failed suite [Suite] -->

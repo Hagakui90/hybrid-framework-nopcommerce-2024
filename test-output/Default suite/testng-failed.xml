@@ -7,9 +7,11 @@
         <methods>
           <include name="afterClass"/>
           <include name="Register_03_Successful"/>
+          <include name="Register_02_Invalid_Email"/>
           <include name="Register_04_Existing_Email"/>
           <include name="beforeClass"/>
           <include name="Register_05_Password_Less_Than_6_Characters"/>
+          <include name="Register_01_Empty"/>
           <include name="Register_06_Not_Matching_Password"/>
         </methods>
       </class> <!-- com.nopcommerce.account.Account_01_Register -->
