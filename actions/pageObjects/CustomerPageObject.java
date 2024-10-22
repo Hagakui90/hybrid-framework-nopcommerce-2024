@@ -29,9 +29,10 @@ public class CustomerPageObject extends BasePage{
 		return getElementAttribute(driver, CustomerPageUI.FIRSTNAME_TEXTBOX, "value");
 	}
 
-	public void clickToLogoutLink() {
+	public HomePageObject clickToLogoutLink() {
 		waitForElementVisible(driver, CustomerPageUI.LOGOUT_LINK);
 		clickToElement(driver, CustomerPageUI.LOGOUT_LINK);
+		return PageGeneratorManager.getHomePageObject(driver);
 	}
 
 }

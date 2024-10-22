@@ -97,10 +97,8 @@ public class BasePage {
 	}
  
 	public void closeAllTabWithoutParent(WebDriver driver, String parentID) {
-		// Get hết ra các id đang có
 		Set<String> allWindowIDs = driver.getWindowHandles();
 
-		// Duyệt qua các giá trị trong all windows
 		for (String id : allWindowIDs) {
 			if (!id.equals(parentID)) {
 				driver.switchTo().window(id);
@@ -142,6 +140,7 @@ public class BasePage {
 	public List<WebElement> getListWebElement(WebDriver driver, String locator) {
 		return driver.findElements(getByXpath(locator));
 	}
+
 
 	public void clickToElement(WebDriver driver, String locator) {
 		getWebElement(driver, locator).click();
