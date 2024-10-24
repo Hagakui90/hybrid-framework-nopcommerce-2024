@@ -1,9 +1,10 @@
-package pageObjects;
+package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.CustomerPageUI;
+import commons.PageGeneratorManager;
+import pageUIs.user.CustomerPageUI;
 
 public class CustomerPageObject extends BasePage{
 

@@ -9,10 +9,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.CustomerPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.user.CustomerPageObject;
+import pageObjects.user.HomePageObject;
+import pageObjects.user.RegisterPageObject;
 
 public class Account_01_Register extends BaseTest {
 	private WebDriver driver;
