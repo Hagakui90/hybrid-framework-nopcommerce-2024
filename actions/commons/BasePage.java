@@ -12,12 +12,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
-
 
 	/* Web Browser */
 	public void openPageUrl(WebDriver driver, String pageUrl) {
@@ -95,7 +95,7 @@ public class BasePage {
 		}
 
 	}
- 
+
 	public void closeAllTabWithoutParent(WebDriver driver, String parentID) {
 		Set<String> allWindowIDs = driver.getWindowHandles();
 
@@ -140,7 +140,6 @@ public class BasePage {
 	public List<WebElement> getListWebElement(WebDriver driver, String locator) {
 		return driver.findElements(getByXpath(locator));
 	}
-
 
 	public void clickToElement(WebDriver driver, String locator) {
 		getWebElement(driver, locator).click();
@@ -195,12 +194,14 @@ public class BasePage {
 	public String convertRGBAToHexaColor(WebDriver driver, String locator) {
 		return Color.fromString(getElementCssValue(driver, locator, "background-color")).asHex();
 	}
-	
+
 	public int getListElementSize(WebDriver driver, String locator) {
 		return getListWebElement(driver, locator).size();
 	}
-	
-	/** Apply for checkbox and radio button
+
+	/**
+	 * Apply for checkbox and radio button
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
@@ -209,8 +210,10 @@ public class BasePage {
 			getWebElement(driver, locator).click();
 		}
 	}
-	
-	/** Apply only for checkbox 
+
+	/**
+	 * Apply only for checkbox
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
@@ -219,35 +222,35 @@ public class BasePage {
 			getWebElement(driver, locator).click();
 		}
 	}
-	
+
 	public boolean isElementDisplayed(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).isDisplayed();
 	}
-	
+
 	public boolean isElementSelected(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).isSelected();
 	}
-	
+
 	public boolean isElementEnabled(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).isEnabled();
 	}
-	
+
 	public void switchToIframe(WebDriver driver, String locator) {
 		driver.switchTo().frame(getWebElement(driver, locator));
 	}
-	
+
 	public void switchToDefaultContent(WebDriver driver) {
 		driver.switchTo().defaultContent();
 	}
-	
+
 	public void hoverToElement(WebDriver driver, String locator) {
 		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
 	}
-	
+
 	public void doubleClickToElement(WebDriver driver, String locator) {
 		new Actions(driver).doubleClick(getWebElement(driver, locator)).perform();
 	}
-	
+
 	public void rightClickToElement(WebDriver driver, String locator) {
 		new Actions(driver).contextClick(getWebElement(driver, locator)).perform();
 	}
@@ -259,9 +262,7 @@ public class BasePage {
 	public void sendKeyboardToElement(WebDriver driver, String locator, Keys key) {
 		new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
 	}
-	
-	
-	
+
 	public Object executeForBrowser(WebDriver driver, String javaScript) {
 		return ((JavascriptExecutor) driver).executeScript(javaScript);
 	}
@@ -316,30 +317,54 @@ public class BasePage {
 	}
 
 	public boolean isImageLoaded(WebDriver driver, String locator) {
-		boolean status = (boolean) ((JavascriptExecutor) driver).executeScript(
-				"return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0",
-				getWebElement(driver, locator));
+		boolean status = (boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getWebElement(driver, locator));
 		return status;
 	}
 
-	
 	public void waitForElementVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));	
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
 	}
-	
+
 	public void waitForListElementVisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
 	}
-	
+
 	public void waitForElementInVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));	
+		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
 	}
-	
+
 	public void waitForListElementInVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));	
+		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
 	}
-	
+
 	public void waitForElementClickable(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));	
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
+	}
+
+	public boolean isPageLoadedSuccess(WebDriver driver) {
+		WebDriverWait explicitWait;
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+		explicitWait = new WebDriverWait(driver, 30);
+
+		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+
+			@Override
+			public Boolean apply(WebDriver driver) {
+				return (Boolean) jsExecutor.executeScript("return (window.jQuery != null) && (jQuery.active == 0);");
+			}
+		};
+
+		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+
+			@Override
+			public Boolean apply(WebDriver driver) {
+				return (Boolean) jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+			}
+
+		};
+
+		return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
+
 	}
 }

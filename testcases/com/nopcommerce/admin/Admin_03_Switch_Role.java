@@ -1,6 +1,7 @@
 package com.nopcommerce.admin;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -42,6 +43,7 @@ public class Admin_03_Switch_Role extends BaseTest {
 		homePage = userLoginPage.enterToLoginForm(userEmailAddress, "123456");
 		
 		homePage.openPageUrl(driver, this.adminUrl);
+		Assert.assertTrue(homePage.isPageLoadedSuccess(driver));
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
 		adminDashboardPage = adminLoginPage.enterToLoginForm(adminEmailAdress, "hagakui90");
