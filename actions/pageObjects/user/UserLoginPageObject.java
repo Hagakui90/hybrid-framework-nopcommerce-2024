@@ -27,5 +27,11 @@ public class UserLoginPageObject extends BasePage{
 		clickToElement(driver, UserLoginPageUI.SUBMIT_BUTTON);
 		return PageGeneratorManager.getHomePageObject(driver);
 	}
+	
+	public HomePageObject enterToLoginForm(String emailAddress, String password) {
+		enterToEmailAddress(emailAddress);
+		enterToPassword(password);
+		return clickToLoginButton();
+	}
 
 }

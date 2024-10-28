@@ -27,9 +27,10 @@ public class Admin_03_Switch_Role extends BaseTest {
 	@Parameters({"browser", "userUrl", "adminUrl"})
 	@BeforeClass
 	public void beforeClass(String browserName, String userUrl, String adminUrl) {
-		driver = getBrowserDriver(browserName, userUrl);
+
 		this.userUrl = userUrl;
 		this.adminUrl = adminUrl;
+		driver = getBrowserDriver(browserName, this.userUrl);
 		homePage = PageGeneratorManager.getHomePageObject(driver);
 
 	}
@@ -37,17 +38,13 @@ public class Admin_03_Switch_Role extends BaseTest {
 	@Test
 	public void Switch_Role_01_User_To_Admin() {
 		userLoginPage = homePage.clickToLoginLink();
-		userLoginPage.enterToEmailAddress(userEmailAddress);
-		userLoginPage.enterToPassword("123456");
-		homePage = userLoginPage.clickToLoginButton();
 		
-		homePage.openPageUrl(driver, adminUrl);
+		homePage = userLoginPage.enterToLoginForm(userEmailAddress, "123456");
+		
+		homePage.openPageUrl(driver, this.adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminLoginPage.enterToEmailAddress(adminEmailAdress);
-		adminLoginPage.enterToPassword("hagakui90");
-		
-		adminDashboardPage = adminLoginPage.clickToLoginButton();
+		adminDashboardPage = adminLoginPage.enterToLoginForm(adminEmailAdress, "hagakui90");
 		
 
 	}

@@ -30,4 +30,9 @@ public class AdminLoginPageObject extends BasePage {
 		return PageGeneratorManager.getAdminDashboardPageObject(driver);
 	}
 
+	public AdminDashboardPageObject enterToLoginForm (String emailAddress, String password) {
+		enterToEmailAddress(emailAddress);
+		enterToPassword(password);
+		return clickToLoginButton();
+	}
 }
