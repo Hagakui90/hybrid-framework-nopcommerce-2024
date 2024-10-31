@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-28T01:41:31Z" name="Suite" finished-at="2024-10-28T01:41:57Z" duration-ms="26201">
+  <suite started-at="2024-10-29T22:10:46Z" name="Suite" finished-at="2024-10-29T22:10:56Z" duration-ms="9486">
     <groups>
     </groups>
-    <test started-at="2024-10-28T01:41:31Z" name="Run on Firefox" finished-at="2024-10-28T01:41:57Z" duration-ms="26201">
+    <test started-at="2024-10-29T22:10:46Z" name="Run on Firefox" finished-at="2024-10-29T22:10:56Z" duration-ms="9486">
       <class name="com.nopcommerce.admin.Admin_03_Switch_Role">
-        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-28T01:41:31Z" name="beforeClass" finished-at="2024-10-28T01:41:50Z" duration-ms="18736" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-29T22:10:46Z" name="beforeClass" finished-at="2024-10-29T22:10:49Z" duration-ms="2883" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -28,7 +28,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Switch_Role_01_User_To_Admin()[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-28T01:41:50Z" name="Switch_Role_01_User_To_Admin" finished-at="2024-10-28T01:41:57Z" duration-ms="7457" status="PASS">
+        <test-method signature="Switch_Role_01_User_To_Admin()[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-29T22:10:49Z" name="Switch_Role_01_User_To_Admin" finished-at="2024-10-29T22:10:56Z" duration-ms="6595" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Switch_Role_01_User_To_Admin -->

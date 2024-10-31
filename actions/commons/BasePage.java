@@ -49,7 +49,7 @@ public class BasePage {
 	}
 
 	public Alert waitForAlertPresence(WebDriver driver) {
-		return new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
+		return new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.alertIsPresent());
 	}
 
 	public void acceptToAlert(WebDriver driver) {
@@ -181,7 +181,7 @@ public class BasePage {
 		getWebElement(driver, parentLocator).click();
 		sleepInSecond(1);
 
-		List<WebElement> allItems = new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childLocator)));
+		List<WebElement> allItems = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childLocator)));
 
 		for (WebElement item : allItems) {
 
@@ -337,30 +337,30 @@ public class BasePage {
 	}
 
 	public void waitForElementVisible(WebDriver driver, String locatorValue) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorValue)));
+		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorValue)));
 	}
 
 	public void waitForListElementVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
+		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
 	}
 
 	public void waitForElementInVisible(WebDriver driver, String locatorValue) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorValue)));
+		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorValue)));
 	}
 
 	public void waitForListElementInVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
+		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.invisibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
 	}
 
 	public void waitForElementClickable(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
+		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
 	}
 
 	public boolean isPageLoadedSuccess(WebDriver driver) {
 		WebDriverWait explicitWait;
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		explicitWait = new WebDriverWait(driver, 30);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 
 		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
 
