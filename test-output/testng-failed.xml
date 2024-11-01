@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
-  <parameter name="adminUrl" value="http://demo.nopcommerce/Admin"/>
-  <parameter name="userUrl" value="http://demo.nopcommerce/"/>
   <test thread-count="5" name="Run on Firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.admin.Admin_03_Switch_Role">
+      <class name="com.nopcommerce.account.Account_02_Login">
         <methods>
-          <include name="Switch_Role_01_User_To_Admin"/>
+          <include name="Login_07_Page_Navigation"/>
           <include name="beforeClass"/>
+          <include name="afterClass"/>
         </methods>
-      </class> <!-- com.nopcommerce.admin.Admin_03_Switch_Role -->
+      </class> <!-- com.nopcommerce.account.Account_02_Login -->
     </classes>
   </test> <!-- Run on Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

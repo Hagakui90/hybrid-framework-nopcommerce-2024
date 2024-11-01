@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-29T22:10:46Z" name="Suite" finished-at="2024-10-29T22:10:56Z" duration-ms="9486">
+  <suite started-at="2024-11-01T13:37:25Z" name="Suite" finished-at="2024-11-01T13:37:30Z" duration-ms="4956">
     <groups>
     </groups>
-    <test started-at="2024-10-29T22:10:46Z" name="Run on Firefox" finished-at="2024-10-29T22:10:56Z" duration-ms="9486">
-      <class name="com.nopcommerce.admin.Admin_03_Switch_Role">
-        <test-method is-config="true" signature="beforeClass(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-29T22:10:46Z" name="beforeClass" finished-at="2024-10-29T22:10:49Z" duration-ms="2883" status="PASS">
+    <test started-at="2024-11-01T13:37:25Z" name="Run on Firefox" finished-at="2024-11-01T13:37:30Z" duration-ms="4956">
+      <class name="com.nopcommerce.account.Account_02_Login">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:25Z" name="beforeClass" finished-at="2024-11-01T13:37:28Z" duration-ms="3009" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA[firefox]]>
               </value>
             </param>
-            <param index="1">
-              <value>
-                <![CDATA[http://demo.nopcommerce/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[http://demo.nopcommerce/Admin]]>
-              </value>
-            </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Switch_Role_01_User_To_Admin()[pri:0, instance:com.nopcommerce.admin.Admin_03_Switch_Role@27ae2fd0]" started-at="2024-10-29T22:10:49Z" name="Switch_Role_01_User_To_Admin" finished-at="2024-10-29T22:10:56Z" duration-ms="6595" status="PASS">
+        <test-method signature="Login_01_Empty()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:28Z" name="Login_01_Empty" finished-at="2024-11-01T13:37:29Z" duration-ms="789" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Switch_Role_01_User_To_Admin -->
-      </class> <!-- com.nopcommerce.admin.Admin_03_Switch_Role -->
+        </test-method> <!-- Login_01_Empty -->
+        <test-method signature="Login_02_Invalid_Email()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:29Z" name="Login_02_Invalid_Email" finished-at="2024-11-01T13:37:29Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_02_Invalid_Email -->
+        <test-method signature="Login_03_Not_Exist_Email()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:29Z" name="Login_03_Not_Exist_Email" finished-at="2024-11-01T13:37:29Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_03_Not_Exist_Email -->
+        <test-method signature="Login_04_Existing_Email_Not_Input_Password()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:29Z" name="Login_04_Existing_Email_Not_Input_Password" finished-at="2024-11-01T13:37:29Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_04_Existing_Email_Not_Input_Password -->
+        <test-method signature="Login_05_Existing_Email_Wrong_Password()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:29Z" name="Login_05_Existing_Email_Wrong_Password" finished-at="2024-11-01T13:37:29Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_05_Existing_Email_Wrong_Password -->
+        <test-method signature="Login_06_Successful()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:29Z" name="Login_06_Successful" finished-at="2024-11-01T13:37:30Z" duration-ms="833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_06_Successful -->
+        <test-method signature="Login_07_Page_Navigation()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:30Z" name="Login_07_Page_Navigation" finished-at="2024-11-01T13:37:30Z" duration-ms="311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_07_Page_Navigation -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_02_Login@77167fb7]" started-at="2024-11-01T13:37:30Z" name="afterClass" finished-at="2024-11-01T13:37:30Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- com.nopcommerce.account.Account_02_Login -->
     </test> <!-- Run on Firefox -->
   </suite> <!-- Suite -->
 </testng-results>

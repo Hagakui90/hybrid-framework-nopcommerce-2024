@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.user.CustomerPageObject;
+import pageObjects.user.DownloadableProductObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.MyAccountSideBarPageObject;
 import pageObjects.user.RewardPointsObject;
@@ -23,6 +24,7 @@ public class Account_02_Login extends BaseTest {
 	private CustomerPageObject customerPage;
 	private UserLoginPageObject userLoginPage;
 	private RewardPointsObject rewardPointsPage;
+	private DownloadableProductObject downloadableProductPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -33,7 +35,12 @@ public class Account_02_Login extends BaseTest {
 
 	@Test
 	public void Login_01_Empty() {
+		userLoginPage = homePage.clickToLoginLink();
 
+		userLoginPage.enterToEmailAddress("");
+		userLoginPage.enterToPassword("");
+		userLoginPage.clickToLoginButton();
+		Assert.assertEquals(userLoginPage.getEmailErrorMessage(), "account.login.fields.email.required");
 	}
 
 	@Test
@@ -75,6 +82,8 @@ public class Account_02_Login extends BaseTest {
 		customerPage.openDynamicSideBarPage("account.rewardpoints");
 		rewardPointsPage = PageGeneratorManager.getRewardPointsPage(driver);
 
+		rewardPointsPage.openDynamicSideBarPage("account.downloadableproducts");
+		downloadableProductPage = PageGeneratorManager.getDownloadableProductPage(driver);
 	}
 
 	@AfterClass

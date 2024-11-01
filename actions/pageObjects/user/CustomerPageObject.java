@@ -5,11 +5,10 @@ import org.openqa.selenium.WebDriver;
 import commons.PageGeneratorManager;
 import pageUIs.user.CustomerPageUI;
 
-public class CustomerPageObject extends MyAccountSideBarPageObject{
+public class CustomerPageObject extends MyAccountSideBarPageObject {
 
 	WebDriver driver;
-	
-	
+
 	public CustomerPageObject(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -35,7 +34,5 @@ public class CustomerPageObject extends MyAccountSideBarPageObject{
 		clickToElement(driver, CustomerPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getHomePageObject(driver);
 	}
-
-	
 
 }

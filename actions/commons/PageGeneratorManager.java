@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.user.CustomerPageObject;
+import pageObjects.user.DownloadableProductObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
 import pageObjects.user.RewardPointsObject;
@@ -38,6 +39,10 @@ public class PageGeneratorManager {
 
 	public static RewardPointsObject getRewardPointsPage(WebDriver driver) {
 		return new RewardPointsObject(driver) ;
+	}
+
+	public static DownloadableProductObject getDownloadableProductPage(WebDriver driver) {
+		return new DownloadableProductObject(driver);
 	}
 
 }
