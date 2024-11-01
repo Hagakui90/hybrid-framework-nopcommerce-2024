@@ -11,15 +11,19 @@ import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
+import pageObjects.user.MyAccountSideBarPageObject;
+import pageObjects.user.RewardPointsObject;
 import pageObjects.user.UserLoginPageObject;
 
-public class Account_02_Login extends BaseTest{
+public class Account_02_Login extends BaseTest {
 	private WebDriver driver;
 	private String emailAddress = "afc3574@mail.vn";
 
 	private HomePageObject homePage;
 	private CustomerPageObject customerPage;
 	private UserLoginPageObject userLoginPage;
+	private RewardPointsObject rewardPointsPage;
+
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
@@ -55,17 +59,22 @@ public class Account_02_Login extends BaseTest{
 	@Test
 	public void Login_06_Successful() {
 		userLoginPage = homePage.clickToLoginLink();
-		
+
 		userLoginPage.enterToEmailAddress(emailAddress);
 		userLoginPage.enterToPassword("123456");
-		
+
 		homePage = userLoginPage.clickToLoginButton();
-		
+
 		customerPage = homePage.clickToMyAccountLink();
-		
+
 		Assert.assertEquals(customerPage.getEmailAttributeValue(), emailAddress);
-			
-		
+	}
+
+	@Test
+	public void Login_07_Page_Navigation() {
+		customerPage.openDynamicSideBarPage("account.rewardpoints");
+		rewardPointsPage = PageGeneratorManager.getRewardPointsPage(driver);
+
 	}
 
 	@AfterClass

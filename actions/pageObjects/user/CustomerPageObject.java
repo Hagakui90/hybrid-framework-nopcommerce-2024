@@ -2,16 +2,16 @@ package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
-import commons.BasePage;
 import commons.PageGeneratorManager;
 import pageUIs.user.CustomerPageUI;
 
-public class CustomerPageObject extends BasePage{
+public class CustomerPageObject extends MyAccountSideBarPageObject{
 
 	WebDriver driver;
 	
 	
 	public CustomerPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -35,5 +35,7 @@ public class CustomerPageObject extends BasePage{
 		clickToElement(driver, CustomerPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getHomePageObject(driver);
 	}
+
+	
 
 }

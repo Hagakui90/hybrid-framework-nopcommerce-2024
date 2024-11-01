@@ -7,6 +7,7 @@ import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
+import pageObjects.user.RewardPointsObject;
 import pageObjects.user.UserLoginPageObject;
 
 public class PageGeneratorManager {
@@ -33,6 +34,10 @@ public class PageGeneratorManager {
 
 	public static AdminDashboardPageObject getAdminDashboardPageObject(WebDriver driver) {
 		return new AdminDashboardPageObject(driver);
+	}
+
+	public static RewardPointsObject getRewardPointsPage(WebDriver driver) {
+		return new RewardPointsObject(driver) ;
 	}
 
 }

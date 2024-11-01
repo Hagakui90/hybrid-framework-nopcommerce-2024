@@ -3,7 +3,7 @@
 	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.admin.Admin_03_Switch_Role" />
+			<class name="com.nopcommerce.account.Account_02_Login" />
 		</classes>
 	</test>
 	<!-- 
