@@ -40,27 +40,38 @@ public class Account_02_Login extends BaseTest {
 		userLoginPage.enterToEmailAddress("");
 		userLoginPage.enterToPassword("");
 		userLoginPage.clickToLoginButton();
-		Assert.assertEquals(userLoginPage.getEmailErrorMessage(), "account.login.fields.email.required");
+		Assert.assertEquals(userLoginPage.getEmailErrorTextMessage(), "account.login.fields.email.required");
 	}
 
 	@Test
 	public void Login_02_Invalid_Email() {
-
+		userLoginPage.enterToEmailAddress("123456");
+		Assert.assertEquals(userLoginPage.getEmailErrorTextMessage(), "Please enter a valid email address.");
 	}
 
 	@Test
 	public void Login_03_Not_Exist_Email() {
-
+		userLoginPage.enterToEmailAddress("afc357@mail.vn");
+		userLoginPage.enterToPassword("123456");
+		userLoginPage.clickToLoginButton();
+		System.out.println(userLoginPage.getEmailNotExistTextMessage());
+		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials.customernotexist"));
 	}
 
 	@Test
 	public void Login_04_Existing_Email_Not_Input_Password() {
-
+		userLoginPage.enterToEmailAddress(emailAddress);
+		userLoginPage.enterToPassword("");
+		userLoginPage.clickToLoginButton();
+		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials"));
 	}
 
 	@Test
 	public void Login_05_Existing_Email_Wrong_Password() {
-
+		userLoginPage.enterToEmailAddress(emailAddress);
+		userLoginPage.enterToPassword("23456");
+		userLoginPage.clickToLoginButton();
+		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials"));
 	}
 
 	@Test

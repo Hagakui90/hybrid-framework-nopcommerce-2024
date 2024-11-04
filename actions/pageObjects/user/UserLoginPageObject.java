@@ -33,9 +33,14 @@ public class UserLoginPageObject extends BasePage{
 		enterToPassword(password);
 		return clickToLoginButton();
 	}
-	public String getEmailErrorMessage() {
+	public String getEmailErrorTextMessage() {
 		waitForElementVisible(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
 		return getElementText(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
+	}
+
+	public String getEmailNotExistTextMessage() {
+		waitForElementVisible(driver, UserLoginPageUI.EMAIL_VALIDATION_ERROR_MESSAGE);
+		return getElementText(driver, UserLoginPageUI.EMAIL_VALIDATION_ERROR_MESSAGE);
 	}
 
 }
