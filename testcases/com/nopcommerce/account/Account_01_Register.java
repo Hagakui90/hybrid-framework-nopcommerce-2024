@@ -9,6 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
@@ -78,9 +79,10 @@ public class Account_01_Register extends BaseTest {
 		
 
 		customerPage = registerPage.clickToMyAccountLink();
-		Assert.assertEquals(customerPage.getFirstNameTextboxAttributeValue(), "Hana");
-		Assert.assertEquals(customerPage.getLastNameTextboxAttributeValue(), "Hasta");
-		Assert.assertEquals(customerPage.getEmailAttributeValue(), emailAddress);
+		
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue(GlobalConstants.FIRST_NAME_INFO), "Hana");
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue(GlobalConstants.LAST_NAME_INFO), "Hasta");
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("Email"), emailAddress);
 		
 		homePage = customerPage.clickToLogoutLink();
 	}

@@ -12,4 +12,9 @@ public class GlobalConstants {
 	public static final String UPLOAD_PATH = RELATIVE_PROJECT_PATH + "/uploadFiles/";
 	public static final String DOWNLOAD_PATH = RELATIVE_PROJECT_PATH + "/downloadFiles/";
 	
+	/** Fix inputted information text for test case: Register_03_Successful
+	 * 
+	 */
+	public static final String FIRST_NAME_INFO = "FirstName";
+	public static final String LAST_NAME_INFO = "LastName";
 }

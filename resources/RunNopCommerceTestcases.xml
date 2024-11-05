@@ -3,7 +3,7 @@
 	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.account.Account_02_Login" />
+			<class name="com.nopcommerce.account.Account_01_Register" />
 		</classes>
 	</test>
 	<!-- 

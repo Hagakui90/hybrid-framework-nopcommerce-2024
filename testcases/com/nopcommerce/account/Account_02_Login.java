@@ -85,7 +85,7 @@ public class Account_02_Login extends BaseTest {
 
 		customerPage = homePage.clickToMyAccountLink();
 
-		Assert.assertEquals(customerPage.getEmailAttributeValue(), emailAddress);
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("Email"), emailAddress);
 	}
 
 	@Test

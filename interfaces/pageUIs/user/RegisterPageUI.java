@@ -14,10 +14,10 @@ public class RegisterPageUI {
 	public static final String CONFIRM_PASSWORD_ERROR_MSG ="XPATH=//span[@id='ConfirmPassword-error']";
 	public static final String PASSWORD_ERROR_MSG ="Xpath=//span[@id='Email-error']";
 	
-	public static final String REGISTRATION_COMPLETED_MSG ="div.result";
+	public static final String REGISTRATION_COMPLETED_MSG ="css=div.result";
 	public static final String EXISTING_EMAIL_ERROR_MSG ="xpath=//div[@class='message-error validation-summary-errors']";
 	public static final String INVALID_PASSWORD_ERROR_MSG ="xpath=//span[@data-valmsg-for='Password']";
 	
-	public final static String MY_ACCOUNT_LINK = "css=a.'ico-account";
+	public final static String MY_ACCOUNT_LINK = "css=a.ico-account";
 	public final static String NOPCOMMERCE_LOGO = "css=div.header-logo";
 }
