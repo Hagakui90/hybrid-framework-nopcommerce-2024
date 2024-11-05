@@ -8,18 +8,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import commons.GlobalConstants;
 import commons.PageGeneratorManager;
+import pageObjects.user.CustomerAddressObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
 
-public class Account_03_My_Account extends BaseTest{
+public class Account_03_My_Account extends BaseTest {
 	private WebDriver driver;
-	private String emailAddress = "afc3574@mail.vn";
+	private String emailAddress = "automationfc.vn@gmail.com";
 	private HomePageObject homePage;
 	private UserLoginPageObject userLoginPage;
 	private CustomerPageObject customerPage;
-	
+	private CustomerAddressObject customerAddressPage;
+
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
@@ -34,18 +37,26 @@ public class Account_03_My_Account extends BaseTest{
 
 		customerPage = homePage.clickToMyAccountLink();
 
-		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("Email"), emailAddress);
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
 	@Test
 	public void My_Account_01_Update_CustomerInfo() {
-		customerPage.updateFullInfo("Female", "Automation", "FC", "automationfc.vn@gmail.com", "Automation FC");
-		
+		customerPage.updateFullInfo("Female", "Automation", "FC", "afc3574@mail.vn", "Automation FC");
+
+		Assert.assertTrue(customerPage.verifyCheckedGenderRadiobox("Female"));
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.firstname"), "Automation");
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.lastname"), "FC");
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), "afc3574@mail.vn");
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.company"), "Automation FC");
 	}
 
-	@Test
 	public void My_Account_02_Add_Address() {
+		customerPage.openDynamicSideBarPage("account.customeraddresses");
+		customerAddressPage = PageGeneratorManager.getCustomerAddressObject(driver);
+		customerAddressPage.openAddressForm();
 
+		customerAddressPage.inputAddressForm(emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress, emailAddress);
 	}
 
 	@Test

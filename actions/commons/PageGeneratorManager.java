@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
+import pageObjects.user.CustomerAddressObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DownloadableProductObject;
 import pageObjects.user.HomePageObject;
@@ -43,6 +44,10 @@ public class PageGeneratorManager {
 
 	public static DownloadableProductObject getDownloadableProductPage(WebDriver driver) {
 		return new DownloadableProductObject(driver);
+	}
+	
+	public static CustomerAddressObject getCustomerAddressObject(WebDriver driver) {
+		return new CustomerAddressObject(driver);
 	}
 
 }
