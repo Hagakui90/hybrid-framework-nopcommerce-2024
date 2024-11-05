@@ -4,16 +4,13 @@
   <test thread-count="5" name="Run on Firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.account.Account_01_Register">
+      <class name="com.nopcommerce.account.Account_03_My_Account">
         <methods>
           <include name="afterClass"/>
-          <include name="Register_03_Successful"/>
-          <include name="Register_04_Existing_Email"/>
           <include name="beforeClass"/>
-          <include name="Register_05_Password_Less_Than_6_Characters"/>
-          <include name="Register_06_Not_Matching_Password"/>
+          <include name="My_Account_01_Update_CustomerInfo"/>
         </methods>
-      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+      </class> <!-- com.nopcommerce.account.Account_03_My_Account -->
     </classes>
   </test> <!-- Run on Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

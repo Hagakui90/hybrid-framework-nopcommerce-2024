@@ -8,7 +8,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageObjects.user.CustomerAddressObject;
 import pageObjects.user.CustomerPageObject;
@@ -44,6 +43,8 @@ public class Account_03_My_Account extends BaseTest {
 	public void My_Account_01_Update_CustomerInfo() {
 		customerPage.updateFullInfo("Female", "Automation", "FC", "afc3574@mail.vn", "Automation FC");
 
+		
+		Assert.assertEquals(customerPage.getUpdatedNotificationBarText(),"account.customerinfo.updated");
 		Assert.assertTrue(customerPage.verifyCheckedGenderRadiobox("Female"));
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.firstname"), "Automation");
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.lastname"), "FC");

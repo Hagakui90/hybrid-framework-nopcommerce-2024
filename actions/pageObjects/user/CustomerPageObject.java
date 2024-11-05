@@ -49,6 +49,11 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 		waitForElementVisible(driver, CustomerPageUI.GENDER_RADIOBUTTON, gender.toLowerCase());
 		return getWebElement(driver, CustomerPageUI.GENDER_RADIOBUTTON, gender.toLowerCase()).isSelected();
 	}
+
+	public String getUpdatedNotificationBarText() {
+		waitForElementVisible(driver, CustomerPageUI.UPDATED_NOTIFICATION_BAR);
+		return getElementText(driver, CustomerPageUI.UPDATED_NOTIFICATION_BAR);
+	}
 	
 
 }
