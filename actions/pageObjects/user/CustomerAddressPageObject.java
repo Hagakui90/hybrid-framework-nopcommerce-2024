@@ -3,11 +3,10 @@ package pageObjects.user;
 import org.openqa.selenium.WebDriver;
 
 import pageUIs.user.CustomerAddressPageUI;
-import pageUIs.user.CustomerPageUI;
 
-public class CustomerAddressObject extends MyAccountSideBarPageObject{
+public class CustomerAddressPageObject extends MyAccountSideBarPageObject{
 	WebDriver driver;
-	public CustomerAddressObject(WebDriver driver) {
+	public CustomerAddressPageObject(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 	}

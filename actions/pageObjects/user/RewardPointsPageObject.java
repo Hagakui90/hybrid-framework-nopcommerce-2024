@@ -2,9 +2,9 @@ package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
-public class RewardPointsObject extends MyAccountSideBarPageObject{
+public class RewardPointsPageObject extends MyAccountSideBarPageObject{
 	WebDriver driver;
-	public RewardPointsObject(WebDriver driver) {
+	public RewardPointsPageObject(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 	}

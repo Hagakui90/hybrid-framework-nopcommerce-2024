@@ -10,10 +10,9 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.user.CustomerPageObject;
-import pageObjects.user.DownloadableProductObject;
+import pageObjects.user.DownloadableProductPageObject;
 import pageObjects.user.HomePageObject;
-import pageObjects.user.MyAccountSideBarPageObject;
-import pageObjects.user.RewardPointsObject;
+import pageObjects.user.RewardPointsPageObject;
 import pageObjects.user.UserLoginPageObject;
 
 public class Account_02_Login extends BaseTest {
@@ -23,8 +22,8 @@ public class Account_02_Login extends BaseTest {
 	private HomePageObject homePage;
 	private CustomerPageObject customerPage;
 	private UserLoginPageObject userLoginPage;
-	private RewardPointsObject rewardPointsPage;
-	private DownloadableProductObject downloadableProductPage;
+	private RewardPointsPageObject rewardPointsPage;
+	private DownloadableProductPageObject downloadableProductPage;
 
 	@Parameters("browser")
 	@BeforeClass

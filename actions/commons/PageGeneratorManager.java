@@ -4,12 +4,13 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.CustomerAddressObject;
+import pageObjects.user.ChangePasswordPageObject;
+import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
-import pageObjects.user.DownloadableProductObject;
+import pageObjects.user.DownloadableProductPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
-import pageObjects.user.RewardPointsObject;
+import pageObjects.user.RewardPointsPageObject;
 import pageObjects.user.UserLoginPageObject;
 
 public class PageGeneratorManager {
@@ -38,16 +39,20 @@ public class PageGeneratorManager {
 		return new AdminDashboardPageObject(driver);
 	}
 
-	public static RewardPointsObject getRewardPointsPage(WebDriver driver) {
-		return new RewardPointsObject(driver) ;
+	public static RewardPointsPageObject getRewardPointsPage(WebDriver driver) {
+		return new RewardPointsPageObject(driver) ;
 	}
 
-	public static DownloadableProductObject getDownloadableProductPage(WebDriver driver) {
-		return new DownloadableProductObject(driver);
+	public static DownloadableProductPageObject getDownloadableProductPage(WebDriver driver) {
+		return new DownloadableProductPageObject(driver);
 	}
 	
-	public static CustomerAddressObject getCustomerAddressObject(WebDriver driver) {
-		return new CustomerAddressObject(driver);
+	public static CustomerAddressPageObject getCustomerAddressObject(WebDriver driver) {
+		return new CustomerAddressPageObject(driver);
+	}
+
+	public static ChangePasswordPageObject getChangePasswordObject(WebDriver driver) {
+		return new ChangePasswordPageObject(driver);
 	}
 
 }

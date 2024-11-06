@@ -9,7 +9,8 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.user.CustomerAddressObject;
+import pageObjects.user.ChangePasswordPageObject;
+import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
@@ -20,7 +21,8 @@ public class Account_03_My_Account extends BaseTest {
 	private HomePageObject homePage;
 	private UserLoginPageObject userLoginPage;
 	private CustomerPageObject customerPage;
-	private CustomerAddressObject customerAddressPage;
+	private CustomerAddressPageObject customerAddressPage;
+	private ChangePasswordPageObject changePasswordPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -30,7 +32,7 @@ public class Account_03_My_Account extends BaseTest {
 		userLoginPage = homePage.clickToLoginLink();
 
 		userLoginPage.enterToEmailAddress(emailAddress);
-		userLoginPage.enterToPassword("123456");
+		userLoginPage.enterToPassword("ohana123");
 
 		homePage = userLoginPage.clickToLoginButton();
 
@@ -43,7 +45,6 @@ public class Account_03_My_Account extends BaseTest {
 	public void My_Account_01_Update_CustomerInfo() {
 		customerPage.updateFullInfo("Female", "Automation", "FC", "afc3574@mail.vn", "Automation FC");
 
-		
 		Assert.assertEquals(customerPage.getUpdatedNotificationBarText(),"account.customerinfo.updated");
 		Assert.assertTrue(customerPage.verifyCheckedGenderRadiobox("Female"));
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.firstname"), "Automation");
@@ -51,7 +52,7 @@ public class Account_03_My_Account extends BaseTest {
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), "afc3574@mail.vn");
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.company"), "Automation FC");
 	}
-	@Test
+	
 	public void My_Account_02_Add_Address() {
 		customerPage.openDynamicSideBarPage("account.customeraddresses");
 		customerAddressPage = PageGeneratorManager.getCustomerAddressObject(driver);
@@ -72,12 +73,27 @@ public class Account_03_My_Account extends BaseTest {
 		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "address1"), "123/04 Lê Lai");
 		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "address2"), "234/05 Hải Phòng");
 		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "zippostalcode"), "550000");
-		
 	}
 
 	@Test
 	public void My_Account_03_Change_Password() {
-
+		customerPage.openDynamicSideBarPage("account.changepassword");
+		changePasswordPage = PageGeneratorManager.getChangePasswordObject(driver);
+		
+		changePasswordPage.inputChangePasswordForm("ohana123", "gogogo123");
+		
+		Assert.assertEquals(changePasswordPage.getChangePasswordNotificationBarText(), "account.changepassword.success");
+		
+		homePage = changePasswordPage.logout();
+		userLoginPage = homePage.clickToLoginLink();
+		
+		userLoginPage.enterToLoginForm(emailAddress, "ohana123");
+		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials"));
+		
+		userLoginPage.enterToLoginForm(emailAddress, "gogogo123");
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		customerPage = homePage.clickToMyAccountLink();
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
 	@Test
