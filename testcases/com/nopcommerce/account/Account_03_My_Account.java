@@ -57,18 +57,21 @@ public class Account_03_My_Account extends BaseTest {
 		customerAddressPage = PageGeneratorManager.getCustomerAddressObject(driver);
 		
 		customerAddressPage.openAddressForm();
-		customerAddressPage.inputAddressForm("Automation", "FC", "vivo.vn@gmail.com", "Automation FC", "Vietnam", "Hải Phòng", "Hải Phòng", "123/04 Lê Lai", "234/05 Hải Phòng", "550000", "0123456789", "0987654321");
-		customerAddressPage.sleepInSecond(10);
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("name"),"Automation FC");
-		Assert.assertTrue(customerAddressPage.getAddedInfoText("email").contains("vivo.vn@gmail.com"));
-		Assert.assertTrue(customerAddressPage.getAddedInfoText("phone").contains("0123456789"));
-		Assert.assertTrue(customerAddressPage.getAddedInfoText("fax").contains("0987654321"));
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("company"),"Automation FC");
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("country"),"Vietnam");
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("address1"),"123/04 Lê Lai");
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("address2"),"234/05 Hải Phòng");
-		Assert.assertEquals(customerAddressPage.getAddedInfoText("zippostalcode"),"550000");
+		customerAddressPage.inputAddressForm("Hutomation", "FC", "vivo.vn@gmail.com", "Automation FC", "Vietnam", "Hải Phòng", "Hải Phòng", "123/04 Lê Lai", "234/05 Hải Phòng", "550000", "0123456789", "0987654321");
+		 
 		Assert.assertEquals(customerAddressPage.getAddedNotificationBarText(),"account.customeraddresses.added");
+		
+		String indexOfAddedAddress = String.valueOf(customerAddressPage.numberOfListAddress());
+		System.out.println(indexOfAddedAddress);
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "name"), "Hutomation FC");
+		Assert.assertTrue(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "email").contains("vivo.vn@gmail.com"));
+		Assert.assertTrue(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "phone").contains("0123456789"));
+		Assert.assertTrue(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "fax").contains("0987654321"));
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "company"), "Automation FC");
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "country"), "Vietnam");
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "address1"), "123/04 Lê Lai");
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "address2"), "234/05 Hải Phòng");
+		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "zippostalcode"), "550000");
 		
 	}
 

@@ -6,9 +6,9 @@
     <classes>
       <class name="com.nopcommerce.account.Account_03_My_Account">
         <methods>
+          <include name="My_Account_02_Add_Address"/>
           <include name="afterClass"/>
           <include name="beforeClass"/>
-          <include name="My_Account_01_Update_CustomerInfo"/>
         </methods>
       </class> <!-- com.nopcommerce.account.Account_03_My_Account -->
     </classes>

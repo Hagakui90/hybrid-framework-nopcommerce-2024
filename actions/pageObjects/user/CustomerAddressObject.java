@@ -64,8 +64,15 @@ public class CustomerAddressObject extends MyAccountSideBarPageObject{
 		return getElementText(driver, CustomerAddressPageUI.ADDED_NOTIFICATION_BAR);
 	}
 	
-	public String getAddedInfoText(String info) {
-		waitForElementVisible(driver, CustomerAddressPageUI.ADDED_INFO_SECTION, info);
-		return getElementText(driver, CustomerAddressPageUI.ADDED_INFO_SECTION, info);
+	public String getAddedInfoText(String indexOfAddedAddress, String info) {
+		waitForElementVisible(driver, CustomerAddressPageUI.NEW_ADDED_INFO_SECTION, indexOfAddedAddress, info);
+		return getElementText(driver, CustomerAddressPageUI.NEW_ADDED_INFO_SECTION, indexOfAddedAddress, info);
 	}
+	
+	public int numberOfListAddress() {
+		waitForElementVisible(driver, CustomerAddressPageUI.ADDRESS_ITEM_LIST);
+		int getListAddressItem = getListElementSize(driver, CustomerAddressPageUI.ADDRESS_ITEM_LIST);
+		return getListAddressItem;
+	}
+	
 }

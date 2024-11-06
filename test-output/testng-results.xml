@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-05T09:57:52Z" name="Suite" finished-at="2024-11-05T09:57:56Z" duration-ms="4694">
+  <suite started-at="2024-11-06T08:33:58Z" name="Suite" finished-at="2024-11-06T08:34:05Z" duration-ms="7074">
     <groups>
     </groups>
-    <test started-at="2024-11-05T09:57:52Z" name="Run on Firefox" finished-at="2024-11-05T09:57:56Z" duration-ms="4694">
+    <test started-at="2024-11-06T08:33:58Z" name="Run on Firefox" finished-at="2024-11-06T08:34:05Z" duration-ms="7074">
       <class name="com.nopcommerce.account.Account_03_My_Account">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-05T09:57:52Z" name="beforeClass" finished-at="2024-11-05T09:57:55Z" duration-ms="3728" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-06T08:33:58Z" name="beforeClass" finished-at="2024-11-06T08:34:02Z" duration-ms="3879" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,19 +18,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="My_Account_01_Update_CustomerInfo()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-05T09:57:55Z" name="My_Account_01_Update_CustomerInfo" finished-at="2024-11-05T09:57:56Z" duration-ms="955" status="PASS">
+        <test-method signature="My_Account_02_Add_Address()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-06T08:34:02Z" name="My_Account_02_Add_Address" finished-at="2024-11-06T08:34:05Z" duration-ms="3182" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- My_Account_01_Update_CustomerInfo -->
-        <test-method signature="My_Account_03_Change_Password()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-05T09:57:56Z" name="My_Account_03_Change_Password" finished-at="2024-11-05T09:57:56Z" duration-ms="0" status="PASS">
+        </test-method> <!-- My_Account_02_Add_Address -->
+        <test-method signature="My_Account_03_Change_Password()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-06T08:34:05Z" name="My_Account_03_Change_Password" finished-at="2024-11-06T08:34:05Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- My_Account_03_Change_Password -->
-        <test-method signature="My_Account_04_Add_Review_Product()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-05T09:57:56Z" name="My_Account_04_Add_Review_Product" finished-at="2024-11-05T09:57:56Z" duration-ms="0" status="PASS">
+        <test-method signature="My_Account_04_Add_Review_Product()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-06T08:34:05Z" name="My_Account_04_Add_Review_Product" finished-at="2024-11-06T08:34:05Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- My_Account_04_Add_Review_Product -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-05T09:57:56Z" name="afterClass" finished-at="2024-11-05T09:57:56Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-06T08:34:05Z" name="afterClass" finished-at="2024-11-06T08:34:05Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

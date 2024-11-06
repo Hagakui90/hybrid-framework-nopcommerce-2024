@@ -383,6 +383,8 @@ public class BasePage {
 	public void waitForElementVisible(WebDriver driver, String locator, String... restParam) {
 		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(getDynamicLocator(locator, restParam))));
 	}
+	
+	
 
 	public void waitForListElementVisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement((WebDriver) driver, locator)));
