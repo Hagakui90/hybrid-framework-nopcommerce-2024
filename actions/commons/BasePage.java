@@ -182,9 +182,17 @@ public class BasePage {
 	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue) {
 		new Select(getWebElement(driver, locator)).selectByVisibleText(itemValue);
 	}
+	
+	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue, String... restParams) {
+		new Select(getWebElement(driver, getDynamicLocator(locator, restParams))).selectByVisibleText(itemValue);
+	}
 
 	public String getFirstSelectedTextInDefaultDropdown(WebDriver driver, String locator) {
 		return new Select(getWebElement(driver, locator)).getFirstSelectedOption().getText();
+	}
+	
+	public String getFirstSelectedTextInDefaultDropdown(WebDriver driver, String locator, String... restParams) {
+		return new Select(getWebElement(driver, getDynamicLocator(locator, restParams))).getFirstSelectedOption().getText();
 	}
 
 	public boolean isDefaultDropdownMultiple(WebDriver driver, String locator) {
