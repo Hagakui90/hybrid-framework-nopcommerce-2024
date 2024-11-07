@@ -1,8 +1,15 @@
 package pageObjects.user;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commons.BasePage;
+import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageUIs.user.HomePageUI;
 
@@ -30,5 +37,17 @@ public class HomePageObject extends BasePage{
 		clickToElement(driver, HomePageUI.MYACCOUNT_LINK);
 		return PageGeneratorManager.getCustomerPageObject(driver);
 	}
+	
+	public DetailProductPageObject clickToProduct(String productName) {
+		List<WebElement> productList = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, HomePageUI.PRODUCT_NAME_ITEM)));
 
+		for (WebElement product : productList) {
+			String expectedProduct = product.getText();
+			if (expectedProduct.contains(productName)) {
+				product.click();
+				break;
+			}
+		}
+		return PageGeneratorManager.getDetailProductPage(driver);
+	}
 }

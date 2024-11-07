@@ -7,6 +7,8 @@ import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.user.ChangePasswordPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
+import pageObjects.user.CustomerProductReviewPageObject;
+import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.DownloadableProductPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
@@ -53,6 +55,14 @@ public class PageGeneratorManager {
 
 	public static ChangePasswordPageObject getChangePasswordObject(WebDriver driver) {
 		return new ChangePasswordPageObject(driver);
+	}
+
+	public static DetailProductPageObject getDetailProductPage(WebDriver driver) {
+		return new DetailProductPageObject(driver);
+	}
+
+	public static CustomerProductReviewPageObject getCustomerProductReviewPageObject(WebDriver driver) {
+		return new CustomerProductReviewPageObject(driver);
 	}
 
 }

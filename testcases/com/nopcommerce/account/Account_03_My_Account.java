@@ -12,6 +12,8 @@ import commons.PageGeneratorManager;
 import pageObjects.user.ChangePasswordPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
+import pageObjects.user.CustomerProductReviewPageObject;
+import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
 
@@ -23,6 +25,8 @@ public class Account_03_My_Account extends BaseTest {
 	private CustomerPageObject customerPage;
 	private CustomerAddressPageObject customerAddressPage;
 	private ChangePasswordPageObject changePasswordPage;
+	private DetailProductPageObject detailProductPage;
+	private CustomerProductReviewPageObject customerProductReviewPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -32,7 +36,7 @@ public class Account_03_My_Account extends BaseTest {
 		userLoginPage = homePage.clickToLoginLink();
 
 		userLoginPage.enterToEmailAddress(emailAddress);
-		userLoginPage.enterToPassword("ohana123");
+		userLoginPage.enterToPassword("Goodmorning11");
 
 		homePage = userLoginPage.clickToLoginButton();
 
@@ -75,22 +79,22 @@ public class Account_03_My_Account extends BaseTest {
 		Assert.assertEquals(customerAddressPage.getAddedInfoText(indexOfAddedAddress, "zippostalcode"), "550000");
 	}
 
-	@Test
+	
 	public void My_Account_03_Change_Password() {
 		customerPage.openDynamicSideBarPage("account.changepassword");
 		changePasswordPage = PageGeneratorManager.getChangePasswordObject(driver);
 		
-		changePasswordPage.inputChangePasswordForm("ohana123", "gogogo123");
+		changePasswordPage.inputChangePasswordForm("234GogoLove", "Goodmorning11");
 		
 		Assert.assertEquals(changePasswordPage.getChangePasswordNotificationBarText(), "account.changepassword.success");
 		
 		homePage = changePasswordPage.logout();
 		userLoginPage = homePage.clickToLoginLink();
 		
-		userLoginPage.enterToLoginForm(emailAddress, "ohana123");
+		userLoginPage.enterToLoginForm(emailAddress, "234GogoLove");
 		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials"));
 		
-		userLoginPage.enterToLoginForm(emailAddress, "gogogo123");
+		userLoginPage.enterToLoginForm(emailAddress, "Goodmorning11");
 		homePage = PageGeneratorManager.getHomePageObject(driver);
 		customerPage = homePage.clickToMyAccountLink();
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
@@ -98,7 +102,25 @@ public class Account_03_My_Account extends BaseTest {
 
 	@Test
 	public void My_Account_04_Add_Review_Product() {
-
+		customerPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		detailProductPage = homePage.clickToProduct("MacBook");
+		String titleSelectedProduct = detailProductPage.getTitleDetailProduct();
+		Assert.assertTrue(detailProductPage.getPageTitle(driver).contains("MacBook"));
+		Assert.assertTrue(titleSelectedProduct.contains("MacBook"));
+		
+		detailProductPage.inputReviewForm("Good quality", "Excellent. I'm so excited to use it. The shop give me many informative product. Will be back next time!", "4");
+//		Assert.assertEquals(detailProductPage.getReviewTextNotificationBar(), "reviews.successfullyadded");
+		Assert.assertTrue(detailProductPage.areExpectedTextInInnerText(driver, "reviews.successfullyadded"));
+		
+		detailProductPage.closeReviewNotiBar();
+		customerPage = detailProductPage.clickToMyAccountLink();
+		
+		customerPage.openDynamicSideBarPage("account.customerproductreviews");
+		customerProductReviewPage = PageGeneratorManager.getCustomerProductReviewPageObject(driver);
+		
+		
 	}
 
 	@AfterClass
