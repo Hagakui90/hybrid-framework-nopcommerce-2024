@@ -3,18 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nopcommerce.account.Account_01_Register">
+      <class name="com.nopcommerce.account.Account_03_My_Account">
         <methods>
           <include name="afterClass"/>
-          <include name="Register_03_Successful"/>
-          <include name="Register_02_Invalid_Email"/>
-          <include name="Register_04_Existing_Email"/>
           <include name="beforeClass"/>
-          <include name="Register_05_Password_Less_Than_6_Characters"/>
-          <include name="Register_01_Empty"/>
-          <include name="Register_06_Not_Matching_Password"/>
+          <include name="My_Account_04_Add_Review_Product"/>
         </methods>
-      </class> <!-- com.nopcommerce.account.Account_01_Register -->
+      </class> <!-- com.nopcommerce.account.Account_03_My_Account -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

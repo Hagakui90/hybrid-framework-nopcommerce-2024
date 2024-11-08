@@ -13,7 +13,7 @@ public class CustomerProductReviewPageObject extends MyAccountSideBarPageObject 
 	}
 	
 	public String getAddedReviewTitleText() {
-		waitForElementInVisible(driver, CustomerProductReviewsPageUI.LATEST_REVIEW_TITLE);
+		waitForElementVisible(driver, CustomerProductReviewsPageUI.LATEST_REVIEW_TITLE);
 		return getElementText(driver, CustomerProductReviewsPageUI.LATEST_REVIEW_TITLE);
 	}
 	
@@ -26,5 +26,15 @@ public class CustomerProductReviewPageObject extends MyAccountSideBarPageObject 
 	public int getValueRatingInInteger(String valueAttributeInText) {
 		String valueInString = valueAttributeInText.substring(7, valueAttributeInText.length()-2);
 		return (Integer.valueOf(valueInString))/20;
+	}
+	
+	public String getAddedContentReviewText() {
+		waitForElementVisible(driver, CustomerProductReviewsPageUI.LATEST_REVIEW_CONTENT);
+		return getElementText(driver, CustomerProductReviewsPageUI.LATEST_REVIEW_CONTENT);
+	}
+	
+	public String getAddedProductReviewText() {
+		waitForElementVisible(driver, CustomerProductReviewsPageUI.LATEST_PRODUCT_REVIEW);
+		return getElementText(driver, CustomerProductReviewsPageUI.LATEST_PRODUCT_REVIEW);
 	}
 }
