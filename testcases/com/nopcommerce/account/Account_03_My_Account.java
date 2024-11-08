@@ -110,7 +110,7 @@ public class Account_03_My_Account extends BaseTest {
 		Assert.assertTrue(detailProductPage.getPageTitle(driver).contains("MacBook"));
 		Assert.assertTrue(titleSelectedProduct.contains("MacBook"));
 		
-		detailProductPage.inputReviewForm("Good quality", "Excellent. I'm so excited to use it. The shop give me many informative product. Will be back next time!", "4");
+		detailProductPage.inputReviewForm("Excellent quality", "I'm so excited to use it. The shop give me many informative product. Will be back next time!", "5");
 //		Assert.assertEquals(detailProductPage.getReviewTextNotificationBar(), "reviews.successfullyadded");
 		Assert.assertTrue(detailProductPage.areExpectedTextInInnerText(driver, "reviews.successfullyadded"));
 		
@@ -120,6 +120,10 @@ public class Account_03_My_Account extends BaseTest {
 		customerPage.openDynamicSideBarPage("account.customerproductreviews");
 		customerProductReviewPage = PageGeneratorManager.getCustomerProductReviewPageObject(driver);
 		
+		Assert.assertTrue(customerProductReviewPage.getPageTitleText().contains("account.customerproductreviews"));
+		
+		System.out.println(customerProductReviewPage.getAddedReviewRatingValue());
+		Assert.assertEquals(customerProductReviewPage.getAddedReviewRatingValue(), "5");
 		
 	}
 

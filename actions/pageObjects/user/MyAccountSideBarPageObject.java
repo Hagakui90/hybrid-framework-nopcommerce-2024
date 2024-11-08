@@ -20,4 +20,9 @@ public class MyAccountSideBarPageObject extends BasePage{
 		waitForElementVisible(driver, MyAccountSideBarPageUI.LOGO_LINK_TEXT);
 		clickToElement(driver, MyAccountSideBarPageUI.LOGO_LINK_TEXT);
 	}
+	
+	public String getPageTitleText() {
+		waitForElementVisible(driver, MyAccountSideBarPageUI.PAGE_TITLE_TEXT);
+		return getElementText(driver, MyAccountSideBarPageUI.PAGE_TITLE_TEXT);
+	}
 }
