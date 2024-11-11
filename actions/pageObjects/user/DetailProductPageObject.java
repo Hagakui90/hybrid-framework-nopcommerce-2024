@@ -11,7 +11,6 @@ import commons.BasePage;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageUIs.user.DetailProductPageUI;
-import pageUIs.user.HomePageUI;
 
 public class DetailProductPageObject extends BasePage{
 	WebDriver driver;

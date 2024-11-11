@@ -1,6 +1,5 @@
 package pageObjects.user;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -49,5 +48,10 @@ public class HomePageObject extends BasePage{
 			}
 		}
 		return PageGeneratorManager.getDetailProductPage(driver);
+	}
+	
+	public void openHomeFooterPage(String blockName, String pageName) {
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
+		clickToElement(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
 	}
 }

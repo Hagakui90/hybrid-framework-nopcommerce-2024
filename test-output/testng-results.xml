@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-08T06:00:00Z" name="Suite" finished-at="2024-11-08T06:00:07Z" duration-ms="7202">
+  <suite started-at="2024-11-11T03:18:33Z" name="Suite" finished-at="2024-11-11T03:18:39Z" duration-ms="5570">
     <groups>
     </groups>
-    <test started-at="2024-11-08T06:00:00Z" name="Run on Firefox" finished-at="2024-11-08T06:00:07Z" duration-ms="7202">
-      <class name="com.nopcommerce.account.Account_03_My_Account">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-08T06:00:00Z" name="beforeClass" finished-at="2024-11-08T06:00:04Z" duration-ms="3898" status="PASS">
+    <test started-at="2024-11-11T03:18:33Z" name="Run on Firefox" finished-at="2024-11-11T03:18:39Z" duration-ms="5570">
+      <class name="com.nopcommerce.view.View_01_Search">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:33Z" name="beforeClass" finished-at="2024-11-11T03:18:37Z" duration-ms="4134" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,43 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="My_Account_04_Add_Review_Product()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-08T06:00:04Z" name="My_Account_04_Add_Review_Product" finished-at="2024-11-08T06:00:07Z" duration-ms="3296" status="PASS">
+        <test-method signature="Advanced_Search_05_Parent_Categories()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:37Z" name="Advanced_Search_05_Parent_Categories" finished-at="2024-11-11T03:18:37Z" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- My_Account_04_Add_Review_Product -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.account.Account_03_My_Account@61dd025]" started-at="2024-11-08T06:00:07Z" name="afterClass" finished-at="2024-11-08T06:00:07Z" duration-ms="0" status="PASS">
+        </test-method> <!-- Advanced_Search_05_Parent_Categories -->
+        <test-method signature="Advanced_Search_06_Sub_Categories()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:37Z" name="Advanced_Search_06_Sub_Categories" finished-at="2024-11-11T03:18:37Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Advanced_Search_06_Sub_Categories -->
+        <test-method signature="Advanced_Search_07_Correct_Manufacurer()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:37Z" name="Advanced_Search_07_Correct_Manufacurer" finished-at="2024-11-11T03:18:37Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Advanced_Search_07_Correct_Manufacurer -->
+        <test-method signature="Advanced_Search_07_Incorrect_Manufacurer()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:37Z" name="Advanced_Search_07_Incorrect_Manufacurer" finished-at="2024-11-11T03:18:37Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Advanced_Search_07_Incorrect_Manufacurer -->
+        <test-method signature="Search_01_Empty()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:37Z" name="Search_01_Empty" finished-at="2024-11-11T03:18:38Z" duration-ms="684" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search_01_Empty -->
+        <test-method signature="Search_02_Data_Not_Exist()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:38Z" name="Search_02_Data_Not_Exist" finished-at="2024-11-11T03:18:38Z" duration-ms="364" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search_02_Data_Not_Exist -->
+        <test-method signature="Search_03_Product_Name_Absolutely()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:38Z" name="Search_03_Product_Name_Absolutely" finished-at="2024-11-11T03:18:39Z" duration-ms="366" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search_03_Product_Name_Absolutely -->
+        <test-method signature="Search_04_Product_Name_Relatively()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:39Z" name="Search_04_Product_Name_Relatively" finished-at="2024-11-11T03:18:39Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search_04_Product_Name_Relatively -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_01_Search@6973bf95]" started-at="2024-11-11T03:18:39Z" name="afterClass" finished-at="2024-11-11T03:18:39Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- com.nopcommerce.account.Account_03_My_Account -->
+      </class> <!-- com.nopcommerce.view.View_01_Search -->
     </test> <!-- Run on Firefox -->
   </suite> <!-- Suite -->
 </testng-results>
