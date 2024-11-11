@@ -31,9 +31,9 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		return getElementText(driver, CustomerSearchPageUI.WARNING_MESSAGE_TEXT);
 	}
 	
-	public String getResultText() {
-		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_RESULT_TEXT);
-		return getElementText(driver, CustomerSearchPageUI.SEARCH_RESULT_TEXT);
+	public String getNoResultSearchText() {
+		waitForElementVisible(driver, CustomerSearchPageUI.NO_RESULT_SEARCH_TEXT);
+		return getElementText(driver, CustomerSearchPageUI.NO_RESULT_SEARCH_TEXT);
 	}
 
 	public boolean verifyResultSearchRelatively() {
@@ -52,12 +52,12 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		else return false;
 	}
 	
-	public boolean verifyResultSearchAbsolutely() {
+	public boolean verifyResultSearchAbsolutely(String keyword) {
 		List<WebElement> listResultSearch = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CustomerSearchPageUI.LIST_SEARCH_RESULT_TEXT)));
 		int validResult =0;
 		for (WebElement result : listResultSearch) {
 			String expectedResult = result.getText();
-			if (expectedResult.equals("Lenovo Thinkpad Carbon Laptop")) {
+			if (expectedResult.equals(keyword)) {
 				validResult++;
 			}
 			
@@ -68,13 +68,30 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		else return false;
 	}
 
-	public void inputAdvancedSearchForm(String keyword, String searchValue, String advancedValue, String filterValue) {
+	public void inputAdvancedSearchForm(String keyword, String categoryValue, String subCategoryValue, String manufacturerValue, String descriptionValue) {
 		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_TEXTBOX);
 		sendkeyToElement(driver, CustomerSearchPageUI.SEARCH_TEXTBOX, keyword);
-		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, searchValue);
-		checkToElement(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, searchValue);
-		waitForElementClickable(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, advancedValue);
-		selectItemInDefaultDropdown(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, filterValue, advancedValue);
+		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, "advancedsearch");
+		checkToElement(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, "advancedsearch");
+		if (!categoryValue.equals("common.all")) {
+			waitForElementClickable(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, "category");
+			selectItemInDefaultDropdown(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, categoryValue, "category");
+		}
+		
+		if (!subCategoryValue.equals("")) {
+			waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, subCategoryValue);
+			checkToElement(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, subCategoryValue);
+		}
+		
+		if (!manufacturerValue.equals("common.all")) {
+			waitForElementClickable(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, "manufacturer");
+			selectItemInDefaultDropdown(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, manufacturerValue, "manufacturer");
+		}
+		
+		if (!descriptionValue.equals("")) {
+			waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, "descriptions");
+			checkToElement(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, "descriptions");
+		}
 		waitForElementClickable(driver, CustomerSearchPageUI.SEARCH_BUTTON);
 		clickToElement(driver, CustomerSearchPageUI.SEARCH_BUTTON);
 	}

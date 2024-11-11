@@ -54,7 +54,7 @@ public class View_01_Search extends BaseTest {
 
 	public void Search_02_Data_Not_Exist() {
 		customerSearchPage.inputSearchForm("Macbook Pro 2050");
-		Assert.assertEquals(customerSearchPage.getResultText(), "catalog.products.noresult");
+		Assert.assertEquals(customerSearchPage.getNoResultSearchText(), "catalog.products.noresult");
 	}
 
 	public void Search_03_Product_Name_Relatively() {
@@ -65,28 +65,31 @@ public class View_01_Search extends BaseTest {
 	@Test
 	public void Search_04_Product_Name_Absolutely() {
 		customerSearchPage.inputSearchForm("Lenovo Thinkpad Carbon Laptop");
-		Assert.assertTrue(customerSearchPage.verifyResultSearchAbsolutely());
+		Assert.assertTrue(customerSearchPage.verifyResultSearchAbsolutely("Lenovo Thinkpad Carbon Laptop"));
 	}
 
 	@Test
 	public void Search_Advanced_Search_05_Parent_Categories() {
-		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "advancedsearch", "category", "Computers");
-		Assert.assertEquals(customerSearchPage.getResultText(), "catalog.products.noresult");
+		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "Computers", "", "common.all", "");
+		Assert.assertEquals(customerSearchPage.getNoResultSearchText(), "catalog.products.noresult");
 	}
 
 	@Test
 	public void Search_Advanced_Search_06_Sub_Categories() {
-
+		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "Computers", "subcategories", "common.all", "");
+		Assert.assertTrue(customerSearchPage.verifyResultSearchAbsolutely("Apple MacBook Pro"));
 	}
 
 	@Test
 	public void Search_Advanced_Search_07_Incorrect_Manufacurer() {
-
+		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "Computers", "subcategories", "HP", "");
+		Assert.assertEquals(customerSearchPage.getNoResultSearchText(), "catalog.products.noresult");
 	}
 
 	@Test
-	public void Search_Advanced_Search_07_Correct_Manufacurer() {
-
+	public void Search_Advanced_Search_08_Correct_Manufacurer() {
+		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "Computers", "subcategories", "Apple", "descriptions");
+		Assert.assertTrue(customerSearchPage.verifyResultSearchAbsolutely("Apple MacBook Pro"));
 	}
 
 	@AfterClass
