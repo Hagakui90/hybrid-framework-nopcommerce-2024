@@ -52,40 +52,40 @@ public class View_01_Search extends BaseTest {
 		Assert.assertEquals(customerSearchPage.getWarningText(), "search.searchtermminimumlengthisncharacters");
 	}
 
-	@Test
 	public void Search_02_Data_Not_Exist() {
 		customerSearchPage.inputSearchForm("Macbook Pro 2050");
 		Assert.assertEquals(customerSearchPage.getResultText(), "catalog.products.noresult");
 	}
 
-	@Test
 	public void Search_03_Product_Name_Relatively() {
 		customerSearchPage.inputSearchForm("lenovo");
-		Assert.assertTrue(customerSearchPage.verifyResultSearch());
+		Assert.assertTrue(customerSearchPage.verifyResultSearchRelatively());
 	}
 
 	@Test
 	public void Search_04_Product_Name_Absolutely() {
+		customerSearchPage.inputSearchForm("Lenovo Thinkpad Carbon Laptop");
+		Assert.assertTrue(customerSearchPage.verifyResultSearchAbsolutely());
+	}
+
+	@Test
+	public void Search_Advanced_Search_05_Parent_Categories() {
+		customerSearchPage.inputAdvancedSearchForm("Apple MacBook Pro", "advancedsearch", "category", "Computers");
+		Assert.assertEquals(customerSearchPage.getResultText(), "catalog.products.noresult");
+	}
+
+	@Test
+	public void Search_Advanced_Search_06_Sub_Categories() {
 
 	}
 
 	@Test
-	public void Advanced_Search_05_Parent_Categories() {
+	public void Search_Advanced_Search_07_Incorrect_Manufacurer() {
 
 	}
 
 	@Test
-	public void Advanced_Search_06_Sub_Categories() {
-
-	}
-
-	@Test
-	public void Advanced_Search_07_Incorrect_Manufacurer() {
-
-	}
-
-	@Test
-	public void Advanced_Search_07_Correct_Manufacurer() {
+	public void Search_Advanced_Search_07_Correct_Manufacurer() {
 
 	}
 

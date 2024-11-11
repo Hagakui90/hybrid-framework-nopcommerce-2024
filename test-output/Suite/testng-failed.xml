@@ -4,13 +4,13 @@
   <test thread-count="5" name="Run on Firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.account.Account_03_My_Account">
+      <class name="com.nopcommerce.view.View_01_Search">
         <methods>
-          <include name="afterClass"/>
           <include name="beforeClass"/>
-          <include name="My_Account_04_Add_Review_Product"/>
+          <include name="Search_Advanced_Search_05_Parent_Categories"/>
+          <include name="afterClass"/>
         </methods>
-      </class> <!-- com.nopcommerce.account.Account_03_My_Account -->
+      </class> <!-- com.nopcommerce.view.View_01_Search -->
     </classes>
   </test> <!-- Run on Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->

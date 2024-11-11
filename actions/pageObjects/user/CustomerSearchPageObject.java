@@ -36,7 +36,7 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		return getElementText(driver, CustomerSearchPageUI.SEARCH_RESULT_TEXT);
 	}
 
-	public boolean verifyResultSearch() {
+	public boolean verifyResultSearchRelatively() {
 		List<WebElement> listResultSearch = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CustomerSearchPageUI.LIST_SEARCH_RESULT_TEXT)));
 		int validResult =0;
 		for (WebElement result : listResultSearch) {
@@ -51,4 +51,32 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		}
 		else return false;
 	}
+	
+	public boolean verifyResultSearchAbsolutely() {
+		List<WebElement> listResultSearch = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CustomerSearchPageUI.LIST_SEARCH_RESULT_TEXT)));
+		int validResult =0;
+		for (WebElement result : listResultSearch) {
+			String expectedResult = result.getText();
+			if (expectedResult.equals("Lenovo Thinkpad Carbon Laptop")) {
+				validResult++;
+			}
+			
+		}
+		if (validResult == listResultSearch.size()) {
+			return true;
+		}
+		else return false;
+	}
+
+	public void inputAdvancedSearchForm(String keyword, String searchValue, String advancedValue, String filterValue) {
+		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_TEXTBOX);
+		sendkeyToElement(driver, CustomerSearchPageUI.SEARCH_TEXTBOX, keyword);
+		waitForElementVisible(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, searchValue);
+		checkToElement(driver, CustomerSearchPageUI.SEARCH_CHECKBOX, searchValue);
+		waitForElementClickable(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, advancedValue);
+		selectItemInDefaultDropdown(driver, CustomerSearchPageUI.ADVANCED_SEARCH_DROPDOWN, filterValue, advancedValue);
+		waitForElementClickable(driver, CustomerSearchPageUI.SEARCH_BUTTON);
+		clickToElement(driver, CustomerSearchPageUI.SEARCH_BUTTON);
+	}
+
 }
