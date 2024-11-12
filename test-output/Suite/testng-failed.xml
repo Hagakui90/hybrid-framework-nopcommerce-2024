@@ -6,8 +6,9 @@
     <classes>
       <class name="com.nopcommerce.view.View_01_Search">
         <methods>
+          <include name="Search_Advanced_Search_08_Correct_Manufacurer"/>
+          <include name="Search_Advanced_Search_07_Incorrect_Manufacurer"/>
           <include name="beforeClass"/>
-          <include name="Search_Advanced_Search_05_Parent_Categories"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- com.nopcommerce.view.View_01_Search -->

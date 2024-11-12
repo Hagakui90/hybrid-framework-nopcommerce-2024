@@ -54,4 +54,10 @@ public class HomePageObject extends BasePage{
 		waitForElementClickable(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
 		clickToElement(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
 	}
+
+	public void openHomeHeaderMenuPage(String menuPage) {
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_HOME_HEADER_MENU_LINK_TEXT, menuPage);
+		clickToElement(driver, HomePageUI.DYNAMIC_HOME_HEADER_MENU_LINK_TEXT, menuPage);
+	}
+
 }

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
+import pageObjects.guest.ComputersCategoryPageObject;
+import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.ChangePasswordPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
@@ -69,4 +71,13 @@ public class PageGeneratorManager {
 	public static CustomerSearchPageObject getCustomerSearchPageObject(WebDriver driver) {
 		return new CustomerSearchPageObject(driver);
 	}
+	
+	public static ComputersCategoryPageObject getComputersPageObject(WebDriver driver) {
+		return new ComputersCategoryPageObject(driver);
+	}
+
+	public static NotebooksSubPageObject getNotebooksSubPage(WebDriver driver) {
+		return new NotebooksSubPageObject(driver);
+	}
+	
 }

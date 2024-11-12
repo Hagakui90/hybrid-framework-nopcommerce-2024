@@ -1,18 +1,44 @@
 package com.nopcommerce.view;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class View_02_Sort_Display_Paging {
-	@BeforeClass
-	public void beforeClass() {
+import commons.BaseTest;
+import commons.PageGeneratorManager;
+import pageObjects.guest.ComputersCategoryPageObject;
+import pageObjects.guest.NotebooksSubPageObject;
+import pageObjects.user.HomePageObject;
+import pageUIs.guest.ComputersCategoryPageUI;
+import pageUIs.guest.NotebooksSubPageUI;
 
+public class View_02_Sort_Display_Paging extends BaseTest{
+	private WebDriver driver;
+	private HomePageObject homePage;
+	private ComputersCategoryPageObject computersPage;
+	private NotebooksSubPageObject notebooksSubPage;
+
+	@Parameters("browser")
+	@BeforeClass
+	public void beforeClass (String browserName) {
+		driver = getBrowserDriver(browserName);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		homePage.openHomeHeaderMenuPage("Computers");
+		computersPage = PageGeneratorManager.getComputersPageObject(driver);
+		Assert.assertEquals(computersPage.getPageTitle(), "Computers");
+		
+		computersPage.openCategoriesSideBarPage("Computers", "Notebooks");
+		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
+		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 	}
 
 	@Test
 	public void Sort_01_Name_A_To_Z() {
-
+		
 	}
 
 	@Test
