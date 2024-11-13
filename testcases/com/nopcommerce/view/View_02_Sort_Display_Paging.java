@@ -12,8 +12,6 @@ import commons.PageGeneratorManager;
 import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.HomePageObject;
-import pageUIs.guest.ComputersCategoryPageUI;
-import pageUIs.guest.NotebooksSubPageUI;
 
 public class View_02_Sort_Display_Paging extends BaseTest{
 	private WebDriver driver;
@@ -38,12 +36,12 @@ public class View_02_Sort_Display_Paging extends BaseTest{
 
 	@Test
 	public void Sort_01_Name_A_To_Z() {
-		
+		Assert.assertTrue(notebooksSubPage.verifySortNameAscending());
 	}
 
 	@Test
 	public void Sort_02_Name_Z_To_A() {
-
+		Assert.assertTrue(notebooksSubPage.verifySortNameDescending());
 	}
 
 	@Test
