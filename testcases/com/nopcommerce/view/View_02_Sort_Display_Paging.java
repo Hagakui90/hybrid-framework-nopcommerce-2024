@@ -34,24 +34,24 @@ public class View_02_Sort_Display_Paging extends BaseTest{
 		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 	}
 
-	@Test
+	
 	public void Sort_01_Name_A_To_Z() {
 		Assert.assertTrue(notebooksSubPage.verifySortNameAscending());
 	}
 
-	@Test
+	
 	public void Sort_02_Name_Z_To_A() {
 		Assert.assertTrue(notebooksSubPage.verifySortNameDescending());
 	}
 
 	@Test
 	public void Sort_03_Price_Low_To_High() {
-
+		Assert.assertTrue(notebooksSubPage.verifySortPriceAscending());
 	}
 
 	@Test
 	public void Sort_04_Price_High_To_Low() {
-
+		Assert.assertTrue(notebooksSubPage.verifySortPriceDescending());
 	}
 
 	@Test

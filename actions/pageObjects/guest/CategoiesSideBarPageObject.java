@@ -75,4 +75,43 @@ public class CategoiesSideBarPageObject extends BasePage{
 			
 		}
 	}
+	
+	public boolean verifySortPriceAscending() {
+		waitForElementClickable(driver, CategoriesSideBarPageUI.SORT_DROPDOWN);
+		selectItemInDefaultDropdown(driver, CategoriesSideBarPageUI.SORT_DROPDOWN, "Price Asc");
+		sleepInSecond(5);
+		List<WebElement> listProduct = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_PRICE_LIST_TEXT)));
+		List<Float> actualProductPrice = new ArrayList<Float>();
+		for (WebElement product : listProduct) {
+			String formatedProductPrice = product.getText().replace("$", "");
+			formatedProductPrice = formatedProductPrice.replace(",", "");
+			actualProductPrice.add(Float.parseFloat(formatedProductPrice));
+		}
+		List<Float> expectedProductPrice = new ArrayList<Float>();
+		for (Float productPrice : actualProductPrice) {
+			expectedProductPrice.add(productPrice);
+		}
+		Collections.sort(expectedProductPrice);
+		return actualProductPrice.equals(expectedProductPrice);
+	}
+	
+	public boolean verifySortPriceDescending() {
+		waitForElementClickable(driver, CategoriesSideBarPageUI.SORT_DROPDOWN);
+		selectItemInDefaultDropdown(driver, CategoriesSideBarPageUI.SORT_DROPDOWN, "Price Desc");
+		sleepInSecond(5);
+		List<WebElement> listProduct = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_PRICE_LIST_TEXT)));
+		List<Float> actualProductPrice = new ArrayList<Float>();
+		for (WebElement product : listProduct) {
+			String formatedProductPrice = product.getText().replace("$", "");
+			formatedProductPrice = formatedProductPrice.replace(",", "");
+			actualProductPrice.add(Float.parseFloat(formatedProductPrice));
+		}
+		List<Float> expectedProductPrice = new ArrayList<Float>();
+		for (Float productPrice : actualProductPrice) {
+			expectedProductPrice.add(productPrice);
+		}
+		Collections.sort(expectedProductPrice);
+		Collections.reverse(expectedProductPrice);
+		return actualProductPrice.equals(expectedProductPrice);
+	}
 }

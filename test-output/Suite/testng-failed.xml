@@ -4,14 +4,13 @@
   <test thread-count="5" name="Run on Firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.view.View_01_Search">
+      <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
         <methods>
-          <include name="Search_Advanced_Search_08_Correct_Manufacurer"/>
-          <include name="Search_Advanced_Search_07_Incorrect_Manufacurer"/>
+          <include name="Sort_03_Price_Low_To_High"/>
           <include name="beforeClass"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- com.nopcommerce.view.View_01_Search -->
+      </class> <!-- com.nopcommerce.view.View_02_Sort_Display_Paging -->
     </classes>
   </test> <!-- Run on Firefox(failed) -->
 </suite> <!-- Failed suite [Suite] -->
