@@ -3,7 +3,7 @@ package pageObjects.guest;
 
 import org.openqa.selenium.WebDriver;
 
-public class ComputersCategoryPageObject extends CategoiesSideBarPageObject {
+public class ComputersCategoryPageObject extends CategoriesSideBarPageObject {
 	WebDriver driver;
 
 	public ComputersCategoryPageObject(WebDriver driver) {

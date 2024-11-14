@@ -13,16 +13,22 @@ import commons.BasePage;
 import commons.GlobalConstants;
 import pageUIs.guest.CategoriesSideBarPageUI;
 
-public class CategoiesSideBarPageObject extends BasePage{
+public class CategoriesSideBarPageObject extends BasePage{
 	WebDriver driver;
-	public CategoiesSideBarPageObject(WebDriver driver) {
+	public CategoriesSideBarPageObject(WebDriver driver) {
 		super();
 		this.driver = driver;
 	}
 
 	public void openCategoriesSideBarPage(String categoryName, String subCategoryName) {
-		waitForElementClickable(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
-		clickToElement(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
+		if (!subCategoryName.equals("")) {
+			waitForElementClickable(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
+			clickToElement(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
+		}
+		else {
+			waitForElementClickable(driver, CategoriesSideBarPageUI.DYNAMIC_CATEGORY_SIDEBAR_LINK_TEXT, categoryName);
+			clickToElement(driver, CategoriesSideBarPageUI.DYNAMIC_CATEGORY_SIDEBAR_LINK_TEXT, categoryName);
+		}
 	}
 	
 	public String getPageTitle() {
@@ -113,5 +119,40 @@ public class CategoiesSideBarPageObject extends BasePage{
 		Collections.sort(expectedProductPrice);
 		Collections.reverse(expectedProductPrice);
 		return actualProductPrice.equals(expectedProductPrice);
+	}
+
+	public boolean verifyPaging(String pageSize) {
+		waitForElementClickable(driver, CategoriesSideBarPageUI.PAGE_SIZE_DROPDOWN);
+		selectItemInDefaultDropdown(driver, CategoriesSideBarPageUI.PAGE_SIZE_DROPDOWN, pageSize);
+		sleepInSecond(3);
+		
+		List<WebElement> listProduct = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_LIST)));
+		if (listProduct.size() <= Integer.parseInt(pageSize)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void clickToPageByNumber(String numberPage) {
+		waitForElementClickable(driver, CategoriesSideBarPageUI.PAGE_LINK_BY_NUMBER, numberPage);
+		clickToElement(driver, CategoriesSideBarPageUI.PAGE_LINK_BY_NUMBER, numberPage);
+	}
+	
+	public boolean isPageActiveByNumber(String numberPage) {
+		if (numberPage.equalsIgnoreCase("Current page")) {
+			waitForElementVisible(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+			numberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+		}
+		waitForElementVisible(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT_BY_NUMBER, numberPage);
+		return isElementDisplayed(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT_BY_NUMBER, numberPage);
+	}
+	
+	public boolean isNextPageButtonActived(String currentNumberPage) {
+		if (currentNumberPage.equalsIgnoreCase("Current page")) {
+			waitForElementVisible(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+			currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+		}
+		waitForElementVisible(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+		return isElementDisplayed(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
 	}
 }
