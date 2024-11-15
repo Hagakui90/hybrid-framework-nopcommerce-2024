@@ -64,11 +64,20 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		Assert.assertTrue(booksSubPage.verifyPaging("3"));
 		Assert.assertTrue(booksSubPage.isPageActiveByNumber("Current page"));
 		Assert.assertTrue(booksSubPage.isNextPageButtonActived("Current page"));
+		booksSubPage.sleepInSecond(5);
+		
+		booksSubPage.clickToPageByNumber("2");
+		Assert.assertTrue(booksSubPage.isPageActiveByNumber("2"));
+		Assert.assertTrue(booksSubPage.isPreviousPageButtonActived("2"));
+		booksSubPage.sleepInSecond(5);
 	}
 
 	@Test
 	public void Display_06_6_Products_Per_Page() {
-
+		booksSubPage.openCategoriesSideBarPage("Computers", "Notebooks");
+		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
+		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
+		Assert.assertTrue(notebooksSubPage.verifyPaging("6"));
 	}
 
 	@Test

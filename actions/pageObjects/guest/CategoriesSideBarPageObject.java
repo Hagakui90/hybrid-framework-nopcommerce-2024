@@ -155,4 +155,13 @@ public class CategoriesSideBarPageObject extends BasePage{
 		waitForElementVisible(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
 		return isElementDisplayed(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
 	}
+	
+	public boolean isPreviousPageButtonActived(String currentNumberPage) {
+		if (currentNumberPage.equalsIgnoreCase("Current page")) {
+			waitForElementVisible(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+			currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+		}
+		waitForElementVisible(driver, CategoriesSideBarPageUI.PREVIOUS_PAGE_BUTTON_BY_NAME, currentNumberPage);
+		return isElementDisplayed(driver, CategoriesSideBarPageUI.PREVIOUS_PAGE_BUTTON_BY_NAME, currentNumberPage);
+	}
 }
