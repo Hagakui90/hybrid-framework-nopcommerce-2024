@@ -83,7 +83,8 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 
 	@Test
 	public void Display_07_9_Products_Per_Page() {
-
+		Assert.assertTrue(notebooksSubPage.verifyPaging("9"));
+		Assert.assertTrue(notebooksSubPage.isPagingActivated());
 	}
 
 	@AfterClass
