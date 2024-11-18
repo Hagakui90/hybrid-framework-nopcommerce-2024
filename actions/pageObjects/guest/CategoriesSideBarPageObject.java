@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commons.BasePage;
 import commons.GlobalConstants;
+import commons.PageGeneratorManager;
 import pageUIs.guest.CategoriesSideBarPageUI;
 
 public class CategoriesSideBarPageObject extends BasePage{
@@ -22,6 +23,8 @@ public class CategoriesSideBarPageObject extends BasePage{
 
 	public void openCategoriesSideBarPage(String categoryName, String subCategoryName) {
 		if (!subCategoryName.equals("")) {
+			waitForElementClickable(driver, CategoriesSideBarPageUI.DYNAMIC_CATEGORY_SIDEBAR_LINK_TEXT, categoryName);
+			clickToElement(driver, CategoriesSideBarPageUI.DYNAMIC_CATEGORY_SIDEBAR_LINK_TEXT, categoryName);
 			waitForElementClickable(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
 			clickToElement(driver, CategoriesSideBarPageUI.DYNAMIC_SUBMENU_SIDEBAR_LINK_TEXT, categoryName, subCategoryName);
 		}
@@ -163,5 +166,9 @@ public class CategoriesSideBarPageObject extends BasePage{
 		}
 		waitForElementVisible(driver, CategoriesSideBarPageUI.PREVIOUS_PAGE_BUTTON_BY_NAME, currentNumberPage);
 		return isElementDisplayed(driver, CategoriesSideBarPageUI.PREVIOUS_PAGE_BUTTON_BY_NAME, currentNumberPage);
+	}
+
+	public boolean isPagingActivated() {
+		return isElementUndisplayed(driver, CategoriesSideBarPageUI.PAGER_LINK);
 	}
 }

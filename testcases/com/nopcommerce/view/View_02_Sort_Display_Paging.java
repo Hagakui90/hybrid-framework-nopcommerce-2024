@@ -59,17 +59,17 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		notebooksSubPage.openCategoriesSideBarPage("Books", "");
 		booksSubPage = PageGeneratorManager.getBooksSubPageObject(driver);
 		Assert.assertEquals(booksSubPage.getPageTitle(), "Books");
-		booksSubPage.sleepInSecond(5);
+		booksSubPage.sleepInSecond(2);
 		
 		Assert.assertTrue(booksSubPage.verifyPaging("3"));
 		Assert.assertTrue(booksSubPage.isPageActiveByNumber("Current page"));
 		Assert.assertTrue(booksSubPage.isNextPageButtonActived("Current page"));
-		booksSubPage.sleepInSecond(5);
+		booksSubPage.sleepInSecond(2);
 		
 		booksSubPage.clickToPageByNumber("2");
 		Assert.assertTrue(booksSubPage.isPageActiveByNumber("2"));
 		Assert.assertTrue(booksSubPage.isPreviousPageButtonActived("2"));
-		booksSubPage.sleepInSecond(5);
+		booksSubPage.sleepInSecond(2);
 	}
 
 	@Test
@@ -78,6 +78,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
 		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 		Assert.assertTrue(notebooksSubPage.verifyPaging("6"));
+		Assert.assertTrue(notebooksSubPage.isPagingActivated());
 	}
 
 	@Test

@@ -291,7 +291,6 @@ public class BasePage {
 		List<WebElement> listElement = getListWebElement(driver, locator);
 		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 		if (listElement.size() == 0) {
-		
 			return true;
 		} else if(listElement.size() > 0 && !listElement.get(0).isDisplayed()) {
 			return true;

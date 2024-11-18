@@ -14,4 +14,5 @@ public class CategoriesSideBarPageUI {
 	public static final String NEXT_PAGE_BUTTON_BY_NAME = "xpath=//span[text()='%s']/parent::li//following-sibling::li[@class='next-page']";
 	public static final String PREVIOUS_PAGE_BUTTON_BY_NAME = "xpath=//span[text()='%s']//parent::li//preceding-sibling::li[@class='previous-page']";
 	public static final String PAGE_LINK_CURRENT = "xpath=//li[@class='current-page']/span";
+	public static final String PAGER_LINK = "css=div.pager";
 }
