@@ -71,7 +71,9 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		adminDashboardPage = adminLoginPage.enterToLoginForm(GlobalConstants.DEV_ADMIN_USERNAME, GlobalConstants.DEV_ADMIN_PASSWORD);
 		adminDashboardPage.openAdminDashBoardSideBarPage("admin.catalog", "admin.catalog.products");
 		adminCatalogProductPage = PageGeneratorManager.getAdminCatalogProductPage(driver);
+		adminCatalogProductPage.isPageLoadedSuccess(driver);
 		adminCatalogProductPage.searchByCategory("Books");
+		adminCatalogProductPage.isPageLoadedSuccess(driver);
 	} 
 	
 	@Test

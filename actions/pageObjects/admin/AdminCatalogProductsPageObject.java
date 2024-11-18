@@ -18,4 +18,6 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 	}
+	
+	
 }
