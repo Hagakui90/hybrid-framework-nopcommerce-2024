@@ -6,7 +6,7 @@
     <classes>
       <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
         <methods>
-          <include name="Sort_03_Price_Low_To_High"/>
+          <include name="Display_05_3_Products_Per_Page"/>
           <include name="beforeClass"/>
           <include name="afterClass"/>
         </methods>

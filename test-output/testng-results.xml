@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-14T15:04:20Z" name="Suite" finished-at="2024-11-14T15:04:34Z" duration-ms="14584">
+  <suite started-at="2024-11-15T02:41:09Z" name="Suite" finished-at="2024-11-15T02:41:32Z" duration-ms="23036">
     <groups>
     </groups>
-    <test started-at="2024-11-14T15:04:20Z" name="Run on Firefox" finished-at="2024-11-14T15:04:34Z" duration-ms="14584">
+    <test started-at="2024-11-15T02:41:09Z" name="Run on Firefox" finished-at="2024-11-15T02:41:32Z" duration-ms="23036">
       <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-14T15:04:20Z" name="beforeClass" finished-at="2024-11-14T15:04:25Z" duration-ms="5571" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-15T02:41:09Z" name="beforeClass" finished-at="2024-11-15T02:41:12Z" duration-ms="3609" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,19 +18,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Display_05_3_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-14T15:04:25Z" name="Display_05_3_Products_Per_Page" finished-at="2024-11-14T15:04:34Z" duration-ms="9001" status="PASS">
+        <test-method signature="Display_05_3_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-15T02:41:12Z" name="Display_05_3_Products_Per_Page" finished-at="2024-11-15T02:41:32Z" duration-ms="19416" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Display_05_3_Products_Per_Page -->
-        <test-method signature="Display_06_6_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-14T15:04:34Z" name="Display_06_6_Products_Per_Page" finished-at="2024-11-14T15:04:34Z" duration-ms="1" status="PASS">
+        <test-method signature="Display_06_6_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-15T02:41:32Z" name="Display_06_6_Products_Per_Page" finished-at="2024-11-15T02:41:32Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Display_06_6_Products_Per_Page -->
-        <test-method signature="Display_07_9_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-14T15:04:34Z" name="Display_07_9_Products_Per_Page" finished-at="2024-11-14T15:04:34Z" duration-ms="0" status="PASS">
+        <test-method signature="Display_07_9_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-15T02:41:32Z" name="Display_07_9_Products_Per_Page" finished-at="2024-11-15T02:41:32Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Display_07_9_Products_Per_Page -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-14T15:04:34Z" name="afterClass" finished-at="2024-11-14T15:04:34Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-15T02:41:32Z" name="afterClass" finished-at="2024-11-15T02:41:32Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
