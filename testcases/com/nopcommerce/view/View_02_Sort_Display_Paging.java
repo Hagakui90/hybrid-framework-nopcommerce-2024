@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
+import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksSubPageObject;
@@ -27,6 +28,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	private AdminLoginPageObject adminLoginPage;
 	private String userUrl = GlobalConstants.DEV_USER_URL;
 	private String adminUrl = GlobalConstants.DEV_ADMIN_URL;
+	private AdminCatalogProductsPageObject adminCatalogProductPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -67,6 +69,9 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		Assert.assertTrue(homePage.isPageLoadedSuccess(driver));
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashboardPage = adminLoginPage.enterToLoginForm(GlobalConstants.DEV_ADMIN_USERNAME, GlobalConstants.DEV_ADMIN_PASSWORD);
+		adminDashboardPage.openAdminDashBoardSideBarPage("admin.catalog", "admin.catalog.products");
+		adminCatalogProductPage = PageGeneratorManager.getAdminCatalogProductPage(driver);
+		adminCatalogProductPage.searchByCategory("Books");
 	} 
 	
 	@Test

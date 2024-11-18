@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksSubPageObject;
@@ -83,6 +84,10 @@ public class PageGeneratorManager {
 
 	public static BooksSubPageObject getBooksSubPageObject(WebDriver driver) {
 		return new BooksSubPageObject(driver);
+	}
+
+	public static AdminCatalogProductsPageObject getAdminCatalogProductPage(WebDriver driver) {
+		return new AdminCatalogProductsPageObject(driver);
 	}
 	
 }
