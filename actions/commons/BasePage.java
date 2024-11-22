@@ -164,6 +164,9 @@ public class BasePage {
 	public List<WebElement> getListWebElement(WebDriver driver, String locator) {
 		return driver.findElements(getByLocator(locator));
 	}
+	public List<WebElement> getListWebElement(WebDriver driver, String locator, String... restParams) {
+		return driver.findElements(getByLocator(getDynamicLocator(locator, restParams)));
+	}
 
 	public void clickToElement(WebDriver driver, String locator) {
 		getWebElement(driver, locator).click();

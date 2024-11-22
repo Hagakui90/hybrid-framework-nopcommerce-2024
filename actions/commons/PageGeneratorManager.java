@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminEditProductDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksSubPageObject;
 import pageObjects.guest.ComputersCategoryPageObject;
@@ -88,6 +89,10 @@ public class PageGeneratorManager {
 
 	public static AdminCatalogProductsPageObject getAdminCatalogProductPage(WebDriver driver) {
 		return new AdminCatalogProductsPageObject(driver);
+	}
+
+	public static AdminEditProductDetailsPageObject getAdminEditProductDetailsPage(WebDriver driver) {
+		return new AdminEditProductDetailsPageObject(driver);		
 	}
 	
 }
