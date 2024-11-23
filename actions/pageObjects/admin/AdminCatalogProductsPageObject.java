@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import commons.PageGeneratorManager;
 import pageUIs.admin.AdminCatalogProductsPageUI;
+import pageUIs.admin.AdminEditProductDetailsPageUI;
 
 public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObject{
 	WebDriver driver;
@@ -28,18 +29,21 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 	}
 	
-	public void clickEditIconByColumnName(String columnName) {
-		List<WebElement> listResultProduct = getListWebElement(driver, AdminCatalogProductsPageUI.ALL_VALUES_COLUMN_INDEX, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.common.edit");
-		
-		for (int i = 0; i < listResultProduct.size(); i++) {
-			listResultProduct.get(i).click();
+	public List<Date> getListCreatedOnPerCatalogProductPage() {
+		List<WebElement> listResultProductPerPage = getListWebElement(driver, AdminCatalogProductsPageUI.ALL_VALUES_COLUMN_INDEX, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.common.edit");
+		List<Date> listCreatedOnPerCatalogProductPage = new ArrayList<Date>();
+		for (int i = 0; i < listResultProductPerPage.size(); i++) {
+			listResultProductPerPage.get(i).click();
 			isPageLoadedSuccess(driver);
-			adminEditProductDetailsPage = PageGeneratorManager.getAdminEditProductDetailsPage(driver);
-			adminEditProductDetailsPage.expandDetailItemByCardName("quantityhistory");
-			List<Date> detailsCreatedOn = new ArrayList<Date>();
-			detailsCreatedOn = adminEditProductDetailsPage.getDetailsItemByCardNameAndValueName("quantityhistory", "createdon");
-			Collections.sort(detailsCreatedOn);
+			adminEditProductDetailsPage.getLatestCreatedOnPerProduct();
 		}
+		return listCreatedOnPerCatalogProductPage;
+	}
+	
+	public Date getLatestCreatedOnByCatalogProduct() {
+		List<Date> lastestCreatedOnPerCatalogProduct = getListCreatedOnPerCatalogProductPage();
+		Collections.sort(lastestCreatedOnPerCatalogProduct);
+		return lastestCreatedOnPerCatalogProduct.get(lastestCreatedOnPerCatalogProduct.size() - 1);
 	}
 	
 	
