@@ -250,6 +250,10 @@ public class BasePage {
 	public int getListElementSize(WebDriver driver, String locator) {
 		return getListWebElement(driver, locator).size();
 	}
+	
+	public int getListElementSize(WebDriver driver, String locator, String... restParams) {
+		return getListWebElement(driver, getDynamicLocator(locator, restParams)).size();
+	}
 
 	/**
 	 * Apply for checkbox and radio button
@@ -373,6 +377,10 @@ public class BasePage {
 
 	public void clickToElementByJS(WebDriver driver, String locator) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, locator));
+	}
+	
+	public void clickToElementByJS(WebDriver driver, String locator, String... restParams) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, getDynamicLocator(locator, restParams)));
 	}
 
 	public void scrollToElementOnTop(WebDriver driver, String locator) {

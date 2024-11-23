@@ -13,7 +13,7 @@ import commons.PageGeneratorManager;
 import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.guest.BooksSubPageObject;
+import pageObjects.guest.BooksCategoryPageObject;
 import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.HomePageObject;
@@ -23,7 +23,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	private HomePageObject homePage;
 	private ComputersCategoryPageObject computersPage;
 	private NotebooksSubPageObject notebooksSubPage;
-	private BooksSubPageObject booksSubPage;
+	private BooksCategoryPageObject booksCategoryPage;
 	private AdminDashboardPageObject adminDashboardPage;
 	private AdminLoginPageObject adminLoginPage;
 	private String userUrl = GlobalConstants.DEV_USER_URL;
@@ -44,21 +44,21 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
 		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 	}
-	@Test
+	
 	public void Sort_01_Name_A_To_Z() {
 		Assert.assertTrue(notebooksSubPage.verifySortNameAscending());
 	}
-	@Test
+	
 	public void Sort_02_Name_Z_To_A() {
 		Assert.assertTrue(notebooksSubPage.verifySortNameDescending());
 	}
 
-	@Test
+	
 	public void Sort_03_Price_Low_To_High() {
 		Assert.assertTrue(notebooksSubPage.verifySortPriceAscending());
 	}
 
-	@Test
+	
 	public void Sort_04_Price_High_To_Low() {
 		Assert.assertTrue(notebooksSubPage.verifySortPriceDescending());
 	}
@@ -74,36 +74,37 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
 		adminCatalogProductPage.searchByCategory("Books");
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
+		adminCatalogProductPage.viewlistCreatedOnPerCatalogProductEachPage();
 	} 
 	
-	@Test
+	
 	public void Display_05_3_Products_Per_Page() {
 		notebooksSubPage.openCategoriesSideBarPage("Books", "");
-		booksSubPage = PageGeneratorManager.getBooksSubPageObject(driver);
-		Assert.assertEquals(booksSubPage.getPageTitle(), "Books");
-		booksSubPage.sleepInSecond(2);
+		booksCategoryPage = PageGeneratorManager.getBooksSubPageObject(driver);
+		Assert.assertEquals(booksCategoryPage.getPageTitle(), "Books");
+		booksCategoryPage.sleepInSecond(2);
 		
-		Assert.assertTrue(booksSubPage.verifyPaging("3"));
-		Assert.assertTrue(booksSubPage.isPageActiveByNumber("Current page"));
-		Assert.assertTrue(booksSubPage.isNextPageButtonActived("Current page"));
-		booksSubPage.sleepInSecond(2);
+		Assert.assertTrue(booksCategoryPage.verifyPaging("3"));
+		Assert.assertTrue(booksCategoryPage.isPageActiveByNumber("Current page"));
+		Assert.assertTrue(booksCategoryPage.isNextPageButtonActived("Current page"));
+		booksCategoryPage.sleepInSecond(2);
 		
-		booksSubPage.clickToPageByNumber("2");
-		Assert.assertTrue(booksSubPage.isPageActiveByNumber("2"));
-		Assert.assertTrue(booksSubPage.isPreviousPageButtonActived("2"));
-		booksSubPage.sleepInSecond(2);
+		booksCategoryPage.clickToPageByNumber("2");
+		Assert.assertTrue(booksCategoryPage.isPageActiveByNumber("2"));
+		Assert.assertTrue(booksCategoryPage.isPreviousPageButtonActived("2"));
+		booksCategoryPage.sleepInSecond(2);
 	}
 
-	@Test
+	
 	public void Display_06_6_Products_Per_Page() {
-		booksSubPage.openCategoriesSideBarPage("Computers", "Notebooks");
+		booksCategoryPage.openCategoriesSideBarPage("Computers", "Notebooks");
 		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
 		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 		Assert.assertTrue(notebooksSubPage.verifyPaging("6"));
 		Assert.assertTrue(notebooksSubPage.isPagingActivated());
 	}
 
-	@Test
+	
 	public void Display_07_9_Products_Per_Page() {
 		Assert.assertTrue(notebooksSubPage.verifyPaging("9"));
 		Assert.assertTrue(notebooksSubPage.isPagingActivated());

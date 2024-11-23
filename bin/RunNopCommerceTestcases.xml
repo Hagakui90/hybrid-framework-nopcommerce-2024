@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Suite">
-	<test name="Run on Firefox">
+	<test name="Run on Chrome">
+	<parameter name ="browser" value="chrome"/>
+    <classes>
+      <class name="com.nopcommerce.view.View_02_Sort_Display_Paging"/>
+    </classes>
+  </test> 
+		<!-- <test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class name="com.nopcommerce.view.View_02_Sort_Display_Paging" />
 		</classes>
 	</test>
-	<!-- 
-   <test name="Run on Chrome">
-	<parameter name ="browser" value="chrome"/>
-    <classes>
-      <class name="com.nopcommerce.account.Account_01_Register"/>
-    </classes>
-  </test> 
+
+   
   
    <test name="Run on Edge">
 	<parameter name ="browser" value="edge"/>

@@ -6,7 +6,7 @@ import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminEditProductDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.guest.BooksSubPageObject;
+import pageObjects.guest.BooksCategoryPageObject;
 import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.ChangePasswordPageObject;
@@ -83,8 +83,8 @@ public class PageGeneratorManager {
 		return new NotebooksSubPageObject(driver);
 	}
 
-	public static BooksSubPageObject getBooksSubPageObject(WebDriver driver) {
-		return new BooksSubPageObject(driver);
+	public static BooksCategoryPageObject getBooksSubPageObject(WebDriver driver) {
+		return new BooksCategoryPageObject(driver);
 	}
 
 	public static AdminCatalogProductsPageObject getAdminCatalogProductPage(WebDriver driver) {
