@@ -73,7 +73,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
 		adminCatalogProductPage.searchByCategory("Books");
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
-		adminCatalogProductPage.listCreatedOnPerCatalogProductAllPage();
+		adminCatalogProductPage.sortAsCreatedOnByCatalogProduct();
 	} 
 	
 	

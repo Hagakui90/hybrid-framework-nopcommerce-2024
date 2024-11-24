@@ -1,6 +1,7 @@
 package pageObjects.admin;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -92,11 +93,10 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 
 	public List<Product> sortAsCreatedOnByCatalogProduct() {
 		List<Product> listCreatedOnPerCatalogProductAllPage = listCreatedOnPerCatalogProductAllPage();
-		// Collections.sort((List<Product>) listCreatedOnPerCatalogProductAllPage);
-		for (int i = 0; i < listCreatedOnPerCatalogProductAllPage.size(); i++) {
-			
-		} {
-			
+		 Collections.sort((List<Product>) listCreatedOnPerCatalogProductAllPage);
+		 System.out.println("---------------After sorted, List product-----------------");
+		 for (Product product : listCreatedOnPerCatalogProductAllPage) {
+			System.out.println(product.getTitleOfBook() + "===========" + product.getCreatedOn());
 		}
 		return listCreatedOnPerCatalogProductAllPage;
 	}
