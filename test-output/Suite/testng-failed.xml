@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
-  <test thread-count="5" name="Run on Firefox(failed)">
-    <parameter name="browser" value="firefox"/>
+  <test thread-count="5" name="Run on Chrome(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
         <methods>
+          <include name="Sort_05_Created_On"/>
           <include name="beforeClass"/>
-          <include name="Display_06_6_Products_Per_Page"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- com.nopcommerce.view.View_02_Sort_Display_Paging -->
     </classes>
-  </test> <!-- Run on Firefox(failed) -->
+  </test> <!-- Run on Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

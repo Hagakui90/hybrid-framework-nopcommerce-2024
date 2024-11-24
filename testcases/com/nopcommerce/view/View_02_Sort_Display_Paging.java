@@ -26,7 +26,6 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	private BooksCategoryPageObject booksCategoryPage;
 	private AdminDashboardPageObject adminDashboardPage;
 	private AdminLoginPageObject adminLoginPage;
-	private String userUrl = GlobalConstants.DEV_USER_URL;
 	private String adminUrl = GlobalConstants.DEV_ADMIN_URL;
 	private AdminCatalogProductsPageObject adminCatalogProductPage;
 
@@ -74,7 +73,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
 		adminCatalogProductPage.searchByCategory("Books");
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
-		adminCatalogProductPage.viewlistCreatedOnPerCatalogProductEachPage();
+		adminCatalogProductPage.listCreatedOnPerCatalogProductAllPage();
 	} 
 	
 	

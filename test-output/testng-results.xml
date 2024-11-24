@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-18T06:12:38Z" name="Suite" finished-at="2024-11-18T06:13:14Z" duration-ms="35509">
+  <suite started-at="2024-11-24T14:41:16Z" name="Suite" finished-at="2024-11-24T14:43:59Z" duration-ms="163199">
     <groups>
     </groups>
-    <test started-at="2024-11-18T06:12:38Z" name="Run on Firefox" finished-at="2024-11-18T06:13:14Z" duration-ms="35509">
+    <test started-at="2024-11-24T14:41:16Z" name="Run on Chrome" finished-at="2024-11-24T14:43:59Z" duration-ms="163199">
       <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-18T06:12:38Z" name="beforeClass" finished-at="2024-11-18T06:12:46Z" duration-ms="7849" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@1fe20588]" started-at="2024-11-24T14:41:16Z" name="beforeClass" finished-at="2024-11-24T14:41:18Z" duration-ms="2537" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[firefox]]>
+                <![CDATA[chrome]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Display_05_3_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-18T06:12:46Z" name="Display_05_3_Products_Per_Page" finished-at="2024-11-18T06:12:57Z" duration-ms="10457" status="PASS">
+        <test-method signature="Sort_05_Created_On()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@1fe20588]" started-at="2024-11-24T14:41:18Z" name="Sort_05_Created_On" finished-at="2024-11-24T14:43:59Z" duration-ms="160654" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Display_05_3_Products_Per_Page -->
-        <test-method signature="Display_06_6_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-18T06:12:57Z" name="Display_06_6_Products_Per_Page" finished-at="2024-11-18T06:13:05Z" duration-ms="8711" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Display_06_6_Products_Per_Page -->
-        <test-method signature="Display_07_9_Products_Per_Page()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-18T06:13:05Z" name="Display_07_9_Products_Per_Page" finished-at="2024-11-18T06:13:14Z" duration-ms="8481" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Display_07_9_Products_Per_Page -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@77167fb7]" started-at="2024-11-18T06:13:14Z" name="afterClass" finished-at="2024-11-18T06:13:14Z" duration-ms="0" status="PASS">
+        </test-method> <!-- Sort_05_Created_On -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_02_Sort_Display_Paging@1fe20588]" started-at="2024-11-24T14:43:59Z" name="afterClass" finished-at="2024-11-24T14:43:59Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
       </class> <!-- com.nopcommerce.view.View_02_Sort_Display_Paging -->
-    </test> <!-- Run on Firefox -->
+    </test> <!-- Run on Chrome -->
   </suite> <!-- Suite -->
 </testng-results>
