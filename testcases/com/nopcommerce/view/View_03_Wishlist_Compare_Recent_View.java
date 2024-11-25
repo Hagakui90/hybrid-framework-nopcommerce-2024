@@ -1,18 +1,51 @@
 package com.nopcommerce.view;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class View_03_Wishlist_Compare_Recent_View {
-	@BeforeClass
-	public void beforeClass() {
+import commons.BaseTest;
+import commons.PageGeneratorManager;
+import pageObjects.user.CustomerPageObject;
+import pageObjects.user.DetailProductPageObject;
+import pageObjects.user.HomePageObject;
+import pageObjects.user.UserLoginPageObject;
 
+public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
+	private WebDriver driver;
+	private String emailAddress = "afc3574@mail.vn";
+	private HomePageObject homePage;
+	private UserLoginPageObject userLoginPage;
+	private CustomerPageObject customerPage;
+	private DetailProductPageObject detailProductPage;
+	
+	@Parameters("browser")
+	@BeforeClass
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		userLoginPage = homePage.clickToLoginLink();
+
+		userLoginPage.enterToEmailAddress(emailAddress);
+		userLoginPage.enterToPassword("Goodmorning11");
+
+		homePage = userLoginPage.clickToLoginButton();
+
+		customerPage = homePage.clickToMyAccountLink();
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
 	@Test
 	public void Wishlist_01_Add_Wishlist() {
-
+		customerPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		detailProductPage = homePage.clickToProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
+		String titleSelectedProduct = detailProductPage.getTitleDetailProduct();
+		Assert.assertTrue(detailProductPage.getPageTitle(driver).contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
+		Assert.assertTrue(titleSelectedProduct.contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
 	}
 
 	@Test
