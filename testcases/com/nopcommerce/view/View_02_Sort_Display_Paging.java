@@ -1,5 +1,7 @@
 package com.nopcommerce.view;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -27,6 +29,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	private AdminDashboardPageObject adminDashboardPage;
 	private AdminLoginPageObject adminLoginPage;
 	private String adminUrl = GlobalConstants.DEV_ADMIN_URL;
+	private String userUrl = GlobalConstants.DEV_USER_URL;
 	private AdminCatalogProductsPageObject adminCatalogProductPage;
 
 	@Parameters("browser")
@@ -64,7 +67,15 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 
 	@Test
 	public void Sort_05_Created_On() {
-		notebooksSubPage.openPageUrl(driver, adminUrl);
+		System.out.println("----Check at Guest site----");
+		notebooksSubPage.openCategoriesSideBarPage("Books", "");
+		booksCategoryPage = PageGeneratorManager.getBooksSubPageObject(driver);
+		Assert.assertEquals(booksCategoryPage.getPageTitle(), "Books");
+		booksCategoryPage.sleepInSecond(2);
+		List<String> listNamProductByCreatedOnAtGuestSite = booksCategoryPage.getListNameProductByCreatedOnAtGuestSite();
+		
+		System.out.println("----Check at Admin site----");
+		booksCategoryPage.openPageUrl(driver, adminUrl);
 		Assert.assertTrue(homePage.isPageLoadedSuccess(driver));
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashboardPage = adminLoginPage.enterToLoginForm(GlobalConstants.DEV_ADMIN_USERNAME, GlobalConstants.DEV_ADMIN_PASSWORD);
@@ -73,12 +84,16 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
 		adminCatalogProductPage.searchByCategory("Books");
 		adminCatalogProductPage.isPageLoadedSuccess(driver);
-		adminCatalogProductPage.sortAsCreatedOnByCatalogProduct();
+		List<String> listNameProductSortedByCreatedOnAtAdminSite = adminCatalogProductPage.getListNameProductSortedByCreatedOnAllPage();
+		
+		Assert.assertTrue(listNamProductByCreatedOnAtGuestSite.equals(listNameProductSortedByCreatedOnAtAdminSite));
 	} 
 	
-	
+	@Test
 	public void Display_05_3_Products_Per_Page() {
-		notebooksSubPage.openCategoriesSideBarPage("Books", "");
+		adminCatalogProductPage.openPageUrl(driver, userUrl);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage.openHomeHeaderMenuPage("Books");
 		booksCategoryPage = PageGeneratorManager.getBooksSubPageObject(driver);
 		Assert.assertEquals(booksCategoryPage.getPageTitle(), "Books");
 		booksCategoryPage.sleepInSecond(2);
@@ -100,13 +115,13 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 		notebooksSubPage = PageGeneratorManager.getNotebooksSubPage(driver);
 		Assert.assertEquals(notebooksSubPage.getPageTitle(), "Notebooks");
 		Assert.assertTrue(notebooksSubPage.verifyPaging("6"));
-		Assert.assertTrue(notebooksSubPage.isPagingActivated());
+		Assert.assertTrue(notebooksSubPage.isPagingDeactivated());
 	}
 
 	
 	public void Display_07_9_Products_Per_Page() {
 		Assert.assertTrue(notebooksSubPage.verifyPaging("9"));
-		Assert.assertTrue(notebooksSubPage.isPagingActivated());
+		Assert.assertTrue(notebooksSubPage.isPagingDeactivated());
 	}
 
 	@AfterClass

@@ -306,6 +306,19 @@ public class BasePage {
 		}
 	}
 	
+	public boolean isElementUndisplayed(WebDriver driver, String locator, String... restParams) {
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		List<WebElement> listElement = getListWebElement(driver, getDynamicLocator(locator, restParams));
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		if (listElement.size() == 0) {
+			return true;
+		} else if(listElement.size() > 0 && !listElement.get(0).isDisplayed()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public void overrideGlobalTimeout(WebDriver driver, long timeout) {
 		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
 	}

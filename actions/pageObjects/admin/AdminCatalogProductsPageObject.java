@@ -28,16 +28,23 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 	}
 
+	public List<String> getListNameProductSortedByCreatedOnAllPage(){
+		List<String> listNameProductPerCatalogProductAllPage = new ArrayList<String>();
+		for (Product product : sortAsCreatedOnByCatalogProduct()) {
+			listNameProductPerCatalogProductAllPage.add(product.getTitleOfBook());
+		}
+		return listNameProductPerCatalogProductAllPage;
+	}
+	
 	public List<Product> listCreatedOnPerCatalogProductAllPage() {
 		List<Product> listCreatedOnPerCatalogProductAllPage = new ArrayList<Product>();
 		String currentNumberPage = getElementText(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
 		System.out.println("currentNumberPage " + currentNumberPage);
-		System.out.println("-----------------------");
-		System.out.println("LatestCreatedOnPerProductOfOnePage: ");
+		System.out.println("-----------------SELECT EACH PRODUCT TO GET CREATED DATE------------------");
 		listCreatedOnPerCatalogProductAllPage = getListCreatedOnPerCatalogProductEachPage();
 		while (isNextPageButtonActived(currentNumberPage)) {
-			waitForElementVisible(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT);
-			clickToElementByJS(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT);
+			waitForElementVisible(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT, currentNumberPage);
+			clickToElementByJS(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT, currentNumberPage);
 			for (Product product : getListCreatedOnPerCatalogProductEachPage()) {
 				listCreatedOnPerCatalogProductAllPage.add(product);
 			}
@@ -47,9 +54,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 	}
 
 	public List<Product> getListCreatedOnPerCatalogProductEachPage() {
-		System.out.println("-----------SELECT EACH PRODUCT TO GET CREATED DATE----------------");
 		int columnIndex = getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.common.edit") + 1;
-		System.out.println("Column index: " + String.valueOf(columnIndex));
 		List<WebElement> listResultProductEachPage = getListWebElement(driver, AdminCatalogProductsPageUI.ALL_VALUES_COLUMN_INDEX, String.valueOf(columnIndex));
 		List<Product> listCreatedOnPerCatalogProductEachPage = new ArrayList<Product>();
 		for (int i = 1; i <= listResultProductEachPage.size(); i++) {
@@ -70,7 +75,6 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		clickToElement(driver, AdminCatalogProductsPageUI.EDIT_BUTTON_BY_NO_NAME, noProduct, String.valueOf(columnIndex));
 		adminEditProductDetailsPage = PageGeneratorManager.getAdminEditProductDetailsPage(driver);
 		isPageLoadedSuccess(driver);
-		System.out.println("Open product: ");
 		return adminEditProductDetailsPage.getInforCreatedOnProduct();
 
 	}

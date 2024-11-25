@@ -53,10 +53,6 @@ public class AdminEditProductDetailsPageObject extends BasePage {
 	public Date getLatestCreatedOnPerProduct() {
 		List<Date> listCreatedOnPerProduct = new ArrayList<Date>();
 		String currentNumberPage = getElementText(driver, AdminEditProductDetailsPageUI.ACTIVE_PAGE_LINK_EACH_CARD, "quantityhistory");
-			System.out.println("currentNumberPage " + currentNumberPage);
-			System.out.println("-----------------------");
-			System.out.println("-----------------------");
-			System.out.println("LatestCreatedOnPerProductOfOnePage: " + getLatestCreatedOnPerProductOfOnePage());
 			listCreatedOnPerProduct.add(getLatestCreatedOnPerProductOfOnePage());
 			while (isNextPageButtonActived(currentNumberPage)) {
 			waitForElementVisible(driver, AdminEditProductDetailsPageUI.NEXT_BUTTON_EACH_CARD_BY_NUMBER_PAGE, "stockquantityhistory", currentNumberPage);
@@ -76,7 +72,6 @@ public class AdminEditProductDetailsPageObject extends BasePage {
 	
 	public boolean isNextPageButtonActived(String currentNumberPage) {
 		waitForElementVisible(driver, AdminEditProductDetailsPageUI.NEXT_BUTTON_EACH_CARD_BY_NUMBER_PAGE, "stockquantityhistory", currentNumberPage);
-		System.out.println("Value of attribute class: " + getElementAttribute(driver, AdminEditProductDetailsPageUI.NEXT_BUTTON_EACH_CARD_BY_NUMBER_PAGE, "class", "stockquantityhistory", currentNumberPage));
 		if (getElementAttribute(driver, AdminEditProductDetailsPageUI.NEXT_BUTTON_EACH_CARD_BY_NUMBER_PAGE, "class", "stockquantityhistory", currentNumberPage).contains("disabled")) {
 			System.out.println("Next button is not actived.");
 			return false;
