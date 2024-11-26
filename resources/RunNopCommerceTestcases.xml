@@ -3,7 +3,7 @@
 	<test name="Run on Chrome">
 	<parameter name ="browser" value="chrome"/>
     <classes>
-      <class name="com.nopcommerce.view.View_02_Sort_Display_Paging"/>
+      <class name="com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View"/>
     </classes>
   </test> 
 		<!-- <test name="Run on Firefox">

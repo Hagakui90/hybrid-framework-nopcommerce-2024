@@ -13,6 +13,7 @@ import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.WishlistPageObject;
 
 public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	private WebDriver driver;
@@ -21,6 +22,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	private UserLoginPageObject userLoginPage;
 	private CustomerPageObject customerPage;
 	private DetailProductPageObject detailProductPage;
+	private WishlistPageObject wishlistPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -46,24 +48,34 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		String titleSelectedProduct = detailProductPage.getTitleDetailProduct();
 		Assert.assertTrue(detailProductPage.getPageTitle(driver).contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
 		Assert.assertTrue(titleSelectedProduct.contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
+		
+		detailProductPage.clickToAddToWishlist();
+		String nameProduct = detailProductPage.getTitleDetailProduct();
+		String priceProduct = detailProductPage.getPriceProduct();
+		Assert.assertTrue(detailProductPage.getTextNotificationBar().contains("products.producthasbeenaddedtothewishlist.link"));
+		
+		detailProductPage.openHomeFooterPage("my-account", "wishlist");
+		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+		Assert.assertTrue(wishlistPage.verifyAddedProductInWishlist(nameProduct, priceProduct));
+		
 	}
 
-	@Test
+	
 	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
 
 	}
 
-	@Test
+	
 	public void Wishlist_03_Remove_Product() {
 
 	}
 
-	@Test
+	
 	public void Compare_04_Add_Product() {
 
 	}
 
-	@Test
+	
 	public void Recently_View_05_View_Product() {
 
 	}

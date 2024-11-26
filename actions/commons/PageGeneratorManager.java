@@ -20,6 +20,7 @@ import pageObjects.user.HomePageObject;
 import pageObjects.user.RegisterPageObject;
 import pageObjects.user.RewardPointsPageObject;
 import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.WishlistPageObject;
 
 public class PageGeneratorManager {
 
@@ -93,6 +94,10 @@ public class PageGeneratorManager {
 
 	public static AdminEditProductDetailsPageObject getAdminEditProductDetailsPage(WebDriver driver) {
 		return new AdminEditProductDetailsPageObject(driver);		
+	}
+
+	public static WishlistPageObject getWishlistPage(WebDriver driver) {
+		return new WishlistPageObject(driver);
 	}
 	
 }

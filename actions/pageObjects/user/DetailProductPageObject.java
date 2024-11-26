@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import commons.BasePage;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageUIs.user.DetailProductPageUI;
 
-public class DetailProductPageObject extends BasePage{
+public class DetailProductPageObject extends HomePageObject{
 	WebDriver driver;
 	public DetailProductPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	
@@ -40,9 +40,9 @@ public class DetailProductPageObject extends BasePage{
 		clickToElement(driver, DetailProductPageUI.SUBMIT_REVIEW_BUTTON);
 	}
 
-	public String getReviewTextNotificationBar() {
-		waitForElementInVisible(driver, DetailProductPageUI.REVIEW_NOTIFICATION_BAR);
-		return getElementText(driver, DetailProductPageUI.REVIEW_NOTIFICATION_BAR);
+	public String getTextNotificationBar() {
+		waitForElementVisible(driver, DetailProductPageUI.NOTIFICATION_BAR);
+		return getElementText(driver, DetailProductPageUI.NOTIFICATION_BAR);
 	}
 	public void closeReviewNotiBar() {
 		/*
@@ -71,4 +71,13 @@ public class DetailProductPageObject extends BasePage{
 		}
 	}
 	
+	public void clickToAddToWishlist() {
+		waitForElementClickable(driver, DetailProductPageUI.ADD_TO_WISHLIST_BUTTON);
+		clickToElement(driver, DetailProductPageUI.ADD_TO_WISHLIST_BUTTON);
+	}
+	
+	public String getPriceProduct() {
+		waitForElementVisible(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
+		return getElementText(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
+	}
 }
