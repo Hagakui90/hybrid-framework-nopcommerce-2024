@@ -23,4 +23,14 @@ public class WishlistPageObject extends BasePage {
 			}else return false;
 		}
 	}
+
+	public void clickToSharingLink() {
+		waitForElementVisible(driver, WishlistPageUI.WISHLIST_LINKTEXT);
+		clickToElement(driver, WishlistPageUI.WISHLIST_LINKTEXT);
+	}
+	
+	public String getTitleLinkSharing() {
+		waitForElementVisible(driver, WishlistPageUI.TITLE_SHARING_LINK);
+		return getElementText(driver, WishlistPageUI.TITLE_SHARING_LINK);
+	}
 }

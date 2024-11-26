@@ -58,6 +58,10 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
 		Assert.assertTrue(wishlistPage.verifyAddedProductInWishlist(nameProduct, priceProduct));
 		
+		wishlistPage.clickToSharingLink();
+		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+		Assert.assertTrue(wishlistPage.getTitleLinkSharing().equals("wishlist.wishlistof"));
+		
 	}
 
 	

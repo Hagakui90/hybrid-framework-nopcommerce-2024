@@ -4,13 +4,13 @@
   <test thread-count="5" name="Run on Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.nopcommerce.view.View_02_Sort_Display_Paging">
+      <class name="com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View">
         <methods>
-          <include name="Sort_05_Created_On"/>
-          <include name="beforeClass"/>
           <include name="afterClass"/>
+          <include name="Wishlist_01_Add_Wishlist"/>
+          <include name="beforeClass"/>
         </methods>
-      </class> <!-- com.nopcommerce.view.View_02_Sort_Display_Paging -->
+      </class> <!-- com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View -->
     </classes>
   </test> <!-- Run on Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->
