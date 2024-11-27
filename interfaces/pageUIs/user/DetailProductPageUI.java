@@ -13,6 +13,7 @@ public class DetailProductPageUI {
 	public static final String MYACCOUNT_LINK = "xpath=//a[@class='ico-account']";
 	public static final String HEADER_AREA = "css=div.header-upper";
 	public static final String ADD_TO_WISHLIST_BUTTON = "css=button.add-to-wishlist-button";
+	public static final String WISHLIST_HEADER_LINKTEXT = "xpath=//span[text()='wishlist.headerquantity']";
 	
 
 }

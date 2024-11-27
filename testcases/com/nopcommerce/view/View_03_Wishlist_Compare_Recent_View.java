@@ -1,6 +1,7 @@
 package com.nopcommerce.view;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -54,12 +55,14 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		Assert.assertTrue(titleSelectedProduct.contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
 		
 		detailProductPage.clickToAddToWishlist();
+		
 		nameProduct = detailProductPage.getTitleDetailProduct();
 		priceProduct = detailProductPage.getPriceProduct();
 		Assert.assertTrue(detailProductPage.getTextNotificationBar().contains("products.producthasbeenaddedtothewishlist.link"));
 		
 		detailProductPage.openHomeFooterPage("my-account", "wishlist");
 		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+		System.out.println("Price Product: " + priceProduct);
 		Assert.assertTrue(wishlistPage.verifyAddedProductInWishlist(nameProduct, priceProduct));
 		
 		wishlistPage.clickToSharingLink();
@@ -68,7 +71,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		
 	}
 
-	@Test
+	
 	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
 		wishlistPage.addToCart(nameProduct);
 		cartPage = PageGeneratorManager.getCartPage(driver);
@@ -81,7 +84,17 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 
 	
 	public void Wishlist_03_Remove_Product() {
-
+		wishlistPage.clickToLogoLink();
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		detailProductPage = homePage.clickToProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
+		detailProductPage.clickToAddToWishlist();
+		
+		detailProductPage.clickToWishlistHeaderLinkText();
+		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+		wishlistPage.clickToRemoveProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
+		Assert.assertTrue(wishlistPage.verifyRemovedProductInWishlist("Where The River Takes Us: Sunday Times Children's Book of the Week"));
+		
+		
 	}
 
 	

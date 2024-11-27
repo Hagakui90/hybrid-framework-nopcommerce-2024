@@ -74,10 +74,17 @@ public class DetailProductPageObject extends HomePageObject{
 	public void clickToAddToWishlist() {
 		waitForElementClickable(driver, DetailProductPageUI.ADD_TO_WISHLIST_BUTTON);
 		clickToElement(driver, DetailProductPageUI.ADD_TO_WISHLIST_BUTTON);
+		sleepInSecond(3);
 	}
 	
 	public String getPriceProduct() {
 		waitForElementVisible(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
 		return getElementText(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
+	}
+	
+	public void clickToWishlistHeaderLinkText() {
+		waitForElementInVisible(driver, DetailProductPageUI.NOTIFICATION_BAR);
+		waitForElementClickable(driver, DetailProductPageUI.WISHLIST_HEADER_LINKTEXT);
+		clickToElement(driver, DetailProductPageUI.WISHLIST_HEADER_LINKTEXT);
 	}
 }

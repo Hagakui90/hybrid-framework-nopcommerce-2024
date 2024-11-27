@@ -53,6 +53,7 @@ public class HomePageObject extends BasePage{
 	public void openHomeFooterPage(String blockName, String pageName) {
 		waitForElementClickable(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
 		clickToElement(driver, HomePageUI.DYNAMIC_HOME_FOOTER_LINK_TEXT, blockName, pageName);
+		sleepInSecond(3);
 	}
 
 	public void openHomeHeaderMenuPage(String menuPage) {
