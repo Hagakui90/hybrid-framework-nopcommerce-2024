@@ -9,6 +9,7 @@ import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksCategoryPageObject;
 import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
+import pageObjects.user.CartPageObject;
 import pageObjects.user.ChangePasswordPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
@@ -98,6 +99,10 @@ public class PageGeneratorManager {
 
 	public static WishlistPageObject getWishlistPage(WebDriver driver) {
 		return new WishlistPageObject(driver);
+	}
+
+	public static CartPageObject getCartPage(WebDriver driver) {
+		return new CartPageObject(driver);
 	}
 	
 }

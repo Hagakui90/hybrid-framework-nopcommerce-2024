@@ -17,8 +17,8 @@ public class WishlistPageObject extends BasePage {
 			return false;
 		}
 		else {
-			waitForElementVisible(driver, WishlistPageUI.PRICE_NAME_IN_WISHLIST_TABLE_BY_NAME, nameProduct);
-			if (getElementText(driver, WishlistPageUI.PRICE_NAME_IN_WISHLIST_TABLE_BY_NAME, nameProduct).equals(priceProduct)) {
+			waitForElementVisible(driver, WishlistPageUI.PRICE_PRODUCT_IN_WISHLIST_TABLE_BY_NAME, nameProduct);
+			if (getElementText(driver, WishlistPageUI.PRICE_PRODUCT_IN_WISHLIST_TABLE_BY_NAME, nameProduct).equals(priceProduct)) {
 				return true;
 			}else return false;
 		}
@@ -32,5 +32,13 @@ public class WishlistPageObject extends BasePage {
 	public String getTitleLinkSharing() {
 		waitForElementVisible(driver, WishlistPageUI.TITLE_SHARING_LINK);
 		return getElementText(driver, WishlistPageUI.TITLE_SHARING_LINK);
+	}
+	
+	public void addToCart(String nameProduct) {
+		waitForElementVisible(driver, WishlistPageUI.ADD_TO_CART_CHECKBOX, nameProduct);
+		checkToElement(driver, WishlistPageUI.ADD_TO_CART_CHECKBOX, nameProduct);
+		
+		waitForElementClickable(driver, WishlistPageUI.ADD_TO_CART_BUTTON);
+		clickToElement(driver, WishlistPageUI.ADD_TO_CART_BUTTON);
 	}
 }

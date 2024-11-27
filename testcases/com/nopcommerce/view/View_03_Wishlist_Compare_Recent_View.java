@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
+import pageObjects.user.CartPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
@@ -23,6 +24,9 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	private CustomerPageObject customerPage;
 	private DetailProductPageObject detailProductPage;
 	private WishlistPageObject wishlistPage;
+	private String nameProduct;
+	private String priceProduct;
+	private CartPageObject cartPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -50,8 +54,8 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		Assert.assertTrue(titleSelectedProduct.contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
 		
 		detailProductPage.clickToAddToWishlist();
-		String nameProduct = detailProductPage.getTitleDetailProduct();
-		String priceProduct = detailProductPage.getPriceProduct();
+		nameProduct = detailProductPage.getTitleDetailProduct();
+		priceProduct = detailProductPage.getPriceProduct();
 		Assert.assertTrue(detailProductPage.getTextNotificationBar().contains("products.producthasbeenaddedtothewishlist.link"));
 		
 		detailProductPage.openHomeFooterPage("my-account", "wishlist");
@@ -64,9 +68,15 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		
 	}
 
-	
+	@Test
 	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
-
+		wishlistPage.addToCart(nameProduct);
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		Assert.assertTrue(cartPage.verifyAddedProductInCart(nameProduct, priceProduct));
+		
+		cartPage.backToPage(driver);
+		wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+		Assert.assertFalse(wishlistPage.verifyAddedProductInWishlist(nameProduct, priceProduct));
 	}
 
 	
