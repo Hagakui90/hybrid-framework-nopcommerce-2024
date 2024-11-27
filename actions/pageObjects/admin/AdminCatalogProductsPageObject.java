@@ -31,7 +31,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 	public List<String> getListNameProductSortedByCreatedOnAllPage(){
 		List<String> listNameProductPerCatalogProductAllPage = new ArrayList<String>();
 		for (Product product : sortAsCreatedOnByCatalogProduct()) {
-			listNameProductPerCatalogProductAllPage.add(product.getTitleOfBook());
+			listNameProductPerCatalogProductAllPage.add(product.getTitleOfProduct());
 		}
 		return listNameProductPerCatalogProductAllPage;
 	}
@@ -82,7 +82,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 	public void viewlistCreatedOnPerCatalogProductEachPage(String noProduct) {
 		List<Product> listCreatedOnPerCatalogProductEachPage = getListCreatedOnPerCatalogProductEachPage();
 		for (Product product : listCreatedOnPerCatalogProductEachPage) {
-			System.out.println("Product " + noProduct + product.getTitleOfBook() + " " + product.getCreatedOn());
+			System.out.println("Product " + noProduct + product.getTitleOfProduct() + " " + product.getCreatedOn());
 		}
 	}
 
@@ -100,7 +100,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		 Collections.sort((List<Product>) listCreatedOnPerCatalogProductAllPage);
 		 System.out.println("---------------After sorted, List product-----------------");
 		 for (Product product : listCreatedOnPerCatalogProductAllPage) {
-			System.out.println(product.getTitleOfBook() + "===========" + product.getCreatedOn());
+			System.out.println(product.getTitleOfProduct() + "===========" + product.getCreatedOn());
 		}
 		return listCreatedOnPerCatalogProductAllPage;
 	}

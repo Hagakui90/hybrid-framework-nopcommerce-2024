@@ -1,7 +1,6 @@
 package com.nopcommerce.view;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Sleeper;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,6 +9,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
+import commons.Product;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DetailProductPageObject;
@@ -45,7 +45,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
-	@Test
+	
 	public void Wishlist_01_Add_Wishlist() {
 		customerPage.backToPage(driver);
 		homePage = PageGeneratorManager.getHomePageObject(driver);
@@ -74,7 +74,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	
 	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
 		wishlistPage.addToCart(nameProduct);
-		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage = PageGeneratorManager.getCartPageObject(driver);
 		Assert.assertTrue(cartPage.verifyAddedProductInCart(nameProduct, priceProduct));
 		
 		cartPage.backToPage(driver);
@@ -97,9 +97,18 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		
 	}
 
-	
+	@Test
 	public void Compare_04_Add_Product() {
-
+		customerPage.clickToLogoLink();
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		Product product_1 = homePage.addProductToCompare("Lessons in Chemistry A Novel");
+		Assert.assertTrue(homePage.getTextNotificationBar().equals("products.producthasbeenaddedtocomparelist.link"));
+		
+		Product product_2 = homePage.addProductToCompare("Stig of the Dump");
+		Assert.assertTrue(homePage.getTextNotificationBar().equals("products.producthasbeenaddedtocomparelist.link"));
+		
+		homePage.openHomeFooterPage("customer-service", "products.compare.list");
 	}
 
 	

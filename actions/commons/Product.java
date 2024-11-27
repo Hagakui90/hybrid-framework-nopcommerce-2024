@@ -3,12 +3,12 @@ package commons;
 import java.util.Date;
 
 public class Product implements Comparable<Product>{
-	private String titleOfBook;
-	public String getTitleOfBook() {
-		return titleOfBook;
+	private String titleOfProduct;
+	public String getTitleOfProduct() {
+		return titleOfProduct;
 	}
-	public void setTitleOfBook(String titleOfBook) {
-		this.titleOfBook = titleOfBook;
+	public void setTitleOfProduct(String titleOfProduct) {
+		this.titleOfProduct = titleOfProduct;
 	}
 	public Date getCreatedOn() {
 		return createdOn;
@@ -17,10 +17,23 @@ public class Product implements Comparable<Product>{
 		this.createdOn = createdOn;
 	}
 	private Date createdOn;
-	public Product(String titleOfBook, Date createdOn) {
-		this.titleOfBook = titleOfBook;
+	private String priceOfProduct;
+	public String getPriceOfProduct() {
+		return priceOfProduct;
+	}
+	public void setPriceOfProduct(String priceOfProduct) {
+		this.priceOfProduct = priceOfProduct;
+	}
+	public Product(String titleOfProduct, Date createdOn) {
+		this.titleOfProduct = titleOfProduct;
 		this.createdOn = createdOn;
 	}
+	
+	public Product(String titleOfProduct, String priceOfProduct) {
+		this.titleOfProduct = titleOfProduct;
+		this.priceOfProduct = priceOfProduct;
+	}
+	
 	@Override
 	public int compareTo(Product product) {
 		if (createdOn.compareTo(product.createdOn)==0) {

@@ -11,6 +11,7 @@ import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.ChangePasswordPageObject;
+import pageObjects.user.CompareProductsPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.CustomerProductReviewPageObject;
@@ -101,8 +102,12 @@ public class PageGeneratorManager {
 		return new WishlistPageObject(driver);
 	}
 
-	public static CartPageObject getCartPage(WebDriver driver) {
+	public static CartPageObject getCartPageObject(WebDriver driver) {
 		return new CartPageObject(driver);
+	}
+	
+	public static CompareProductsPageObject getCompareProductsPage(WebDriver driver) {
+		return new CompareProductsPageObject(driver);
 	}
 	
 }
