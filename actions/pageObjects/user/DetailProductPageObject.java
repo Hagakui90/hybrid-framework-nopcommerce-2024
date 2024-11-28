@@ -23,7 +23,10 @@ public class DetailProductPageObject extends HomePageObject{
 		return getElementText(driver, DetailProductPageUI.PRODUCT_NAME_TEXT);
 	}
 	
-	
+	public String getPriceProduct() {
+		waitForElementVisible(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
+		return getElementText(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
+	}
 	public void inputReviewForm(String titleReview, String contentReview, String rating) {
 		clickToAddReviewLink();
 		
@@ -77,10 +80,7 @@ public class DetailProductPageObject extends HomePageObject{
 		sleepInSecond(3);
 	}
 	
-	public String getPriceProduct() {
-		waitForElementVisible(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
-		return getElementText(driver, DetailProductPageUI.PRODUCT_PRICE_TEXT);
-	}
+	
 	
 	public void clickToWishlistHeaderLinkText() {
 		waitForElementInVisible(driver, DetailProductPageUI.NOTIFICATION_BAR);

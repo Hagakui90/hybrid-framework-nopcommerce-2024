@@ -15,6 +15,7 @@ import pageObjects.user.CompareProductsPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
+import pageObjects.user.RecentlyViewedProductsPageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.WishlistPageObject;
 
@@ -30,6 +31,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	private String priceProduct;
 	private CartPageObject cartPage;
 	private CompareProductsPageObject compareProductsPage;
+	private RecentlyViewedProductsPageObject recentlyViewProductsPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -99,7 +101,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		
 	}
 
-	@Test
+	
 	public void Compare_04_Add_Product() {
 		customerPage.clickToLogoLink();
 		homePage = PageGeneratorManager.getHomePageObject(driver);
@@ -119,9 +121,40 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		Assert.assertEquals(compareProductsPage.getNotifyDataAfterClearList(), "products.compare.noitems");
 	}
 
-	
+	@Test
 	public void Recently_View_05_View_Product() {
-
+		customerPage.clickToLogoLink();
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		detailProductPage = homePage.clickToProduct("Apple MacBook Pro");
+		detailProductPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		detailProductPage = homePage.clickToProduct("$25 Virtual Gift Card");
+		detailProductPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		detailProductPage = homePage.clickToProduct("HTC smartphone");
+		Product product_1 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
+		
+		detailProductPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		detailProductPage = homePage.clickToProduct("Lessons in Chemistry A Novel");
+		Product product_2 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
+		detailProductPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		detailProductPage = homePage.clickToProduct("Dear Reader: The Comfort and Joy of Books");
+		Product product_3 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
+		detailProductPage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePageObject(driver);
+		
+		homePage.openHomeFooterPage("customer-service", "products.recentlyviewedproducts");
+		recentlyViewProductsPage = PageGeneratorManager.getRecentlyViewedProductsPageObject(driver);
+		
+		Assert.assertTrue(recentlyViewProductsPage.verifyProductsInRecentlyViewed(product_1));
+		Assert.assertTrue(recentlyViewProductsPage.verifyProductsInRecentlyViewed(product_2));
+		Assert.assertTrue(recentlyViewProductsPage.verifyProductsInRecentlyViewed(product_3));
 	}
 
 	@AfterClass

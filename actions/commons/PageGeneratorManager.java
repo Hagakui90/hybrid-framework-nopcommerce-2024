@@ -19,6 +19,7 @@ import pageObjects.user.CustomerSearchPageObject;
 import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.DownloadableProductPageObject;
 import pageObjects.user.HomePageObject;
+import pageObjects.user.RecentlyViewedProductsPageObject;
 import pageObjects.user.RegisterPageObject;
 import pageObjects.user.RewardPointsPageObject;
 import pageObjects.user.UserLoginPageObject;
@@ -110,4 +111,7 @@ public class PageGeneratorManager {
 		return new CompareProductsPageObject(driver);
 	}
 	
+	public static RecentlyViewedProductsPageObject getRecentlyViewedProductsPageObject(WebDriver driver) {
+		return new RecentlyViewedProductsPageObject(driver);
+	}
 }
