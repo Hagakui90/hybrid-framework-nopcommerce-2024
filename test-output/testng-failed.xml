@@ -7,7 +7,7 @@
       <class name="com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View">
         <methods>
           <include name="afterClass"/>
-          <include name="Wishlist_01_Add_Wishlist"/>
+          <include name="Compare_04_Add_Product"/>
           <include name="beforeClass"/>
         </methods>
       </class> <!-- com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View -->

@@ -11,6 +11,7 @@ import commons.BaseTest;
 import commons.PageGeneratorManager;
 import commons.Product;
 import pageObjects.user.CartPageObject;
+import pageObjects.user.CompareProductsPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
@@ -28,6 +29,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	private String nameProduct;
 	private String priceProduct;
 	private CartPageObject cartPage;
+	private CompareProductsPageObject compareProductsPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -109,6 +111,12 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 		Assert.assertTrue(homePage.getTextNotificationBar().equals("products.producthasbeenaddedtocomparelist.link"));
 		
 		homePage.openHomeFooterPage("customer-service", "products.compare.list");
+		compareProductsPage = PageGeneratorManager.getCompareProductsPage(driver);
+		
+		Assert.assertTrue(compareProductsPage.verifyAddedProductsInComparableTable(product_1, product_2));
+		
+		compareProductsPage.clearListAddedProducts();
+		Assert.assertEquals(compareProductsPage.getNotifyDataAfterClearList(), "products.compare.noitems");
 	}
 
 	
