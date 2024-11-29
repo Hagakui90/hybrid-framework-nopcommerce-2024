@@ -9,6 +9,7 @@ import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksCategoryPageObject;
 import pageObjects.guest.ComputersCategoryPageObject;
 import pageObjects.guest.NotebooksSubPageObject;
+import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.ChangePasswordPageObject;
 import pageObjects.user.CompareProductsPageObject;
@@ -123,5 +124,9 @@ public class PageGeneratorManager {
 
 	public static SoftwareSubPageObject getSoftwareSubPage(WebDriver driver) {
 		return new SoftwareSubPageObject(driver);
+	}
+
+	public static BuildYourOwnComputerPageObject getBuildYourOwnComputerPage(WebDriver driver) {
+		return new BuildYourOwnComputerPageObject(driver);
 	}
 }

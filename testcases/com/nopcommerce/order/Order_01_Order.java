@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.guest.BooksCategoryPageObject;
+import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DesktopsSubPageObject;
 import pageObjects.user.DetailProductPageObject;
@@ -25,6 +26,7 @@ public class Order_01_Order extends BaseTest {
 	private DesktopsSubPageObject desktopsSubPage;
 	private DetailProductPageObject detailProductPage;
 	private BooksCategoryPageObject booksCategoryPage;
+	private BuildYourOwnComputerPageObject buildYourOwnComputerPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -50,10 +52,9 @@ public class Order_01_Order extends BaseTest {
 		desktopsSubPage = PageGeneratorManager.getDesktopsSubPage(driver);
 
 		desktopsSubPage.clickToAnyProduct("Build your own computer");
-		detailProductPage = PageGeneratorManager.getDetailProductPage(driver);
+		buildYourOwnComputerPage = PageGeneratorManager.getBuildYourOwnComputerPage(driver);
 
-		detailProductPage.clickToSubMenu("Books", "");
-		desktopsSubPage.sleepInSecond(5);
+		buildYourOwnComputerPage.clickToSubMenu("Books", "");
 		booksCategoryPage = PageGeneratorManager.getBooksCategoryPage(driver);
 		booksCategoryPage.clickToAnyProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
 

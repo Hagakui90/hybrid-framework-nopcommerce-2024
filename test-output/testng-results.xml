@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-28T13:13:52Z" name="Suite" finished-at="2024-11-28T13:14:06Z" duration-ms="13650">
+  <suite started-at="2024-11-29T09:39:53Z" name="Suite" finished-at="2024-11-29T09:40:37Z" duration-ms="44458">
     <groups>
     </groups>
-    <test started-at="2024-11-28T13:13:52Z" name="Run on Chrome" finished-at="2024-11-28T13:14:06Z" duration-ms="13650">
-      <class name="com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View@124c278f]" started-at="2024-11-28T13:13:52Z" name="beforeClass" finished-at="2024-11-28T13:13:55Z" duration-ms="3237" status="PASS">
+    <test started-at="2024-11-29T09:39:53Z" name="Run on Chrome" finished-at="2024-11-29T09:40:37Z" duration-ms="44458">
+      <class name="com.nopcommerce.order.Order_01_Order">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:39:53Z" name="beforeClass" finished-at="2024-11-29T09:40:13Z" duration-ms="19649" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,15 +18,31 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Recently_View_05_View_Product()[pri:0, instance:com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View@124c278f]" started-at="2024-11-28T13:13:55Z" name="Recently_View_05_View_Product" finished-at="2024-11-28T13:14:06Z" duration-ms="10403" status="PASS">
+        <test-method signature="Order_01_Add_To_Cart()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:13Z" name="Order_01_Add_To_Cart" finished-at="2024-11-29T09:40:37Z" duration-ms="24796" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Recently_View_05_View_Product -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View@124c278f]" started-at="2024-11-28T13:14:06Z" name="afterClass" finished-at="2024-11-28T13:14:06Z" duration-ms="0" status="PASS">
+        </test-method> <!-- Order_01_Add_To_Cart -->
+        <test-method signature="Order_02_Edit_Production_In_Shopping_Cart()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:37Z" name="Order_02_Edit_Production_In_Shopping_Cart" finished-at="2024-11-29T09:40:37Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Order_02_Edit_Production_In_Shopping_Cart -->
+        <test-method signature="Order_03_Remove_From_Cart()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:37Z" name="Order_03_Remove_From_Cart" finished-at="2024-11-29T09:40:37Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Order_03_Remove_From_Cart -->
+        <test-method signature="Order_04_Update_Shopping_Cart()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:37Z" name="Order_04_Update_Shopping_Cart" finished-at="2024-11-29T09:40:37Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Order_04_Update_Shopping_Cart -->
+        <test-method signature="Order_05_Checkout()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:37Z" name="Order_05_Checkout" finished-at="2024-11-29T09:40:37Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Order_05_Checkout -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-11-29T09:40:37Z" name="afterClass" finished-at="2024-11-29T09:40:37Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View -->
+      </class> <!-- com.nopcommerce.order.Order_01_Order -->
     </test> <!-- Run on Chrome -->
   </suite> <!-- Suite -->
 </testng-results>
