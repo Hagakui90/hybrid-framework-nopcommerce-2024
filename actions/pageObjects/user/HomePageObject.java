@@ -23,19 +23,19 @@ public class HomePageObject extends BasePage{
 	public RegisterPageObject clickToRegisterLink() {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
-		return PageGeneratorManager.getRegisterPageObject(driver);
+		return PageGeneratorManager.getRegisterPage(driver);
 	}
 
 	public UserLoginPageObject clickToLoginLink() {
 		waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
-		return PageGeneratorManager.getUserLoginPageObject(driver);
+		return PageGeneratorManager.getUserLoginPage(driver);
 	}
 
 	public CustomerPageObject clickToMyAccountLink() {
 		waitForElementClickable(driver, HomePageUI.MYACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MYACCOUNT_LINK);
-		return PageGeneratorManager.getCustomerPageObject(driver);
+		return PageGeneratorManager.getCustomerPage(driver);
 	}
 	
 	public DetailProductPageObject clickToProduct(String productName) {
@@ -75,5 +75,19 @@ public class HomePageObject extends BasePage{
 		waitForElementVisible(driver, HomePageUI.NOTIFICATION_BAR);
 		return getElementText(driver, HomePageUI.NOTIFICATION_BAR);
 	}
+
+	public void clickToSubMenu(String menu, String subMenu) {
+		if (subMenu.equals("")) {
+			waitForElementVisible(driver, HomePageUI.DYNAMIC_MENU_LINK_TEXT, menu);
+			clickToElement(driver, HomePageUI.DYNAMIC_MENU_LINK_TEXT, menu);
+		}else {
+			hoverToElement(driver, HomePageUI.DYNAMIC_HOME_HEADER_MENU_LINK_TEXT, menu);
+			waitForElementVisible(driver, HomePageUI.DYNAMIC_SUB_MENU_LINK_TEXT, menu, subMenu);
+			clickToElement(driver, HomePageUI.DYNAMIC_SUB_MENU_LINK_TEXT, menu, subMenu);
+		}
+			
+	}
+	
+	
 
 }

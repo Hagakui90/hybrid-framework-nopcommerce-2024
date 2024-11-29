@@ -37,7 +37,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		userLoginPage = homePage.clickToLoginLink();
 
 		userLoginPage.enterToEmailAddress(emailAddress);
@@ -52,7 +52,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	
 	public void Wishlist_01_Add_Wishlist() {
 		customerPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		detailProductPage = homePage.clickToProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
 		String titleSelectedProduct = detailProductPage.getTitleDetailProduct();
 		Assert.assertTrue(detailProductPage.getPageTitle(driver).contains("Where The River Takes Us: Sunday Times Children's Book of the Week"));
@@ -78,7 +78,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	
 	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
 		wishlistPage.addToCart(nameProduct);
-		cartPage = PageGeneratorManager.getCartPageObject(driver);
+		cartPage = PageGeneratorManager.getCartPage(driver);
 		Assert.assertTrue(cartPage.verifyAddedProductInCart(nameProduct, priceProduct));
 		
 		cartPage.backToPage(driver);
@@ -89,7 +89,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	
 	public void Wishlist_03_Remove_Product() {
 		wishlistPage.clickToLogoLink();
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		detailProductPage = homePage.clickToProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
 		detailProductPage.clickToAddToWishlist();
 		
@@ -104,7 +104,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	
 	public void Compare_04_Add_Product() {
 		customerPage.clickToLogoLink();
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		Product product_1 = homePage.addProductToCompare("Lessons in Chemistry A Novel");
 		Assert.assertTrue(homePage.getTextNotificationBar().equals("products.producthasbeenaddedtocomparelist.link"));
@@ -124,33 +124,33 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	@Test
 	public void Recently_View_05_View_Product() {
 		customerPage.clickToLogoLink();
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		detailProductPage = homePage.clickToProduct("Apple MacBook Pro");
 		detailProductPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		detailProductPage = homePage.clickToProduct("$25 Virtual Gift Card");
 		detailProductPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		detailProductPage = homePage.clickToProduct("HTC smartphone");
 		Product product_1 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
 		
 		detailProductPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		detailProductPage = homePage.clickToProduct("Lessons in Chemistry A Novel");
 		Product product_2 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
 		detailProductPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		detailProductPage = homePage.clickToProduct("Dear Reader: The Comfort and Joy of Books");
 		Product product_3 = new Product(detailProductPage.getTitleDetailProduct(), detailProductPage.getPriceProduct());
 		detailProductPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		homePage.openHomeFooterPage("customer-service", "products.recentlyviewedproducts");
-		recentlyViewProductsPage = PageGeneratorManager.getRecentlyViewedProductsPageObject(driver);
+		recentlyViewProductsPage = PageGeneratorManager.getRecentlyViewedProductsPage(driver);
 		
 		Assert.assertTrue(recentlyViewProductsPage.verifyProductsInRecentlyViewed(product_1));
 		Assert.assertTrue(recentlyViewProductsPage.verifyProductsInRecentlyViewed(product_2));

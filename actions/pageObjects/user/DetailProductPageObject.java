@@ -60,7 +60,7 @@ public class DetailProductPageObject extends HomePageObject{
 		 * waitForElementClickable(driver, DetailProductPageUI.MYACCOUNT_LINK); clickToElement(driver, DetailProductPageUI.MYACCOUNT_LINK);
 		 */
 		clickToElementByJS(driver, DetailProductPageUI.MYACCOUNT_LINK);
-		return PageGeneratorManager.getCustomerPageObject(driver);
+		return PageGeneratorManager.getCustomerPage(driver);
 	}
 	
 	public void clickToAddReviewLink() {

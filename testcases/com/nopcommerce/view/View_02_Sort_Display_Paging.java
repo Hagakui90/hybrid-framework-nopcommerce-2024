@@ -36,10 +36,10 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 
 		homePage.openHomeHeaderMenuPage("Computers");
-		computersPage = PageGeneratorManager.getComputersPageObject(driver);
+		computersPage = PageGeneratorManager.getComputersPage(driver);
 		Assert.assertEquals(computersPage.getPageTitle(), "Computers");
 
 		computersPage.openCategoriesSideBarPage("Computers", "Notebooks");
@@ -69,7 +69,7 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	public void Sort_05_Created_On() {
 		System.out.println("----Check at Guest site----");
 		notebooksSubPage.openCategoriesSideBarPage("Books", "");
-		booksCategoryPage = PageGeneratorManager.getBooksSubPageObject(driver);
+		booksCategoryPage = PageGeneratorManager.getBooksCategoryPage(driver);
 		Assert.assertEquals(booksCategoryPage.getPageTitle(), "Books");
 		booksCategoryPage.sleepInSecond(2);
 		List<String> listNamProductByCreatedOnAtGuestSite = booksCategoryPage.getListNameProductByCreatedOnAtGuestSite();
@@ -92,9 +92,9 @@ public class View_02_Sort_Display_Paging extends BaseTest {
 	@Test
 	public void Display_05_3_Products_Per_Page() {
 		adminCatalogProductPage.openPageUrl(driver, userUrl);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage.openHomeHeaderMenuPage("Books");
-		booksCategoryPage = PageGeneratorManager.getBooksSubPageObject(driver);
+		booksCategoryPage = PageGeneratorManager.getBooksCategoryPage(driver);
 		Assert.assertEquals(booksCategoryPage.getPageTitle(), "Books");
 		booksCategoryPage.sleepInSecond(2);
 		

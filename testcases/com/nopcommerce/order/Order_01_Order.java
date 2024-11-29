@@ -1,17 +1,61 @@
 package com.nopcommerce.order;
 
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Order_01_Order {
-	@BeforeClass
-	public void beforeClass() {
+import commons.BaseTest;
+import commons.PageGeneratorManager;
+import pageObjects.guest.BooksCategoryPageObject;
+import pageObjects.user.CustomerPageObject;
+import pageObjects.user.DesktopsSubPageObject;
+import pageObjects.user.DetailProductPageObject;
+import pageObjects.user.HomePageObject;
+import pageObjects.user.UserLoginPageObject;
 
+public class Order_01_Order extends BaseTest {
+	private WebDriver driver;
+	private String emailAddress = "afc3574@mail.vn";
+	private HomePageObject homePage;
+	private UserLoginPageObject userLoginPage;
+	private CustomerPageObject customerPage;
+	private DesktopsSubPageObject desktopsSubPage;
+	private DetailProductPageObject detailProductPage;
+	private BooksCategoryPageObject booksCategoryPage;
+
+	@Parameters("browser")
+	@BeforeClass
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		userLoginPage = homePage.clickToLoginLink();
+
+		userLoginPage.enterToEmailAddress(emailAddress);
+		userLoginPage.enterToPassword("Goodmorning11");
+
+		homePage = userLoginPage.clickToLoginButton();
+
+		customerPage = homePage.clickToMyAccountLink();
+		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
 	@Test
 	public void Order_01_Add_To_Cart() {
+		homePage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage.clickToSubMenu("Computers", "Desktops");
+		desktopsSubPage = PageGeneratorManager.getDesktopsSubPage(driver);
+
+		desktopsSubPage.clickToAnyProduct("Build your own computer");
+		detailProductPage = PageGeneratorManager.getDetailProductPage(driver);
+
+		detailProductPage.clickToSubMenu("Books", "");
+		desktopsSubPage.sleepInSecond(5);
+		booksCategoryPage = PageGeneratorManager.getBooksCategoryPage(driver);
+		booksCategoryPage.clickToAnyProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
 
 	}
 

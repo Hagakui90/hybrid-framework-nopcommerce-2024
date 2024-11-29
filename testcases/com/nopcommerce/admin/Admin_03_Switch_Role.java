@@ -30,7 +30,7 @@ public class Admin_03_Switch_Role extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName, userUrl);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 
 	}
 

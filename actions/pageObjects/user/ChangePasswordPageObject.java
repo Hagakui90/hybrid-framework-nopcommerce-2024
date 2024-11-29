@@ -37,7 +37,7 @@ public class ChangePasswordPageObject extends MyAccountSideBarPageObject {
 	public HomePageObject logout() {
 		waitForElementClickable(driver, MyAccountSideBarPageUI.LOGOUT_LINK_TEXT);
 		clickToElementByJS(driver, MyAccountSideBarPageUI.LOGOUT_LINK_TEXT);
-		return PageGeneratorManager.getHomePageObject(driver);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 	
 }

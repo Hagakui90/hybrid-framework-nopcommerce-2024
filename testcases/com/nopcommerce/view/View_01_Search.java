@@ -26,7 +26,7 @@ public class View_01_Search extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		userLoginPage = homePage.clickToLoginLink();
 
 		userLoginPage.enterToEmailAddress(emailAddress);
@@ -42,10 +42,10 @@ public class View_01_Search extends BaseTest {
 	@Test
 	public void Search_01_Empty() {
 		customerPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		homePage.openHomeFooterPage("customer-service", "search");
-		customerSearchPage = PageGeneratorManager.getCustomerSearchPageObject(driver);
+		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
 		Assert.assertEquals(customerSearchPage.getPageTitle("search-page"), "search");
 		
 		customerSearchPage.inputSearchForm("");

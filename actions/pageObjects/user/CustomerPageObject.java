@@ -22,7 +22,7 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 	public HomePageObject clickToLogoutLink() {
 		waitForElementVisible(driver, CustomerPageUI.LOGOUT_LINK);
 		clickToElement(driver, CustomerPageUI.LOGOUT_LINK);
-		return PageGeneratorManager.getHomePageObject(driver);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 	public void updateFullInfo(String gender, String firstName, String lastName, String newEmail, String companyName) {

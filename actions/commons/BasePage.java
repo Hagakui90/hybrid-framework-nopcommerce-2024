@@ -343,6 +343,9 @@ public class BasePage {
 		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
 	}
 
+	public void hoverToElement(WebDriver driver, String locator, String... restParams) {
+		new Actions(driver).moveToElement(getWebElement(driver, getDynamicLocator(locator, restParams))).perform();
+	}
 	public void doubleClickToElement(WebDriver driver, String locator) {
 		new Actions(driver).doubleClick(getWebElement(driver, locator)).perform();
 	}

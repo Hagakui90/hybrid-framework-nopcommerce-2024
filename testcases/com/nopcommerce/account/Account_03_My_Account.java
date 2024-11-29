@@ -35,7 +35,7 @@ public class Account_03_My_Account extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		userLoginPage = homePage.clickToLoginLink();
 
 		userLoginPage.enterToEmailAddress(emailAddress);
@@ -61,7 +61,7 @@ public class Account_03_My_Account extends BaseTest {
 	
 	public void My_Account_02_Add_Address() {
 		customerPage.openDynamicSideBarPage("account.customeraddresses");
-		customerAddressPage = PageGeneratorManager.getCustomerAddressObject(driver);
+		customerAddressPage = PageGeneratorManager.getCustomerAddress(driver);
 		
 		customerAddressPage.openAddressForm();
 		customerAddressPage.inputAddressForm("Hutomation", "FC", "vivo.vn@gmail.com", "Automation FC", "Vietnam", "Hải Phòng", "Hải Phòng", "123/04 Lê Lai", "234/05 Hải Phòng", "550000", "0123456789", "0987654321");
@@ -84,7 +84,7 @@ public class Account_03_My_Account extends BaseTest {
 	
 	public void My_Account_03_Change_Password() {
 		customerPage.openDynamicSideBarPage("account.changepassword");
-		changePasswordPage = PageGeneratorManager.getChangePasswordObject(driver);
+		changePasswordPage = PageGeneratorManager.getChangePassword(driver);
 		
 		changePasswordPage.inputChangePasswordForm("234GogoLove", "Goodmorning11");
 		
@@ -97,7 +97,7 @@ public class Account_03_My_Account extends BaseTest {
 		Assert.assertTrue(userLoginPage.getEmailNotExistTextMessage().contains("account.login.unsuccessful\naccount.login.wrongcredentials"));
 		
 		userLoginPage.enterToLoginForm(emailAddress, "Goodmorning11");
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		customerPage = homePage.clickToMyAccountLink();
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
@@ -105,7 +105,7 @@ public class Account_03_My_Account extends BaseTest {
 	@Test
 	public void My_Account_04_Add_Review_Product() {
 		customerPage.backToPage(driver);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		detailProductPage = homePage.clickToProduct("MacBook");
 		String titleSelectedProduct = detailProductPage.getTitleDetailProduct();
@@ -120,7 +120,7 @@ public class Account_03_My_Account extends BaseTest {
 		customerPage = detailProductPage.clickToMyAccountLink();
 		
 		customerPage.openDynamicSideBarPage("account.customerproductreviews");
-		customerProductReviewPage = PageGeneratorManager.getCustomerProductReviewPageObject(driver);
+		customerProductReviewPage = PageGeneratorManager.getCustomerProductReviewPage(driver);
 		
 		Assert.assertTrue(customerProductReviewPage.getPageTitleText().contains("account.customerproductreviews"));
 		Assert.assertEquals(customerProductReviewPage.getAddedReviewTitleText(), titleReview);

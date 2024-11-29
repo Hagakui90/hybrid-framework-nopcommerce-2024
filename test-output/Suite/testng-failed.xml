@@ -4,13 +4,17 @@
   <test thread-count="5" name="Run on Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View">
+      <class name="com.nopcommerce.order.Order_01_Order">
         <methods>
-          <include name="afterClass"/>
-          <include name="Compare_04_Add_Product"/>
+          <include name="Order_05_Checkout"/>
           <include name="beforeClass"/>
+          <include name="Order_03_Remove_From_Cart"/>
+          <include name="Order_02_Edit_Production_In_Shopping_Cart"/>
+          <include name="Order_04_Update_Shopping_Cart"/>
+          <include name="afterClass"/>
+          <include name="Order_01_Add_To_Cart"/>
         </methods>
-      </class> <!-- com.nopcommerce.view.View_03_Wishlist_Compare_Recent_View -->
+      </class> <!-- com.nopcommerce.order.Order_01_Order -->
     </classes>
   </test> <!-- Run on Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -27,7 +27,7 @@ public class AdminLoginPageObject extends BasePage {
 	public AdminDashboardPageObject clickToLoginButton() {
 		waitForElementClickable(driver, UserLoginPageUI.SUBMIT_BUTTON);
 		clickToElement(driver, UserLoginPageUI.SUBMIT_BUTTON);
-		return PageGeneratorManager.getAdminDashboardPageObject(driver);
+		return PageGeneratorManager.getAdminDashboardPage(driver);
 	}
 
 	public AdminDashboardPageObject enterToLoginForm (String emailAddress, String password) {

@@ -27,7 +27,7 @@ public class Account_01_Register extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 
 	}

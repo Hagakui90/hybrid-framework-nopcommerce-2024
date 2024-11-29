@@ -16,7 +16,7 @@ public class RegisterPageObject extends BasePage{
 	public CustomerPageObject clickToMyAccountLink() {
 		waitForElementVisible(driver, RegisterPageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, RegisterPageUI.MY_ACCOUNT_LINK);
-		return PageGeneratorManager.getCustomerPageObject(driver);
+		return PageGeneratorManager.getCustomerPage(driver);
 	}
 
 	public void clickToRegisterButton() {
@@ -47,7 +47,7 @@ public class RegisterPageObject extends BasePage{
 	public HomePageObject clickToNopCommerceLogo() {
 		waitForElementVisible(driver, RegisterPageUI.NOPCOMMERCE_LOGO);
 		clickToElement(driver, RegisterPageUI.NOPCOMMERCE_LOGO);
-		return PageGeneratorManager.getHomePageObject(driver);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 	public void enterToFirstNameTextbox(String firstname) {

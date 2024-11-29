@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commons.BasePage;
 import commons.GlobalConstants;
+import commons.PageGeneratorManager;
 import pageUIs.guest.CategoriesSideBarPageUI;
 
 public class CategoriesSideBarPageObject extends BasePage {
@@ -155,7 +156,7 @@ public class CategoriesSideBarPageObject extends BasePage {
 		}
 		return listNameProductByCreatedOnAllPage;
 	}
-	
+
 	public boolean isNextPageButtonActived(String currentNumberPage) {
 		if (currentNumberPage.equalsIgnoreCase("Current page")) {
 			waitForElementVisible(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
@@ -163,10 +164,9 @@ public class CategoriesSideBarPageObject extends BasePage {
 		}
 		if (isElementUndisplayed(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage)) {
 			return false;
-		}
-		else
-		//waitForElementVisible(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
-		return isElementDisplayed(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+		} else
+			// waitForElementVisible(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+			return isElementDisplayed(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
 	}
 
 	public List<String> getListNameProductByCreatedOnEachPage() {
@@ -175,7 +175,7 @@ public class CategoriesSideBarPageObject extends BasePage {
 		for (WebElement product : getListProductByCreatedOnEachPage) {
 			System.out.print(product.getText() + "\t");
 			listNameProductByCreatedOnEachPage.add(product.getText());
-			
+
 		}
 		return listNameProductByCreatedOnEachPage;
 	}
@@ -206,7 +206,58 @@ public class CategoriesSideBarPageObject extends BasePage {
 		return isElementDisplayed(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT_BY_NUMBER, numberPage);
 	}
 
+	public void clickToProductByName(List<WebElement> list, String nameProduct) {
+		for (WebElement webElement : list) {
+			if (webElement.getText().equals(nameProduct)) {
+				webElement.click();
+				backToPage(driver);
+			}
+			break;
+		}
+	}
 
+	public void clickToAnyProduct(String nameProduct) {
+		if (isElementUndisplayed(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT)) {
+			List<WebElement> listProductNameOnEachPage = getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_TITLE_LIST_TEXT);
+			clickToProductByName(listProductNameOnEachPage, nameProduct);
+
+		} else {
+			String currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+			while (isNextPageButtonActived(currentNumberPage)) {
+				System.out.println("Next page is actived.");
+				sleepInSecond(4);
+				waitForElementClickable(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+				clickToElement(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+
+				List<WebElement> listProductNameOnNextPage = getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_TITLE_LIST_TEXT);
+				clickToProductByName(listProductNameOnNextPage, nameProduct);
+				currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+				System.out.println("currentNumberPage: " + currentNumberPage);
+			}
+		}
+
+	}
+
+	public List<WebElement> getListProductNameOnAllPage() {
+		List<WebElement> listProductNameOnAllPage = new ArrayList<WebElement>();
+		listProductNameOnAllPage = getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_TITLE_LIST_TEXT);
+		if (!isElementUndisplayed(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT)) {
+			String currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+			while (isNextPageButtonActived(currentNumberPage)) {
+				System.out.println("Next page is actived.");
+				waitForElementClickable(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+				clickToElement(driver, CategoriesSideBarPageUI.NEXT_PAGE_BUTTON_BY_NAME, currentNumberPage);
+				sleepInSecond(5);
+				for (WebElement product : getListWebElement(driver, CategoriesSideBarPageUI.PRODUCT_TITLE_LIST_TEXT)) {
+					listProductNameOnAllPage.add(product);
+				}
+				currentNumberPage = getElementText(driver, CategoriesSideBarPageUI.PAGE_LINK_CURRENT);
+				System.out.println("currentNumberPage: " + currentNumberPage);
+			}
+
+		}
+		return listProductNameOnAllPage;
+	}
 
 	public boolean isPreviousPageButtonActived(String currentNumberPage) {
 		if (currentNumberPage.equalsIgnoreCase("Current page")) {

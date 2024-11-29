@@ -10,5 +10,8 @@ public class HomePageUI {
 	public static final String ADD_TO_COMPARE_LIST_BUTTON_BY_NAME = "XPATH=//a[text()='%s']//ancestor::div[@class='details']//button[@title='shoppingcart.addtocomparelist']";
 	public static final String DYNAMIC_HOME_FOOTER_LINK_TEXT = "xpath=//div[contains(@class,'%s')]//a[text()='%s']";
 	public static final String DYNAMIC_HOME_HEADER_MENU_LINK_TEXT = "XPATH=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]";
+	public static final String DYNAMIC_SUB_MENU_LINK_TEXT = "XPATH=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]//parent::li//a[contains(text(),'%s')]";
+	public static final String DYNAMIC_MENU_LINK_TEXT = "XPATH=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]";
 	public static final String NOTIFICATION_BAR = "CSS=p.content";
+	
 }
