@@ -58,6 +58,8 @@ public class Order_01_Order extends BaseTest {
 		
 		buildYourOwnComputerPage.buildOwnComputer();
 		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
+		
+		
 	}
 
 	@Test
