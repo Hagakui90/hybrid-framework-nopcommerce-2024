@@ -9,11 +9,9 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.guest.BooksCategoryPageObject;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DesktopsSubPageObject;
-import pageObjects.user.DetailProductPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
 
@@ -24,8 +22,6 @@ public class Order_01_Order extends BaseTest {
 	private UserLoginPageObject userLoginPage;
 	private CustomerPageObject customerPage;
 	private DesktopsSubPageObject desktopsSubPage;
-	private DetailProductPageObject detailProductPage;
-	private BooksCategoryPageObject booksCategoryPage;
 	private BuildYourOwnComputerPageObject buildYourOwnComputerPage;
 
 	@Parameters("browser")
@@ -54,10 +50,14 @@ public class Order_01_Order extends BaseTest {
 		desktopsSubPage.clickToAnyProduct("Build your own computer");
 		buildYourOwnComputerPage = PageGeneratorManager.getBuildYourOwnComputerPage(driver);
 
-		buildYourOwnComputerPage.clickToSubMenu("Books", "");
-		booksCategoryPage = PageGeneratorManager.getBooksCategoryPage(driver);
-		booksCategoryPage.clickToAnyProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
-
+		/*
+		 * buildYourOwnComputerPage.clickToSubMenu("Books", ""); booksCategoryPage =
+		 * PageGeneratorManager.getBooksCategoryPage(driver);
+		 * booksCategoryPage.clickToAnyProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
+		 */
+		
+		buildYourOwnComputerPage.buildOwnComputer();
+		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
 	}
 
 	@Test

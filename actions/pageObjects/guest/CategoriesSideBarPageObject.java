@@ -209,7 +209,6 @@ public class CategoriesSideBarPageObject extends BasePage {
 		for (WebElement webElement : list) {
 			if (webElement.getText().equals(nameProduct)) {
 				webElement.click();
-				backToPage(driver);
 			}
 			break;
 		}

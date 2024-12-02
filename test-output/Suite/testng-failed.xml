@@ -6,11 +6,7 @@
     <classes>
       <class name="com.nopcommerce.order.Order_01_Order">
         <methods>
-          <include name="Order_05_Checkout"/>
           <include name="beforeClass"/>
-          <include name="Order_03_Remove_From_Cart"/>
-          <include name="Order_02_Edit_Production_In_Shopping_Cart"/>
-          <include name="Order_04_Update_Shopping_Cart"/>
           <include name="afterClass"/>
           <include name="Order_01_Add_To_Cart"/>
         </methods>
