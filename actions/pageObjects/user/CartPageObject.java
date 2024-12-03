@@ -1,6 +1,9 @@
 package pageObjects.user;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
 import pageUIs.user.CartPageUI;
@@ -25,5 +28,10 @@ public class CartPageObject extends BasePage {
 		}
 	}
 
-	
+	public void removeAllProductFromCart() {
+		List<WebElement> listRemoveButton = getListWebElement(driver, CartPageUI.LIST_REMOVE_BUTTON);
+		for (WebElement button : listRemoveButton) {
+			button.click();
+		}
+	}
 }

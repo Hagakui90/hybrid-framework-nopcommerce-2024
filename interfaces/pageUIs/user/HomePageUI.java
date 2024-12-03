@@ -13,5 +13,6 @@ public class HomePageUI {
 	public static final String DYNAMIC_SUB_MENU_LINK_TEXT = "XPATH=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]//parent::li//a[contains(text(),'%s')]";
 	public static final String DYNAMIC_MENU_LINK_TEXT = "XPATH=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]";
 	public static final String NOTIFICATION_BAR = "CSS=p.content";
+	public static final String SHOPPING_CART_LINK_TEXT = "XPATH=//span[text()='shoppingcart']";
 	
 }

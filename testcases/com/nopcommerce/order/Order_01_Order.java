@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.user.BuildYourOwnComputerPageObject;
+import pageObjects.user.CartPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.DesktopsSubPageObject;
 import pageObjects.user.HomePageObject;
@@ -23,6 +24,7 @@ public class Order_01_Order extends BaseTest {
 	private CustomerPageObject customerPage;
 	private DesktopsSubPageObject desktopsSubPage;
 	private BuildYourOwnComputerPageObject buildYourOwnComputerPage;
+	private CartPageObject cartPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -42,6 +44,12 @@ public class Order_01_Order extends BaseTest {
 
 	@Test
 	public void Order_01_Add_To_Cart() {
+		homePage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.removeAllProductFromCart();
+		cartPage.sleepInSecond(5);
 		homePage.backToPage(driver);
 		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage.clickToSubMenu("Computers", "Desktops");

@@ -87,6 +87,11 @@ public class HomePageObject extends BasePage{
 		}
 			
 	}
+
+	public void clickToShoppingCart() {
+		waitForElementClickable(driver, HomePageUI.SHOPPING_CART_LINK_TEXT);
+		clickToElement(driver, HomePageUI.SHOPPING_CART_LINK_TEXT);
+	}
 	
 	
 
