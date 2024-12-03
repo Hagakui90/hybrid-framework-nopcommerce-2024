@@ -76,7 +76,7 @@ public class View_03_Wishlist_Compare_Recent_View extends BaseTest{
 	}
 
 	
-	public void Wishlist_02_Add_Product_From_Cart_To_Wishlist() {
+	public void Wishlist_02_Add_Product_From_Wishlist_To_Cart() {
 		wishlistPage.addToCart(nameProduct);
 		cartPage = PageGeneratorManager.getCartPage(driver);
 		Assert.assertTrue(cartPage.verifyAddedProductInCart(nameProduct, priceProduct));

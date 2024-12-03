@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Suite]">
+  <test thread-count="5" name="Run on Chrome(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.nopcommerce.order.Order_01_Order">
         <methods>
-          <include name="Order_05_Checkout"/>
           <include name="beforeClass"/>
-          <include name="Order_03_Remove_From_Cart"/>
-          <include name="Order_02_Edit_Production_In_Shopping_Cart"/>
-          <include name="Order_04_Update_Shopping_Cart"/>
           <include name="afterClass"/>
           <include name="Order_01_Add_To_Cart"/>
         </methods>
       </class> <!-- com.nopcommerce.order.Order_01_Order -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Run on Chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->
