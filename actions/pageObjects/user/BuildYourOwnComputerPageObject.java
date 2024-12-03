@@ -40,5 +40,41 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 		return getElementText(driver, BuildYourOwnComputerPageUI.NOTIFICATION_BAR);
 	}
 	
+	public boolean verifyShoppingCart() {
+		String quantityOfCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TIP_TEXT);
+		System.out.println(quantityOfCart);
+		hoverToElement(driver, BuildYourOwnComputerPageUI.SHOPPING_CART_LINKTEXT);
+		waitForElementInVisible(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM);
+		removeAttributeInDOM(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM, "class");
+		
+		String productName = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_NAME_IN_MINI_SHOPPING_CART);
+		String attributesProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_ATTRIBUTES_IN_MINI_SHOPPING_CART);
+		String subtotalProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_SUBTOTAL_IN_MINI_SHOPPING_CART);
+		String quantityOfCartInMiniShoppingCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TEXT_IN_MINI_SHOPPING_CART);
+		
+		System.out.println(productName);
+		System.out.println(attributesProduct);
+		System.out.println(subtotalProduct);
+		System.out.println(quantityOfCartInMiniShoppingCart);
+		System.out.println(getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE));
+		
+		if (quantityOfCart.equals("shoppingcart.headerquantity")) {
+			if (productName.equals("Build your own computer") && quantityOfCartInMiniShoppingCart.equals("shoppingcart.mini.itemstext")) {
+				if (attributesProduct.contains("2.5 GHz Intel Pentium Dual-Core E2200formattedattributes.priceadjustment")
+						&& attributesProduct.contains("4GBformattedattributes.priceadjustment")
+								&& attributesProduct.contains("400 GBformattedattributes.priceadjustment")
+								&& attributesProduct.contains("Vista Premiumformattedattributes.priceadjustment")
+								&& attributesProduct.contains("Microsoft Officeformattedattributes.priceadjustment")
+								&& attributesProduct.contains("Acrobat Readerformattedattributes.priceadjustment")
+								&& attributesProduct.contains("Total Commanderformattedattributes.priceadjustment")) {
+					if(subtotalProduct.equals(getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE)))
+						return true;
+					
+				}
+			}
+		}
+		return false;
+	}
+	
 	
 }
