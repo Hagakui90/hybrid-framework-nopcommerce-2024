@@ -371,6 +371,10 @@ public class BasePage {
 	public void sendKeyboardToElement(WebDriver driver, String locator, Keys key) {
 		new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
 	}
+	
+	public void sendKeyboardToElement(WebDriver driver, String locator, Keys key, String... restParams) {
+		new Actions(driver).sendKeys(getWebElement(driver, getDynamicLocator(locator, restParams)), key).perform();
+	}
 
 	public Object executeForBrowser(WebDriver driver, String javaScript) {
 		return ((JavascriptExecutor) driver).executeScript(javaScript);
@@ -419,6 +423,10 @@ public class BasePage {
 
 	public void sendkeyToElementByJS(WebDriver driver, String locator, String value) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + value + "')", getWebElement(driver, locator));
+	}
+	
+	public void sendkeyToElementByJS(WebDriver driver, String locator, String value, String... restParams) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + value + "')", getWebElement(driver, getDynamicLocator(locator, restParams)));
 	}
 
 	public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove) {

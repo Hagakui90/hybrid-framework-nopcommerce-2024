@@ -18,5 +18,13 @@ public class CustomerViewSideBarPageObject extends BasePage{
 		return getElementText(driver, CustomerViewSideBarPageUI.PAGE_TITLE_TEXT, pageName);
 	}
 	
+	public void closeReviewNotiBar() {
+		clickToElementByJS(driver, CustomerViewSideBarPageUI.CLOSE_REVEW_NOTI_BAR);
+	}
+	
+	public void clickToShoppingCart() {
+		waitForElementClickable(driver, CustomerViewSideBarPageUI.SHOPPING_CART_LINK_TEXT);
+		clickToElement(driver, CustomerViewSideBarPageUI.SHOPPING_CART_LINK_TEXT);
+	}
 	
 }

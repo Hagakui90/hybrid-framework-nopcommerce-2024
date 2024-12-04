@@ -12,6 +12,7 @@ import commons.PageGeneratorManager;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CustomerPageObject;
+import pageObjects.user.CustomerSearchPageObject;
 import pageObjects.user.DesktopsSubPageObject;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
@@ -25,6 +26,7 @@ public class Order_01_Order extends BaseTest {
 	private DesktopsSubPageObject desktopsSubPage;
 	private BuildYourOwnComputerPageObject buildYourOwnComputerPage;
 	private CartPageObject cartPage;
+	private CustomerSearchPageObject customerSearchPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -78,18 +80,26 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(buildYourOwnComputerPage.editProductInShoppingCart());
 		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
 		Assert.assertTrue(buildYourOwnComputerPage.verifyUpdatedShoppingCart());
-
-
 	}
 
 	@Test
 	public void Order_03_Remove_From_Cart() {
-
+		buildYourOwnComputerPage.clickToViewCartButton();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.removeAllProductFromCart();
+		Assert.assertTrue(cartPage.getCartStatusText().contains("shoppingcart.cartisempty"));
 	}
 
 	@Test
 	public void Order_04_Update_Shopping_Cart() {
-
+		cartPage.searchProduct("Lenovo IdeaCentre");
+		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
+		customerSearchPage.updateProductToShoppingCart("Lenovo IdeaCentre");
+		
+		customerSearchPage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.updateQuantity("Lenovo IdeaCentre", "5");
+		Assert.assertTrue(cartPage.getTotalPriceByProductName("Lenovo IdeaCentre").equals("$2,500.00"));
 	}
 
 	@Test

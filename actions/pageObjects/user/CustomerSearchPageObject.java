@@ -95,5 +95,19 @@ public class CustomerSearchPageObject extends CustomerViewSideBarPageObject {
 		waitForElementClickable(driver, CustomerSearchPageUI.SEARCH_BUTTON);
 		clickToElement(driver, CustomerSearchPageUI.SEARCH_BUTTON);
 	}
+	
+	public void updateProductToShoppingCart(String keyword) {
+		List<WebElement> listResultSearch = getListWebElement(driver, CustomerSearchPageUI.LIST_SEARCH_RESULT_TEXT);
+		for (WebElement result : listResultSearch) {
+			String expectedResult = result.getText();
+			if (expectedResult.equals(keyword)) {
+				waitForElementClickable(driver, CustomerSearchPageUI.ADD_TO_CART_BUTTON_BY_NAME, keyword);
+				clickToElement(driver, CustomerSearchPageUI.ADD_TO_CART_BUTTON_BY_NAME, keyword);
+				closeReviewNotiBar();
+				waitForElementInVisible(driver, CustomerSearchPageUI.NOTIFICATION_BAR);
+			}
+		}
+		
+	}
 
 }
