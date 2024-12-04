@@ -34,4 +34,9 @@ public class CartPageObject extends BasePage {
 			button.click();
 		}
 	}
+
+	public void clickToEditButton() {
+		waitForElementClickable(driver, CartPageUI.EDIT_BUTTON);
+		clickToElement(driver, CartPageUI.EDIT_BUTTON);
+	}
 }

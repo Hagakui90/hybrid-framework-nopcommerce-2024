@@ -48,7 +48,7 @@ public class Order_01_Order extends BaseTest {
 		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage.clickToShoppingCart();
 		cartPage = PageGeneratorManager.getCartPage(driver);
-		cartPage.removeAllProductFromCart();
+//		cartPage.removeAllProductFromCart();
 		cartPage.sleepInSecond(5);
 		homePage.backToPage(driver);
 		homePage = PageGeneratorManager.getHomePage(driver);
@@ -67,12 +67,17 @@ public class Order_01_Order extends BaseTest {
 		buildYourOwnComputerPage.buildOwnComputer();
 		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
 		Assert.assertTrue(buildYourOwnComputerPage.verifyShoppingCart());
-		
-		
 	}
 
 	@Test
 	public void Order_02_Edit_Production_In_Shopping_Cart() {
+		buildYourOwnComputerPage.clickToViewCartButton();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.clickToEditButton();
+		buildYourOwnComputerPage = PageGeneratorManager.getBuildYourOwnComputerPage(driver);
+		Assert.assertTrue(buildYourOwnComputerPage.editProductInShoppingCart());
+		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
+
 
 	}
 

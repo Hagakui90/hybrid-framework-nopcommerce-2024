@@ -189,6 +189,10 @@ public class BasePage {
 	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue) {
 		new Select(getWebElement(driver, locator)).selectByVisibleText(itemValue);
 	}
+	
+	public void selectItemInDefaultDropdownByValue(WebDriver driver, String locator, String itemValue) {
+		new Select(getWebElement(driver, locator)).selectByValue(itemValue);
+	}
 
 	public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue, String... restParams) {
 		new Select(getWebElement(driver, getDynamicLocator(locator, restParams))).selectByVisibleText(itemValue);
@@ -280,6 +284,12 @@ public class BasePage {
 	 * @param locator
 	 */
 	public void uncheckToElement(WebDriver driver, String locator) {
+		if (getWebElement(driver, locator).isSelected()) {
+			getWebElement(driver, locator).click();
+		}
+	}
+	
+	public void uncheckToElement(WebDriver driver, String locator, String... restParams) {
 		if (getWebElement(driver, locator).isSelected()) {
 			getWebElement(driver, locator).click();
 		}

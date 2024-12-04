@@ -14,5 +14,9 @@ public class BuildYourOwnComputerPageUI {
 	public static final String PRODUCT_SUBTOTAL_IN_MINI_SHOPPING_CART = "css=div#flyout-cart div.totals strong";
 	public static final String QUANTITY_CART_TEXT_IN_MINI_SHOPPING_CART ="css=div.count";
 	public static final String PRODUCT_PRICE = "CSS=div.product-price span";
+	public static final String VIEW_CART_BUTTON = "CSS=button.cart-button";
+	public static final String QUANTITY_TEXTBOX = "CSS=input.qty-input";
+	public static final String UPDATE_TO_CART_BUTTON = "xpath=//button[text()='shoppingcart.addtocart.update']";
+
 	
 }

@@ -16,6 +16,10 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 		waitForElementVisible(driver, BuildYourOwnComputerPageUI.CHECKBOX, label, idAttribute, dataAttributeValue);
 		checkToElement(driver, BuildYourOwnComputerPageUI.CHECKBOX, label, idAttribute, dataAttributeValue);
 	}
+	public void uncheckEveryCheckBox(String label, String idAttribute, String dataAttributeValue) {
+		waitForElementVisible(driver, BuildYourOwnComputerPageUI.CHECKBOX, label, idAttribute, dataAttributeValue);
+		uncheckToElement(driver, BuildYourOwnComputerPageUI.CHECKBOX, label, idAttribute, dataAttributeValue);
+	}
 	
 	public void buildOwnComputer() {
 		waitForElementClickable(driver, BuildYourOwnComputerPageUI.PROCESSOR_DROPDOWN);
@@ -76,5 +80,30 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 		return false;
 	}
 	
+	public void clickToViewCartButton() {
+		waitForElementClickable(driver, BuildYourOwnComputerPageUI.VIEW_CART_BUTTON);
+		clickToElement(driver, BuildYourOwnComputerPageUI.VIEW_CART_BUTTON);
+	}
+	
+	public boolean editProductInShoppingCart() {
+		waitForElementClickable(driver, BuildYourOwnComputerPageUI.PROCESSOR_DROPDOWN);
+		selectItemInDefaultDropdown(driver, BuildYourOwnComputerPageUI.PROCESSOR_DROPDOWN, "2.2 GHz Intel Pentium Dual-Core E2200");
+		waitForElementClickable(driver, BuildYourOwnComputerPageUI.RAM_DROPDOWN);
+		selectItemInDefaultDropdownByValue(driver, BuildYourOwnComputerPageUI.RAM_DROPDOWN, "4");
+		checkEveryRadioOrCheckBox("HDD", "3", "6");
+		checkEveryRadioOrCheckBox("OS", "4", "8");
+		checkEveryRadioOrCheckBox("Software", "5", "10");
+		uncheckEveryCheckBox("Software", "5", "11");
+		uncheckEveryCheckBox("Software", "5", "12");
+		if (getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE).equals("$1,320.00")) {
+			waitForElementVisible(driver, BuildYourOwnComputerPageUI.QUANTITY_TEXTBOX);
+			sendkeyToElement(driver, BuildYourOwnComputerPageUI.QUANTITY_TEXTBOX, "2");
+			waitForElementClickable(driver, BuildYourOwnComputerPageUI.UPDATE_TO_CART_BUTTON);
+			clickToElement(driver, BuildYourOwnComputerPageUI.UPDATE_TO_CART_BUTTON);
+			return true;
+		}
+		return false;
+		
+	}
 	
 }
