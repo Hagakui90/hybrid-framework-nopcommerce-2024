@@ -290,8 +290,8 @@ public class BasePage {
 	}
 	
 	public void uncheckToElement(WebDriver driver, String locator, String... restParams) {
-		if (getWebElement(driver, locator).isSelected()) {
-			getWebElement(driver, locator).click();
+		if (getWebElement(driver, getDynamicLocator(locator, restParams)).isSelected()) {
+			getWebElement(driver, getDynamicLocator(locator, restParams)).click();
 		}
 	}
 

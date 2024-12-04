@@ -46,7 +46,6 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 	
 	public boolean verifyShoppingCart() {
 		String quantityOfCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TIP_TEXT);
-		System.out.println(quantityOfCart);
 		hoverToElement(driver, BuildYourOwnComputerPageUI.SHOPPING_CART_LINKTEXT);
 		waitForElementInVisible(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM);
 		removeAttributeInDOM(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM, "class");
@@ -55,12 +54,6 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 		String attributesProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_ATTRIBUTES_IN_MINI_SHOPPING_CART);
 		String subtotalProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_SUBTOTAL_IN_MINI_SHOPPING_CART);
 		String quantityOfCartInMiniShoppingCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TEXT_IN_MINI_SHOPPING_CART);
-		
-		System.out.println(productName);
-		System.out.println(attributesProduct);
-		System.out.println(subtotalProduct);
-		System.out.println(quantityOfCartInMiniShoppingCart);
-		System.out.println(getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE));
 		
 		if (quantityOfCart.equals("shoppingcart.headerquantity")) {
 			if (productName.equals("Build your own computer") && quantityOfCartInMiniShoppingCart.equals("shoppingcart.mini.itemstext")) {
@@ -93,6 +86,7 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 		checkEveryRadioOrCheckBox("HDD", "3", "6");
 		checkEveryRadioOrCheckBox("OS", "4", "8");
 		checkEveryRadioOrCheckBox("Software", "5", "10");
+		sleepInSecond(5);
 		uncheckEveryCheckBox("Software", "5", "11");
 		uncheckEveryCheckBox("Software", "5", "12");
 		if (getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE).equals("$1,320.00")) {
@@ -103,7 +97,41 @@ public class BuildYourOwnComputerPageObject extends DetailProductPageObject{
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean verifyUpdatedShoppingCart() {
+		closeReviewNotiBar();
+		String quantityOfCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TIP_TEXT);
+		System.out.println(quantityOfCart);
+		hoverToElement(driver, BuildYourOwnComputerPageUI.SHOPPING_CART_LINKTEXT);
+		waitForElementInVisible(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM);
+		removeAttributeInDOM(driver, BuildYourOwnComputerPageUI.MINI_SHOPPING_CART_FORM, "class");
 		
+		String productName = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_NAME_IN_MINI_SHOPPING_CART);
+		String attributesProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_ATTRIBUTES_IN_MINI_SHOPPING_CART);
+		String subtotalProduct = getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_SUBTOTAL_IN_MINI_SHOPPING_CART);
+		String quantityOfCartInMiniShoppingCart = getElementText(driver, BuildYourOwnComputerPageUI.QUANTITY_CART_TEXT_IN_MINI_SHOPPING_CART);
+		
+		System.out.println(productName);
+		System.out.println(attributesProduct);
+		System.out.println(subtotalProduct);
+		System.out.println(quantityOfCartInMiniShoppingCart);
+		System.out.println(getElementText(driver, BuildYourOwnComputerPageUI.PRODUCT_PRICE));
+		
+		if (quantityOfCart.equals("shoppingcart.headerquantity")) {
+			if (productName.equals("Build your own computer") && quantityOfCartInMiniShoppingCart.equals("shoppingcart.mini.itemstext")) {
+				if (attributesProduct.contains("2.2 GHz Intel Pentium Dual-Core E2200")
+						&& attributesProduct.contains("4GBformattedattributes.priceadjustment")
+								&& attributesProduct.contains("320 GB")
+								&& attributesProduct.contains("Vista Homeformattedattributes.priceadjustment")
+								&& attributesProduct.contains("Microsoft Officeformattedattributes.priceadjustment")) {
+					if(subtotalProduct.equals("$2,640.00"))
+						return true;
+					
+				}
+			}
+		}
+		return false;
 	}
 	
 }
