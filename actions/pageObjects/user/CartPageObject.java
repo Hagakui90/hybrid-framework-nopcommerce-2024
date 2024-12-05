@@ -30,10 +30,13 @@ public class CartPageObject extends BasePage {
 	}
 
 	public void removeAllProductFromCart() {
-		List<WebElement> listRemoveButton = getListWebElement(driver, CartPageUI.LIST_REMOVE_BUTTON);
-		for (WebElement button : listRemoveButton) {
-			button.click();
+		if (isElementUndisplayed(driver, getCartStatusText())) {
+			List<WebElement> listRemoveButton = getListWebElement(driver, CartPageUI.LIST_REMOVE_BUTTON);
+			for (WebElement button : listRemoveButton) {
+				button.click();
+			}
 		}
+		
 	}
 
 	public void clickToEditButton() {

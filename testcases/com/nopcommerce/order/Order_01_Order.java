@@ -104,7 +104,14 @@ public class Order_01_Order extends BaseTest {
 
 	@Test
 	public void Order_05_Checkout() {
-
+		cartPage.removeAllProductFromCart();
+		cartPage.searchProduct("Apple MacBook Pro");
+		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
+		customerSearchPage.updateProductToShoppingCart("Apple iCam");
+		customerSearchPage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.updateQuantity("Apple iCam", "2");
+		Assert.assertTrue(cartPage.getTotalPriceByProductName("Apple iCam").equals("$2,600.00"));
 	}
 
 	@AfterClass

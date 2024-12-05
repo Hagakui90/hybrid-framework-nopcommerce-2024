@@ -10,4 +10,5 @@ public class CartPageUI {
 	public static final String CART_STATUS_TEXT = "CSS=div.order-summary-content div";
 	public static final String SEARCH_BUTTON = "css=button.search-box-button";
 	public static final String SEARCH_TEXTBOX = "css=input.search-box-text";
+	public static final String CONTINUE_SHOPPING_BUTTON = "CSS=button.continue-shopping-button";
 }
