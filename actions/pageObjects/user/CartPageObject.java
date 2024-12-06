@@ -99,5 +99,17 @@ public class CartPageObject extends BasePage {
 		clickToElement(driver, CartPageUI.APPLY_SHIPPING_BUTTON);
 	}
 	
+	public void checkToTermOfService() {
+		waitForElementClickable(driver, CartPageUI.TERM_OF_SERVICE_CHECKBOX);
+		checkToElement(driver, CartPageUI.TERM_OF_SERVICE_CHECKBOX);
+	}
+	
+	public void clickToCheckoutButton() {
+		waitForElementClickable(driver, CartPageUI.CHECKOUT_BUTTON);
+		clickToElement(driver, CartPageUI.CHECKOUT_BUTTON);
+	}
+	
+	
+	
 	
 }

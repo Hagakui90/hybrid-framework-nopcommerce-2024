@@ -12,6 +12,7 @@ import pageObjects.guest.NotebooksSubPageObject;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.ChangePasswordPageObject;
+import pageObjects.user.CheckoutPageObject;
 import pageObjects.user.CompareProductsPageObject;
 import pageObjects.user.CustomerAddressPageObject;
 import pageObjects.user.CustomerPageObject;
@@ -128,5 +129,8 @@ public class PageGeneratorManager {
 
 	public static BuildYourOwnComputerPageObject getBuildYourOwnComputerPage(WebDriver driver) {
 		return new BuildYourOwnComputerPageObject(driver);
+	}
+	public static CheckoutPageObject getCheckoutPage(WebDriver driver) {
+		return new CheckoutPageObject(driver);
 	}
 }

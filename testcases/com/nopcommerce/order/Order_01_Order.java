@@ -11,6 +11,7 @@ import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
+import pageObjects.user.CheckoutPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.CustomerSearchPageObject;
 import pageObjects.user.DesktopsSubPageObject;
@@ -27,6 +28,7 @@ public class Order_01_Order extends BaseTest {
 	private BuildYourOwnComputerPageObject buildYourOwnComputerPage;
 	private CartPageObject cartPage;
 	private CustomerSearchPageObject customerSearchPage;
+	private CheckoutPageObject checkoutPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -122,8 +124,14 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(cartPage.getItemTotalText("subtotal").equals("$2,610.00"));
 
 		cartPage.inputToEstimateShippingPopup("Vietnam", "Hải Phòng", "10021", "checkout.pickuppoints");
-		cartPage.sleepInSecond(10);
 		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
+		
+		cartPage.checkToTermOfService();
+		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
+		checkoutPage.clickToBillingAddressDropdown("checkout.newaddress");
+		
+		checkoutPage.inputNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		
 	}
 
 	@AfterClass
