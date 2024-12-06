@@ -44,7 +44,7 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertEquals(customerPage.getInfoTextboxAttributeValue("account.fields.email"), emailAddress);
 	}
 
-	@Test
+	
 	public void Order_01_Add_To_Cart() {
 		homePage.backToPage(driver);
 		homePage = PageGeneratorManager.getHomePage(driver);
@@ -52,6 +52,7 @@ public class Order_01_Order extends BaseTest {
 		cartPage = PageGeneratorManager.getCartPage(driver);
 		cartPage.removeAllProductFromCart();
 		cartPage.sleepInSecond(5);
+
 		homePage.backToPage(driver);
 		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage.clickToSubMenu("Computers", "Desktops");
@@ -65,13 +66,14 @@ public class Order_01_Order extends BaseTest {
 		 * PageGeneratorManager.getBooksCategoryPage(driver);
 		 * booksCategoryPage.clickToAnyProduct("Where The River Takes Us: Sunday Times Children's Book of the Week");
 		 */
-		
+
 		buildYourOwnComputerPage.buildOwnComputer();
 		Assert.assertTrue(buildYourOwnComputerPage.getTextNotificationBar().equals("products.producthasbeenaddedtothecart.link"));
 		Assert.assertTrue(buildYourOwnComputerPage.verifyShoppingCart());
-	}
 
-	@Test
+	}
+	
+	
 	public void Order_02_Edit_Production_In_Shopping_Cart() {
 		buildYourOwnComputerPage.clickToViewCartButton();
 		cartPage = PageGeneratorManager.getCartPage(driver);
@@ -82,36 +84,46 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(buildYourOwnComputerPage.verifyUpdatedShoppingCart());
 	}
 
-	@Test
+	
 	public void Order_03_Remove_From_Cart() {
 		buildYourOwnComputerPage.clickToViewCartButton();
 		cartPage = PageGeneratorManager.getCartPage(driver);
 		cartPage.removeAllProductFromCart();
 		Assert.assertTrue(cartPage.getCartStatusText().contains("shoppingcart.cartisempty"));
 	}
-
-	@Test
+	
 	public void Order_04_Update_Shopping_Cart() {
 		cartPage.searchProduct("Lenovo IdeaCentre");
 		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
 		customerSearchPage.updateProductToShoppingCart("Lenovo IdeaCentre");
-		
+
 		customerSearchPage.clickToShoppingCart();
 		cartPage = PageGeneratorManager.getCartPage(driver);
 		cartPage.updateQuantity("Lenovo IdeaCentre", "5");
 		Assert.assertTrue(cartPage.getTotalPriceByProductName("Lenovo IdeaCentre").equals("$2,500.00"));
 	}
-
 	@Test
 	public void Order_05_Checkout() {
+		homePage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
 		cartPage.removeAllProductFromCart();
-		cartPage.searchProduct("Apple MacBook Pro");
+		cartPage.searchProduct("Apple iCam");
 		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
 		customerSearchPage.updateProductToShoppingCart("Apple iCam");
 		customerSearchPage.clickToShoppingCart();
 		cartPage = PageGeneratorManager.getCartPage(driver);
 		cartPage.updateQuantity("Apple iCam", "2");
 		Assert.assertTrue(cartPage.getTotalPriceByProductName("Apple iCam").equals("$2,600.00"));
+
+		cartPage.selectGiftWrapping("shoppingcart.checkoutattributes.priceadjustment");
+		Assert.assertTrue(cartPage.getGiftWrappingLabel().contains("Yes"));
+		Assert.assertTrue(cartPage.getItemTotalText("subtotal").equals("$2,610.00"));
+
+		cartPage.inputToEstimateShippingPopup("Vietnam", "Hải Phòng", "10021", "checkout.pickuppoints");
+		cartPage.sleepInSecond(10);
+		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
 	}
 
 	@AfterClass

@@ -30,9 +30,10 @@ public class CartPageObject extends BasePage {
 	}
 
 	public void removeAllProductFromCart() {
-		if (isElementUndisplayed(driver, getCartStatusText())) {
-			List<WebElement> listRemoveButton = getListWebElement(driver, CartPageUI.LIST_REMOVE_BUTTON);
+		List<WebElement> listRemoveButton = getListWebElement(driver, CartPageUI.LIST_REMOVE_BUTTON);
+		if (listRemoveButton.size() != 0) {
 			for (WebElement button : listRemoveButton) {
+				System.out.println("Remove");
 				button.click();
 			}
 		}
@@ -67,4 +68,36 @@ public class CartPageObject extends BasePage {
 		waitForElementVisible(driver, CartPageUI.TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
 		return getElementText(driver, CartPageUI.TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
 	}
+	
+	public void selectGiftWrapping(String value) {
+		waitForElementClickable(driver, CartPageUI.GIFT_WRAPPING_DROPDOWN);
+		selectItemInDefaultDropdown(driver, CartPageUI.GIFT_WRAPPING_DROPDOWN, value);
+	}
+	
+	public String getGiftWrappingLabel() {
+		waitForElementVisible(driver, CartPageUI.GIFT_WRAPPING_LABEL);
+		return getElementText(driver, CartPageUI.GIFT_WRAPPING_LABEL);
+	}
+	
+	public String getItemTotalText(String itemTotal) {
+		waitForElementVisible(driver, CartPageUI.CART_TOTAL_TEXT_BY_NAME, itemTotal);
+		return getElementText(driver, CartPageUI.CART_TOTAL_TEXT_BY_NAME, itemTotal);
+	}
+	
+	public void inputToEstimateShippingPopup(String countryAddress, String provinceAddress, String zipPostalCode, String shippingMethod) {
+		waitForElementClickable(driver, CartPageUI.ESTIMATE_SHIPPING_BUTTON);
+		clickToElement(driver, CartPageUI.ESTIMATE_SHIPPING_BUTTON);
+		waitForElementVisible(driver, CartPageUI.ESTIMATE_SHIPPING_POPUP);
+		selectItemInDefaultDropdown(driver, CartPageUI.ADDRESS_SHIPPING_DROPDOWN, countryAddress, "CountryId");
+		waitForElementVisible(driver, CartPageUI.ADDRESS_SHIPPING_DROPDOWN, "StateProvinceId");
+		selectItemInDefaultDropdown(driver, CartPageUI.ADDRESS_SHIPPING_DROPDOWN, provinceAddress, "StateProvinceId");
+		waitForElementVisible(driver, CartPageUI.ZIP_POSTAL_CODE_TEXTBOX);
+		sendkeyToElement(driver, CartPageUI.ZIP_POSTAL_CODE_TEXTBOX, zipPostalCode);
+		waitForElementVisible(driver, CartPageUI.SHIPPING_METHOD_RADIO_BUTTON_BY_NAME, shippingMethod);
+		checkToElement(driver, CartPageUI.SHIPPING_METHOD_RADIO_BUTTON_BY_NAME, shippingMethod);
+		waitForElementClickable(driver, CartPageUI.APPLY_SHIPPING_BUTTON);
+		clickToElement(driver, CartPageUI.APPLY_SHIPPING_BUTTON);
+	}
+	
+	
 }
