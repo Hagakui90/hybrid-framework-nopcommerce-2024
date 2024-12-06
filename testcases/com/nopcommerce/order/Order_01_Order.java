@@ -128,10 +128,11 @@ public class Order_01_Order extends BaseTest {
 		
 		cartPage.checkToTermOfService();
 		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
-		checkoutPage.clickToBillingAddressDropdown("checkout.newaddress");
+		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
 		
-		checkoutPage.inputNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		checkoutPage.inputBillingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
 		
+		checkoutPage.inputShippingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
 	}
 
 	@AfterClass
