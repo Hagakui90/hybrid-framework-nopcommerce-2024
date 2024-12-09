@@ -8,7 +8,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import commons.BillingAddress;
 import commons.PageGeneratorManager;
+import commons.ShippingAddress;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CheckoutPageObject;
@@ -29,6 +31,8 @@ public class Order_01_Order extends BaseTest {
 	private CartPageObject cartPage;
 	private CustomerSearchPageObject customerSearchPage;
 	private CheckoutPageObject checkoutPage;
+	private BillingAddress billingAddress;
+	private ShippingAddress shippingAddress;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -130,9 +134,11 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
 		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
 		
-		checkoutPage.inputBillingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		billingAddress = checkoutPage.createBillingAddress("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		checkoutPage.inputBillingNewAddressForm(billingAddress);
 		
-		checkoutPage.inputShippingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		shippingAddress = checkoutPage.createShippingAddress("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		checkoutPage.inputShippingNewAddressForm(shippingAddress);
 		
 		checkoutPage.selectShippingMethod("Shipping by land transpor");
 		checkoutPage.selectPaymentMethod("Check / Money Order");

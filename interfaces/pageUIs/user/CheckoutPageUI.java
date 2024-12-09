@@ -10,4 +10,5 @@ public class CheckoutPageUI {
 	public static final String SHIPPING_METHOD_RADIO_BUTTON_BY_NAME = "xpath=//div[contains(text(),'%s')]//preceding-sibling::div/input";
 	public static final String PAYMENT_RADIO_BUTTON_BY_NAME = "xpath=//label[contains(text(),'%s')]//preceding-sibling::input";
 	public static final String PAYMENT_INFO_AREA = "css=div.payment-info";
+	public static final String INFO_TEXT_BY_NAME = "css=div.%s li.%s";
 }
