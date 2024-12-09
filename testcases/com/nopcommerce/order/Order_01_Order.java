@@ -133,6 +133,10 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage.inputBillingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
 		
 		checkoutPage.inputShippingNewAddressForm("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		
+		checkoutPage.selectShippingMethod("Shipping by land transpor");
+		checkoutPage.selectPaymentMethod("Check / Money Order");
+		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
 	}
 
 	@AfterClass
