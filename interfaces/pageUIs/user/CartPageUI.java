@@ -20,6 +20,6 @@ public class CartPageUI {
 	public static final String SHIPPING_METHOD_RADIO_BUTTON_BY_NAME = "XPATH=//div[text()='%s']//preceding-sibling::div//label";
 	public static final String APPLY_SHIPPING_BUTTON = "CSS=button.apply-shipping-button";
 	public static final String CART_TOTAL_TEXT_BY_NAME = "XPATH=//label[contains(text(),'%s')]//ancestor::tr//span[@class='value-summary']";
-	public static final String TERM_OF_SERVICE_CHECKBOX =  "xpath=input#termsofservice";
-	public static final String CHECKOUT_BUTTON =  "xpath=button#checkout";
+	public static final String TERM_OF_SERVICE_CHECKBOX =  "css=input#termsofservice";
+	public static final String CHECKOUT_BUTTON =  "css=button#checkout";
 }

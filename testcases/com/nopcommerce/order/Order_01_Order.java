@@ -131,18 +131,30 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
 		
 		cartPage.checkToTermOfService();
+		cartPage.clickToCheckoutButton();
 		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
 		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
 		
 		billingAddress = checkoutPage.createBillingAddress("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
 		checkoutPage.inputBillingNewAddressForm(billingAddress);
+		checkoutPage.clickToContinueButton("billing");
 		
 		shippingAddress = checkoutPage.createShippingAddress("Hasta", "Manana", "gogoloves021@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
 		checkoutPage.inputShippingNewAddressForm(shippingAddress);
+		checkoutPage.clickToContinueButton("shipping");
 		
 		checkoutPage.selectShippingMethod("Shipping by land transpor");
+		checkoutPage.clickToContinueButton("shipping-method");
+		
 		checkoutPage.selectPaymentMethod("Check / Money Order");
+		checkoutPage.clickToContinueButton("payment-method");
 		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
+		checkoutPage.clickToContinueButton("payment-info");
+		
+		checkoutPage.verifyConfirmedOrder("Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
+				"$2,611.99", billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
+		
+		
 	}
 
 	@AfterClass

@@ -9,8 +9,6 @@ import pageUIs.user.CheckoutPageUI;
 
 public class CheckoutPageObject extends BasePage{
 	WebDriver driver;
-	BillingAddress billingAddress;
-	ShippingAddress shippingAddress;
 
 	public CheckoutPageObject(WebDriver driver) {
 		this.driver = driver;
@@ -41,6 +39,11 @@ public class CheckoutPageObject extends BasePage{
 		return getElementText(driver, CheckoutPageUI.INFO_TEXT_BY_NAME, infoName, info);
 	}
 	
+	public void clickToContinueButton(String nameForm) {
+		waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, nameForm);
+		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, nameForm);
+	}
+	
 	public BillingAddress createBillingAddress(String firstName, String lastName, String email, String country, String province, String city, String address1, String zipPostalCode, String phoneNumber) {
 		return new BillingAddress(firstName, lastName, email, country, province, city, address1, zipPostalCode, phoneNumber);
 	}
@@ -61,8 +64,7 @@ public class CheckoutPageObject extends BasePage{
 		inputAddressToTextbox("BillingNewAddress_Address1", billingAddress.getAddress1());
 		inputAddressToTextbox("BillingNewAddress_ZipPostalCode", billingAddress.getZipPostalCode());
 		inputAddressToTextbox("BillingNewAddress_PhoneNumber", billingAddress.getPhoneNumber());
-		waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "billing");
-		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "billing");
+		
 	}
 	
 	public void inputShippingNewAddressForm(ShippingAddress shippingAddress) {
@@ -71,14 +73,12 @@ public class CheckoutPageObject extends BasePage{
 		inputAddressToTextbox("ShippingNewAddress_FirstName", shippingAddress.getFirstName());
 		inputAddressToTextbox("ShippingNewAddress_LastName", shippingAddress.getLastName());
 		inputAddressToTextbox("ShippingNewAddress_Email", shippingAddress.getEmail());
-		clickToAddressDropdown("ShippingNewAddress_CountryId", shippingAddress.getAddress1());
+		clickToAddressDropdown("ShippingNewAddress_CountryId", shippingAddress.getCountry());
 		clickToAddressDropdown("ShippingNewAddress_StateProvinceId", shippingAddress.getProvince());
 		inputAddressToTextbox("ShippingNewAddress_City", shippingAddress.getCity());
 		inputAddressToTextbox("ShippingNewAddress_Address1", shippingAddress.getAddress1());
 		inputAddressToTextbox("ShippingNewAddress_ZipPostalCode", shippingAddress.getZipPostalCode());
 		inputAddressToTextbox("ShippingNewAddress_PhoneNumber", shippingAddress.getPhoneNumber());
-		waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "shipping");
-		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "shipping");
 	}
 	
 	public boolean verifyInforAddress(BillingAddress billingAddress, ShippingAddress shippingAddress) {
@@ -113,25 +113,25 @@ public class CheckoutPageObject extends BasePage{
 		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-step-shipping-method");
 		waitForElementVisible(driver, CheckoutPageUI.SHIPPING_METHOD_RADIO_BUTTON_BY_NAME, shippingMethod);
 		checkToElement(driver, CheckoutPageUI.SHIPPING_METHOD_RADIO_BUTTON_BY_NAME, shippingMethod);
-		waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "shipping-method");
-		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "shipping-method");
 	}
 	
 	public void selectPaymentMethod(String paymentMethod) {
-		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-step-payment-method");
+		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-payment-method-load");
 		waitForElementVisible(driver, CheckoutPageUI.PAYMENT_RADIO_BUTTON_BY_NAME, paymentMethod);
 		checkToElement(driver, CheckoutPageUI.PAYMENT_RADIO_BUTTON_BY_NAME, paymentMethod);
-		waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "'payment-method");
-		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, "'payment-method");
+		
 	}
 	
-	public boolean verifySelectedShippingMethod(String shippingMethod) {
-		
+	public boolean verifySelectedMethod(String method, String valueMethod) {
+		waitForElementVisible(driver, CheckoutPageUI.INFO_METHOD_TEXT_BY_NAME, method);
+		if (getElementText(driver, CheckoutPageUI.INFO_METHOD_TEXT_BY_NAME, method).contains(valueMethod)) {
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean verifySelectedPaymentMethod(String paymentMethod) {
-		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-step-payment-info");
+		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-payment-info-load");
 		waitForElementVisible(driver, CheckoutPageUI.PAYMENT_INFO_AREA);
 		String paymentInfo = getElementText(driver, CheckoutPageUI.PAYMENT_INFO_AREA);
 		//"Check / Money Order"
@@ -145,9 +145,40 @@ public class CheckoutPageObject extends BasePage{
 		return false;
 	}
 	
-	public boolean verifyConfirmedOrder() {
+	public boolean verifyConfirmedOrder(String nameProduct, String quantity, String unitPrice, String totalItem, String totalShipping, String giftWrapping, 
+			String TotalOrder, BillingAddress billingAddress, ShippingAddress shippingAddress, String paymentMethod, String shippingMethod) {
 		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-step-confirm-order");
 		boolean verifyInforAddress = verifyInforAddress(billingAddress, shippingAddress);
-		return true;
+		boolean verifySelectedPaymentMethod = verifySelectedMethod("payment-method", paymentMethod);
+		boolean verifySelectedShippingMethod = verifySelectedMethod("shipping-method", shippingMethod);
+		waitForElementVisible(driver, CheckoutPageUI.PRODUCT_INFO_TEXT);
+		boolean verifySku = false;
+		if (isElementDisplayed(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku")) {
+			verifySku = true;
+		}
+		String name = getElementText(driver, CheckoutPageUI.NAME_INFO_TEXT);
+		String unitPriceProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price");
+		String quantityProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity");
+		String totalItemPrice = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "subtotal");
+		waitForElementVisible(driver, CheckoutPageUI.CART_OPTION_TEXT);
+		String cartOption = getElementText(driver, CheckoutPageUI.CART_OPTION_TEXT);
+		waitForElementVisible(driver, CheckoutPageUI.CART_FOOTER_TEXT);
+		String subTotal = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "order-subtotal");
+		String totalShippingMethod = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "shipping-cost");
+		String orderTotal = getElementText(driver, CheckoutPageUI.ORDER_TOTAL_TEXT);
+		
+		boolean verifyName = name.equals(nameProduct);
+		boolean verifyUnitPrice = unitPriceProduct.equals(unitPrice);
+		boolean verifyQuantity = quantityProduct.equals(quantity);
+		boolean verifyTotalItemPrice = totalItemPrice.equals(totalItem);
+		boolean verifyCartOption = cartOption.contains(giftWrapping);
+		boolean verifySubtotal = subTotal.equals(totalItem);
+		boolean verifyTotalShippingMethod = totalShippingMethod.equals(totalShipping);
+		boolean verifyOrderToal = orderTotal.equals(TotalOrder);
+		if (verifyUnitPrice && verifyName && verifySku && verifyQuantity && verifyTotalItemPrice && verifyCartOption && verifySubtotal &&
+				verifyTotalShippingMethod && verifyOrderToal && verifyInforAddress && verifySelectedPaymentMethod && verifySelectedShippingMethod) {
+			return true;
+		}
+		return false;
 	}
 }
