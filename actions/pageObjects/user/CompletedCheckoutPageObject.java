@@ -40,11 +40,11 @@ public class CompletedCheckoutPageObject extends CheckoutPageObject {
 	}
 	
 	public String getOrderDateText() {
-		waitForElementVisible(driver, CompletedCheckoutPageUI.ORDER_NUMBER_TEXT);
-		String detail = getElementText(driver, CompletedCheckoutPageUI.ORDER_NUMBER_TEXT);
-		String orderNumber = detail.substring(22);
-		System.out.println(orderNumber);
-		return orderNumber;
+		waitForElementVisible(driver, CompletedCheckoutPageUI.ORDER_DATE_TEXT);
+		String detail = getElementText(driver, CompletedCheckoutPageUI.ORDER_DATE_TEXT);
+		String orderDate = detail.substring(17);
+		System.out.println(orderDate);
+		return orderDate;
 	}
 
 	public HomePageObject clickToThankYouContinueButton() {
