@@ -9,12 +9,14 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.BillingAddress;
+import commons.Order;
 import commons.PageGeneratorManager;
 import commons.ShippingAddress;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CheckoutPageObject;
 import pageObjects.user.CompletedCheckoutPageObject;
+import pageObjects.user.CustomerOrderDetailsPageObject;
 import pageObjects.user.CustomerOrderPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.CustomerSearchPageObject;
@@ -37,6 +39,7 @@ public class Order_01_Order extends BaseTest {
 	private ShippingAddress shippingAddress;
 	private CompletedCheckoutPageObject completedCheckoutPage;
 	private CustomerOrderPageObject customerOrderPage;
+	private CustomerOrderDetailsPageObject customerOrderDetailsPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -157,8 +160,12 @@ public class Order_01_Order extends BaseTest {
 		
 		checkoutPage.verifyConfirmedOrder("Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
 				"$2,611.99", billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
+		String skuProduct = checkoutPage.getSkuProductText();
+		
+		Order draftedOrder =checkoutPage.createDraftedOrder(billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
 		checkoutPage.clickToConfirmButton();
 		completedCheckoutPage = PageGeneratorManager.getCompletedCheckoutPage(driver);
+		Order completedOrder = completedCheckoutPage.createCompletedOrder(draftedOrder);
 		
 		Assert.assertEquals(completedCheckoutPage.getPageTitleText(), "checkout.thankyou");
 		Assert.assertEquals(completedCheckoutPage.getOrderCompletedTitleText(), "checkout.yourorderhasbeensuccessfullyprocessed");
@@ -168,8 +175,11 @@ public class Order_01_Order extends BaseTest {
 		customerPage = homePage.clickToMyAccountLink();
 		customerPage.openDynamicSideBarPage("account.customerorders");
 		customerOrderPage = PageGeneratorManager.getCustomerOrderPage(driver);
-		
 		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("account.customerorders"));
+		
+		customerOrderPage.clickToDetailCustomerOrderByOrderNumber(orderNumber);
+		customerOrderDetailsPage = PageGeneratorManager.getCustomerOrderDetailsPage(driver);
+		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("order.orderinformation"));
 		
 	}
 

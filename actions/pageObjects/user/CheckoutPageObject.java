@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.BillingAddress;
+import commons.Order;
 import commons.ShippingAddress;
 import pageUIs.user.CheckoutPageUI;
 
@@ -44,9 +45,11 @@ public class CheckoutPageObject extends BasePage{
 		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, nameForm);
 	}
 	
-	public void clickToConfirmButton() {
-		waitForElementClickable(driver, CheckoutPageUI.CONFIRM_BUTTON);
-		clickToElement(driver, CheckoutPageUI.CONFIRM_BUTTON);
+
+	
+	public String getSkuProductText() {
+		waitForElementVisible(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku");
+		return getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku");
 	}
 	
 	public BillingAddress createBillingAddress(String firstName, String lastName, String email, String country, String province, String city, String address1, String zipPostalCode, String phoneNumber) {
@@ -161,16 +164,20 @@ public class CheckoutPageObject extends BasePage{
 		if (isElementDisplayed(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku")) {
 			verifySku = true;
 		}
+		
+		String totalItemPrice = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "subtotal");
+		
 		String name = getElementText(driver, CheckoutPageUI.NAME_INFO_TEXT);
 		String unitPriceProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price");
 		String quantityProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity");
-		String totalItemPrice = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "subtotal");
 		waitForElementVisible(driver, CheckoutPageUI.CART_OPTION_TEXT);
 		String cartOption = getElementText(driver, CheckoutPageUI.CART_OPTION_TEXT);
 		waitForElementVisible(driver, CheckoutPageUI.CART_FOOTER_TEXT);
 		String subTotal = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "order-subtotal");
 		String totalShippingMethod = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "shipping-cost");
 		String orderTotal = getElementText(driver, CheckoutPageUI.ORDER_TOTAL_TEXT);
+		
+		Order order = createDraftedOrder(billingAddress, shippingAddress, paymentMethod, shippingMethod);
 		
 		boolean verifyName = name.equals(nameProduct);
 		boolean verifyUnitPrice = unitPriceProduct.equals(unitPrice);
@@ -179,11 +186,30 @@ public class CheckoutPageObject extends BasePage{
 		boolean verifyCartOption = cartOption.contains(giftWrapping);
 		boolean verifySubtotal = subTotal.equals(totalItem);
 		boolean verifyTotalShippingMethod = totalShippingMethod.equals(totalShipping);
-		boolean verifyOrderToal = orderTotal.equals(TotalOrder);
+		boolean verifyOrderTotal = orderTotal.equals(TotalOrder);
 		if (verifyUnitPrice && verifyName && verifySku && verifyQuantity && verifyTotalItemPrice && verifyCartOption && verifySubtotal &&
-				verifyTotalShippingMethod && verifyOrderToal && verifyInforAddress && verifySelectedPaymentMethod && verifySelectedShippingMethod) {
+				verifyTotalShippingMethod && verifyOrderTotal && verifyInforAddress && verifySelectedPaymentMethod && verifySelectedShippingMethod) {
 			return true;
 		}
 		return false;
+	}
+	
+	public Order createDraftedOrder(BillingAddress billingAddress, ShippingAddress shippingAddress, String paymentMethod, String shippingMethod) {
+		String sku = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku");
+		String name = getElementText(driver, CheckoutPageUI.NAME_INFO_TEXT);
+		String unitPriceProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price");
+		String quantityProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity");
+		waitForElementVisible(driver, CheckoutPageUI.CART_OPTION_TEXT);
+		String cartOption = getElementText(driver, CheckoutPageUI.CART_OPTION_TEXT);
+		waitForElementVisible(driver, CheckoutPageUI.CART_FOOTER_TEXT);
+		String subTotal = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "order-subtotal");
+		String totalShippingMethod = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "shipping-cost");
+		String orderTotal = getElementText(driver, CheckoutPageUI.ORDER_TOTAL_TEXT);
+		return new Order(sku, name, orderTotal, billingAddress, shippingAddress, paymentMethod, shippingMethod,
+				unitPriceProduct, quantityProduct, cartOption, subTotal, totalShippingMethod);
+	}
+	public void clickToConfirmButton() {
+		waitForElementClickable(driver, CheckoutPageUI.CONFIRM_BUTTON);
+		clickToElement(driver, CheckoutPageUI.CONFIRM_BUTTON);
 	}
 }

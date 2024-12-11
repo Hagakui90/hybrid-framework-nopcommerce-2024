@@ -3,6 +3,13 @@ package commons;
 import java.util.Date;
 
 public class Product implements Comparable<Product>{
+	private String skuOfProduct;
+	public String getSkuOfProduct() {
+		return skuOfProduct;
+	}
+	public void setSkuOfProduct(String skuOfProduct) {
+		this.skuOfProduct = skuOfProduct;
+	}
 	private String titleOfProduct;
 	public String getTitleOfProduct() {
 		return titleOfProduct;

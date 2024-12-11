@@ -16,6 +16,7 @@ import pageObjects.user.CheckoutPageObject;
 import pageObjects.user.CompareProductsPageObject;
 import pageObjects.user.CompletedCheckoutPageObject;
 import pageObjects.user.CustomerAddressPageObject;
+import pageObjects.user.CustomerOrderDetailsPageObject;
 import pageObjects.user.CustomerOrderPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.CustomerProductReviewPageObject;
@@ -142,5 +143,9 @@ public class PageGeneratorManager {
 	
 	public static CompletedCheckoutPageObject getCompletedCheckoutPage(WebDriver driver) {
 		return new CompletedCheckoutPageObject(driver);
+	}
+	
+	public static CustomerOrderDetailsPageObject getCustomerOrderDetailsPage(WebDriver driver) {
+		return new CustomerOrderDetailsPageObject(driver);
 	}
 }
