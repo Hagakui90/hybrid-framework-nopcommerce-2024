@@ -44,6 +44,11 @@ public class CheckoutPageObject extends BasePage{
 		clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BY_TYPE, nameForm);
 	}
 	
+	public void clickToConfirmButton() {
+		waitForElementClickable(driver, CheckoutPageUI.CONFIRM_BUTTON);
+		clickToElement(driver, CheckoutPageUI.CONFIRM_BUTTON);
+	}
+	
 	public BillingAddress createBillingAddress(String firstName, String lastName, String email, String country, String province, String city, String address1, String zipPostalCode, String phoneNumber) {
 		return new BillingAddress(firstName, lastName, email, country, province, city, address1, zipPostalCode, phoneNumber);
 	}

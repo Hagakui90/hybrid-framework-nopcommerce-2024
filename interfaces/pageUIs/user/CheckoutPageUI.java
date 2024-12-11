@@ -7,6 +7,7 @@ public class CheckoutPageUI {
 	public static final String INFORMATION_ADDRESS_TEXTBOX_BY_NAME = "XPATH=//input[contains(@id,'%s')]";
 	public static final String DROPDOWN_BY_NAME = "css=select#%s";
 	public static final String CONTINUE_BUTTON_BY_TYPE = "xpath=//div[@id='%s-buttons-container']//button[contains(text(),'continue')]";
+	public static final String CONFIRM_BUTTON = "xpath=//div[@id='confirm-order-buttons-container']//button";
 	public static final String SHIPPING_METHOD_RADIO_BUTTON_BY_NAME = "xpath=//div[contains(text(),'%s')]//preceding-sibling::div/input";
 	public static final String PAYMENT_RADIO_BUTTON_BY_NAME = "xpath=//label[contains(text(),'%s')]//preceding-sibling::input";
 	public static final String PAYMENT_INFO_AREA = "css=div.payment-info";

@@ -14,6 +14,8 @@ import commons.ShippingAddress;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CheckoutPageObject;
+import pageObjects.user.CompletedCheckoutPageObject;
+import pageObjects.user.CustomerOrderPageObject;
 import pageObjects.user.CustomerPageObject;
 import pageObjects.user.CustomerSearchPageObject;
 import pageObjects.user.DesktopsSubPageObject;
@@ -33,6 +35,8 @@ public class Order_01_Order extends BaseTest {
 	private CheckoutPageObject checkoutPage;
 	private BillingAddress billingAddress;
 	private ShippingAddress shippingAddress;
+	private CompletedCheckoutPageObject completedCheckoutPage;
+	private CustomerOrderPageObject customerOrderPage;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -153,7 +157,19 @@ public class Order_01_Order extends BaseTest {
 		
 		checkoutPage.verifyConfirmedOrder("Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
 				"$2,611.99", billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
+		checkoutPage.clickToConfirmButton();
+		completedCheckoutPage = PageGeneratorManager.getCompletedCheckoutPage(driver);
 		
+		Assert.assertEquals(completedCheckoutPage.getPageTitleText(), "checkout.thankyou");
+		Assert.assertEquals(completedCheckoutPage.getOrderCompletedTitleText(), "checkout.yourorderhasbeensuccessfullyprocessed");
+		String orderNumber = completedCheckoutPage.getOrderNumberText();
+		
+		homePage = completedCheckoutPage.clickToThankYouContinueButton();
+		customerPage = homePage.clickToMyAccountLink();
+		customerPage.openDynamicSideBarPage("account.customerorders");
+		customerOrderPage = PageGeneratorManager.getCustomerOrderPage(driver);
+		
+		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("account.customerorders"));
 		
 	}
 

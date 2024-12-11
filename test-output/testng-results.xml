@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-06T04:20:46Z" name="Suite" finished-at="2024-12-06T04:21:24Z" duration-ms="37749">
+  <suite started-at="2024-12-10T07:18:12Z" name="Suite" finished-at="2024-12-10T07:18:46Z" duration-ms="34287">
     <groups>
     </groups>
-    <test started-at="2024-12-06T04:20:46Z" name="Run on Chrome" finished-at="2024-12-06T04:21:24Z" duration-ms="37749">
+    <test started-at="2024-12-10T07:18:12Z" name="Run on Chrome" finished-at="2024-12-10T07:18:46Z" duration-ms="34287">
       <class name="com.nopcommerce.order.Order_01_Order">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-06T04:20:46Z" name="beforeClass" finished-at="2024-12-06T04:20:49Z" duration-ms="3050" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-10T07:18:12Z" name="beforeClass" finished-at="2024-12-10T07:18:15Z" duration-ms="2862" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Order_05_Checkout()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-06T04:20:49Z" name="Order_05_Checkout" finished-at="2024-12-06T04:21:24Z" duration-ms="34691" status="PASS">
+        <test-method signature="Order_05_Checkout()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-10T07:18:15Z" name="Order_05_Checkout" finished-at="2024-12-10T07:18:46Z" duration-ms="31418" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Order_05_Checkout -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-06T04:21:24Z" name="afterClass" finished-at="2024-12-06T04:21:24Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.order.Order_01_Order@124c278f]" started-at="2024-12-10T07:18:46Z" name="afterClass" finished-at="2024-12-10T07:18:46Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
