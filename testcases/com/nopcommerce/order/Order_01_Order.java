@@ -11,7 +11,9 @@ import commons.BaseTest;
 import commons.BillingAddress;
 import commons.Order;
 import commons.PageGeneratorManager;
+import commons.PaymentMethod;
 import commons.ShippingAddress;
+import commons.ShippingMethod;
 import pageObjects.user.BuildYourOwnComputerPageObject;
 import pageObjects.user.CartPageObject;
 import pageObjects.user.CheckoutPageObject;
@@ -37,6 +39,8 @@ public class Order_01_Order extends BaseTest {
 	private CheckoutPageObject checkoutPage;
 	private BillingAddress billingAddress;
 	private ShippingAddress shippingAddress;
+	private ShippingMethod shippingMethod;
+	private PaymentMethod paymentMethod;
 	private CompletedCheckoutPageObject completedCheckoutPage;
 	private CustomerOrderPageObject customerOrderPage;
 	private CustomerOrderDetailsPageObject customerOrderDetailsPage;
@@ -135,7 +139,9 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(cartPage.getItemTotalText("subtotal").equals("$2,610.00"));
 
 		cartPage.inputToEstimateShippingPopup("Vietnam", "Hải Phòng", "10021", "checkout.pickuppoints");
+		cartPage.sleepInSecond(10);
 		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
+		
 		
 		cartPage.checkToTermOfService();
 		cartPage.clickToCheckoutButton();
@@ -150,26 +156,26 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage.inputShippingNewAddressForm(shippingAddress);
 		checkoutPage.clickToContinueButton("shipping");
 		
-		checkoutPage.selectShippingMethod("Shipping by land transpor");
+		shippingMethod = checkoutPage.createShippingMethod("Shipping by land transpor");
+		checkoutPage.selectShippingMethod(shippingMethod.getShippingMethodType());
 		checkoutPage.clickToContinueButton("shipping-method");
 		
-		checkoutPage.selectPaymentMethod("Check / Money Order");
+		paymentMethod = checkoutPage.createPaymentMethod("Check / Money Order");
+		checkoutPage.selectPaymentMethod(paymentMethod.getPaymentMethodType());
 		checkoutPage.clickToContinueButton("payment-method");
 		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
 		checkoutPage.clickToContinueButton("payment-info");
 		
 		checkoutPage.verifyConfirmedOrder("Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
-				"$2,611.99", billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
-		String skuProduct = checkoutPage.getSkuProductText();
+				"$2,611.99", billingAddress, shippingAddress, paymentMethod, shippingMethod);
 		
-		Order draftedOrder =checkoutPage.createDraftedOrder(billingAddress, shippingAddress, "Check / Money Order", "Shipping by land transpor");
+		Order draftedOrder =checkoutPage.createDraftedOrder(billingAddress, shippingAddress, paymentMethod, shippingMethod);
 		checkoutPage.clickToConfirmButton();
 		completedCheckoutPage = PageGeneratorManager.getCompletedCheckoutPage(driver);
 		Order completedOrder = completedCheckoutPage.createCompletedOrder(draftedOrder);
 		
 		Assert.assertEquals(completedCheckoutPage.getPageTitleText(), "checkout.thankyou");
 		Assert.assertEquals(completedCheckoutPage.getOrderCompletedTitleText(), "checkout.yourorderhasbeensuccessfullyprocessed");
-		String orderNumber = completedCheckoutPage.getOrderNumberText();
 		
 		homePage = completedCheckoutPage.clickToThankYouContinueButton();
 		customerPage = homePage.clickToMyAccountLink();
@@ -177,9 +183,25 @@ public class Order_01_Order extends BaseTest {
 		customerOrderPage = PageGeneratorManager.getCustomerOrderPage(driver);
 		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("account.customerorders"));
 		
-		customerOrderPage.clickToDetailCustomerOrderByOrderNumber(orderNumber);
+		customerOrderPage.clickToDetailCustomerOrderByOrderNumber(completedOrder.getOrderNumber());
 		customerOrderDetailsPage = PageGeneratorManager.getCustomerOrderDetailsPage(driver);
 		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("order.orderinformation"));
+		
+		//Assert.assertTrue(customerOrderDetailsPage.verifyOrderDetail(completedOrder));
+		
+		Assert.assertTrue(customerOrderDetailsPage.getOrderNumber().contains(completedOrder.getOrderNumber())) ;
+		Assert.assertTrue(!customerOrderDetailsPage.getOrderOverviewTextByName("order-date").equals(""));
+		completedOrder.setOrderDate(customerOrderDetailsPage.getOrderOverviewTextByName("order-date"));
+		Assert.assertTrue(customerOrderDetailsPage.getOrderOverviewTextByName("order-status").contains(completedOrder.getStatusOfOrder()));
+		Assert.assertTrue(customerOrderDetailsPage.getTotalOrderOverview().contains(completedOrder.getTotalOfOrder()));
+		
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderInfoAddress("billing", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderInfoAddress("shipping", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyInfoMethod("payment", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyInfoMethod("shipping", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderProduct(completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.getGiftWrappingOption().contains(completedOrder.getGiftWrapping()));
+		Assert.assertTrue(customerOrderDetailsPage.verifyTotalOrder(completedOrder));
 		
 	}
 

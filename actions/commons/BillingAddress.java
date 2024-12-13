@@ -13,6 +13,10 @@ public class BillingAddress {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	public String getName() {
+		return firstName + " " + lastName;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -55,7 +59,6 @@ public class BillingAddress {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 	
 	public BillingAddress(String firstName, String lastName, String email, String country, String province, String city, String address1, String zipPostalCode, String phoneNumber) {
 		this.firstName = firstName;

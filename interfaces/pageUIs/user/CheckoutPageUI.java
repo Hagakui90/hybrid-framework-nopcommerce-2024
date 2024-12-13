@@ -15,7 +15,7 @@ public class CheckoutPageUI {
 	public static final String INFO_METHOD_TEXT_BY_NAME = "CSS=li.%s span.value";
 	public static final String PRODUCT_INFO_TEXT = "CSS=table.cart tbody tr";
 	public static final String PRODUCT_INFO_ITEM_TEXT_BY_NAME = "CSS=table.cart td.%s span";
-	public static final String NAME_INFO_TEXT = "CSS=table.cart td.product a";
+	public static final String NAME_OF_PRODUCT_INFO_TEXT = "CSS=table.cart td.product a";
 	public static final String CART_OPTION_TEXT = "CSS=div.cart-options";
 	public static final String CART_FOOTER_TEXT = "CSS=div.cart-footer";
 	public static final String CART_FOOTER_ITEM_TEXT_BY_NAME = "CSS=div.cart-footer tr.%s td.cart-total-right span";

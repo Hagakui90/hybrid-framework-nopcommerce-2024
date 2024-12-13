@@ -2,9 +2,10 @@ package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
-import commons.BasePage;
 import commons.Order;
 import commons.PageGeneratorManager;
+import commons.PaymentMethod;
+import commons.ShippingMethod;
 import pageUIs.user.CompletedCheckoutPageUI;
 
 public class CompletedCheckoutPageObject extends CheckoutPageObject {
@@ -27,7 +28,9 @@ public class CompletedCheckoutPageObject extends CheckoutPageObject {
 
 	public Order createCompletedOrder(Order draftedOrder) {
 		draftedOrder.setOrderNumber(getOrderNumberText());
-		draftedOrder.setOrderDate(getOrderDateText());
+		draftedOrder.setStatusOfOrder("Pending");
+		draftedOrder.setShippingMethod(new ShippingMethod(draftedOrder.getShippingMethod().getShippingMethodType(), "Not Yet Shipped"));
+		draftedOrder.setPaymentMethod(new PaymentMethod(draftedOrder.getPaymentMethod().getPaymentMethodType(), "Pending"));
 		return draftedOrder;
 	}
 
@@ -39,13 +42,6 @@ public class CompletedCheckoutPageObject extends CheckoutPageObject {
 		return orderNumber;
 	}
 	
-	public String getOrderDateText() {
-		waitForElementVisible(driver, CompletedCheckoutPageUI.ORDER_DATE_TEXT);
-		String detail = getElementText(driver, CompletedCheckoutPageUI.ORDER_DATE_TEXT);
-		String orderDate = detail.substring(17);
-		System.out.println(orderDate);
-		return orderDate;
-	}
 
 	public HomePageObject clickToThankYouContinueButton() {
 		waitForElementVisible(driver, CompletedCheckoutPageUI.THANKYOU_CONTINUE_BUTTON);

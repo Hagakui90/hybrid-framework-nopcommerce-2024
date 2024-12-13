@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import commons.BasePage;
 import commons.BillingAddress;
 import commons.Order;
+import commons.PaymentMethod;
 import commons.ShippingAddress;
+import commons.ShippingMethod;
 import pageUIs.user.CheckoutPageUI;
 
 public class CheckoutPageObject extends BasePage{
@@ -58,6 +60,14 @@ public class CheckoutPageObject extends BasePage{
 	
 	public ShippingAddress createShippingAddress(String firstName, String lastName, String email, String country, String province, String city, String address1, String zipPostalCode, String phoneNumber) {
 		return new ShippingAddress(firstName, lastName, email, country, province, city, address1, zipPostalCode, phoneNumber);
+	}
+	
+	public PaymentMethod createPaymentMethod(String paymentMethod) {
+		return new PaymentMethod(paymentMethod);
+	}
+	
+	public ShippingMethod createShippingMethod(String shippingMethod) {
+		return new ShippingMethod(shippingMethod);
 	}
 	
 	public void inputBillingNewAddressForm(BillingAddress billingAddress) {
@@ -130,9 +140,9 @@ public class CheckoutPageObject extends BasePage{
 		
 	}
 	
-	public boolean verifySelectedMethod(String method, String valueMethod) {
+	public boolean verifySelectedMethod(String method, Object valueMethod) {
 		waitForElementVisible(driver, CheckoutPageUI.INFO_METHOD_TEXT_BY_NAME, method);
-		if (getElementText(driver, CheckoutPageUI.INFO_METHOD_TEXT_BY_NAME, method).contains(valueMethod)) {
+		if (getElementText(driver, CheckoutPageUI.INFO_METHOD_TEXT_BY_NAME, method).contains(valueMethod.toString())) {
 			return true;
 		}
 		return false;
@@ -154,7 +164,7 @@ public class CheckoutPageObject extends BasePage{
 	}
 	
 	public boolean verifyConfirmedOrder(String nameProduct, String quantity, String unitPrice, String totalItem, String totalShipping, String giftWrapping, 
-			String TotalOrder, BillingAddress billingAddress, ShippingAddress shippingAddress, String paymentMethod, String shippingMethod) {
+			String TotalOrder, BillingAddress billingAddress, ShippingAddress shippingAddress, PaymentMethod paymentMethod, ShippingMethod shippingMethod) {
 		waitForElementVisible(driver, CheckoutPageUI.ENTER_ADDRESS_FOR_BY_TYPE, "checkout-step-confirm-order");
 		boolean verifyInforAddress = verifyInforAddress(billingAddress, shippingAddress);
 		boolean verifySelectedPaymentMethod = verifySelectedMethod("payment-method", paymentMethod);
@@ -167,7 +177,7 @@ public class CheckoutPageObject extends BasePage{
 		
 		String totalItemPrice = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "subtotal");
 		
-		String name = getElementText(driver, CheckoutPageUI.NAME_INFO_TEXT);
+		String name = getElementText(driver, CheckoutPageUI.NAME_OF_PRODUCT_INFO_TEXT);
 		String unitPriceProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price");
 		String quantityProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity");
 		waitForElementVisible(driver, CheckoutPageUI.CART_OPTION_TEXT);
@@ -177,7 +187,7 @@ public class CheckoutPageObject extends BasePage{
 		String totalShippingMethod = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "shipping-cost");
 		String orderTotal = getElementText(driver, CheckoutPageUI.ORDER_TOTAL_TEXT);
 		
-		Order order = createDraftedOrder(billingAddress, shippingAddress, paymentMethod, shippingMethod);
+		// Order order = createDraftedOrder(billingAddress, shippingAddress, paymentMethod, shippingMethod); 
 		
 		boolean verifyName = name.equals(nameProduct);
 		boolean verifyUnitPrice = unitPriceProduct.equals(unitPrice);
@@ -194,11 +204,12 @@ public class CheckoutPageObject extends BasePage{
 		return false;
 	}
 	
-	public Order createDraftedOrder(BillingAddress billingAddress, ShippingAddress shippingAddress, String paymentMethod, String shippingMethod) {
+	public Order createDraftedOrder(BillingAddress billingAddress, ShippingAddress shippingAddress, PaymentMethod paymentMethod, ShippingMethod shippingMethod) {
 		String sku = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "sku");
-		String name = getElementText(driver, CheckoutPageUI.NAME_INFO_TEXT);
+		String name = getElementText(driver, CheckoutPageUI.NAME_OF_PRODUCT_INFO_TEXT);
 		String unitPriceProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price");
 		String quantityProduct = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity");
+		String totalItemPrice = getElementText(driver, CheckoutPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "subtotal");
 		waitForElementVisible(driver, CheckoutPageUI.CART_OPTION_TEXT);
 		String cartOption = getElementText(driver, CheckoutPageUI.CART_OPTION_TEXT);
 		waitForElementVisible(driver, CheckoutPageUI.CART_FOOTER_TEXT);
@@ -206,7 +217,7 @@ public class CheckoutPageObject extends BasePage{
 		String totalShippingMethod = getElementText(driver, CheckoutPageUI.CART_FOOTER_ITEM_TEXT_BY_NAME, "shipping-cost");
 		String orderTotal = getElementText(driver, CheckoutPageUI.ORDER_TOTAL_TEXT);
 		return new Order(sku, name, orderTotal, billingAddress, shippingAddress, paymentMethod, shippingMethod,
-				unitPriceProduct, quantityProduct, cartOption, subTotal, totalShippingMethod);
+				unitPriceProduct, quantityProduct, totalItemPrice, cartOption, subTotal, totalShippingMethod);
 	}
 	public void clickToConfirmButton() {
 		waitForElementClickable(driver, CheckoutPageUI.CONFIRM_BUTTON);
