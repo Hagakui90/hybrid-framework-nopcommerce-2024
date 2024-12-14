@@ -84,13 +84,17 @@ public class CustomerOrderDetailsPageObject extends BasePage{
 	public boolean verifyInfoMethod(String nameMethod, Order completedOrder) {
 		boolean verifyTypeOfMethod, verifyStatusOfMethod;
 		if (nameMethod.contains("payment")) {
+			System.out.println("Verify payment method");
 			waitForElementVisible(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "payment-method");
 			verifyTypeOfMethod = getElementText(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "payment-method").contains(completedOrder.getPaymentMethod().getPaymentMethodType());
 			verifyStatusOfMethod = !getElementText(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "payment-method-status").isBlank();
+			System.out.println(verifyTypeOfMethod + "\t" + verifyStatusOfMethod);
 		}else {
+			System.out.println("Verify shipping method");
 			waitForElementVisible(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "shipping-method");
-			verifyTypeOfMethod = getElementText(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "payment-method").contains(completedOrder.getShippingMethod().getShippingMethodType());
+			verifyTypeOfMethod = getElementText(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "shipping-method").contains(completedOrder.getShippingMethod().getShippingMethodType());
 			verifyStatusOfMethod = !getElementText(driver, CustomerOrderDetailPageUI.METHOD_BY_NAME, "shipping-status").isBlank();
+			System.out.println(verifyTypeOfMethod + "\t" + verifyStatusOfMethod);
 		}
 		if (verifyTypeOfMethod && verifyStatusOfMethod) {
 			return true;
@@ -106,6 +110,7 @@ public class CustomerOrderDetailsPageObject extends BasePage{
 		verifyUnitPrice = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price").equals(completedOrder.getUnitPrice());
 		verifyQuantityProduct = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity").equals(completedOrder.getQuantityOfOrder());
 		verifyTotalItemPrice = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "total").equals(completedOrder.getTotalItemPrice());
+		System.out.println(getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "total") + "\t" + completedOrder.getTotalItemPrice());
 		if (verifySku && verifyNameProduct && verifyUnitPrice && verifyQuantityProduct && verifyTotalItemPrice) {
 			return true;
 		}

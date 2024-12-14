@@ -156,8 +156,8 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage.inputShippingNewAddressForm(shippingAddress);
 		checkoutPage.clickToContinueButton("shipping");
 		
-		shippingMethod = checkoutPage.createShippingMethod("Shipping by land transpor");
-		checkoutPage.selectShippingMethod(shippingMethod.getShippingMethodType());
+		shippingMethod = checkoutPage.createShippingMethod("Ground");
+		checkoutPage.selectShippingMethod("Shipping by land transpor");
 		checkoutPage.clickToContinueButton("shipping-method");
 		
 		paymentMethod = checkoutPage.createPaymentMethod("Check / Money Order");

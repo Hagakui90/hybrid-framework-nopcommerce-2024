@@ -161,6 +161,7 @@ public class Order {
 		this.shippingMethod = shippingMethod;
 		this.unitPrice = unitPrice;
 		this.quantityOfOrder = quantityOfOrder;
+		this.totalItemPrice = totalItemPrice;
 		this.giftWrapping = giftWrapping;
 		this.subTotalOfOrder = subTotalOfOrder;
 		this.totalShippingMethod = totalShippingMethod;
