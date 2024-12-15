@@ -139,7 +139,7 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(cartPage.getItemTotalText("subtotal").equals("$2,610.00"));
 
 		cartPage.inputToEstimateShippingPopup("Vietnam", "Hải Phòng", "10021", "checkout.pickuppoints");
-		cartPage.sleepInSecond(10);
+		cartPage.sleepInSecond(2);
 		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
 		
 		cartPage.checkToTermOfService();
@@ -202,7 +202,54 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(customerOrderDetailsPage.verifyOrderProduct(completedOrder));
 		Assert.assertTrue(customerOrderDetailsPage.getGiftWrappingOption().contains(completedOrder.getGiftWrapping()));
 		Assert.assertTrue(customerOrderDetailsPage.verifyTotalOrder(completedOrder));
+	}
+	
+	@Test
+	public void Order_06_Checkout() {
+		homePage.backToPage(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.removeAllProductFromCart();
+		cartPage.searchProduct("Dear Reader: The Comfort and Joy of Books");
+		customerSearchPage = PageGeneratorManager.getCustomerSearchPage(driver);
+		customerSearchPage.updateProductToShoppingCart("Dear Reader: The Comfort and Joy of Books");
+		customerSearchPage.clickToShoppingCart();
+		cartPage = PageGeneratorManager.getCartPage(driver);
+		cartPage.updateQuantity("Dear Reader: The Comfort and Joy of Books", "2");
+		Assert.assertTrue(cartPage.getTotalPriceByProductName("Dear Reader: The Comfort and Joy of Books").equals("$19.98"));
+
+		cartPage.selectGiftWrapping("shoppingcart.checkoutattributes.priceadjustment");
+		Assert.assertTrue(cartPage.getGiftWrappingLabel().contains("Yes"));
+		Assert.assertTrue(cartPage.getItemTotalText("subtotal").equals("$29.98"));
+
+		cartPage.inputToEstimateShippingPopup("Vietnam", "Hà Nội", "550000", "Ground");
+		cartPage.sleepInSecond(10);
+		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$0.00"));
 		
+		cartPage.checkToTermOfService();
+		Order draftedOrder = cartPage.createDraftedOrder("Dear Reader: The Comfort and Joy of Books");
+		cartPage.clickToCheckoutButton();
+		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
+		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
+		
+		billingAddress = checkoutPage.createBillingAddress("Kenna", "Olivia", "happygirls99@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		checkoutPage.inputBillingNewAddressForm(billingAddress);
+		checkoutPage.clickToContinueButton("billing");
+		
+		shippingAddress = checkoutPage.createShippingAddress("Le", "Minh Trang", "naughtyboy567@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		checkoutPage.inputShippingNewAddressForm(shippingAddress);
+		checkoutPage.clickToContinueButton("shipping");
+		
+		shippingMethod = checkoutPage.createShippingMethod("Ground");
+		checkoutPage.selectShippingMethod("Shipping by land transpor");
+		checkoutPage.clickToContinueButton("shipping-method");
+		
+		paymentMethod = checkoutPage.createPaymentMethod("Check / Money Order");
+		checkoutPage.selectPaymentMethod(paymentMethod.getPaymentMethodType());
+		checkoutPage.clickToContinueButton("payment-method");
+		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
+		checkoutPage.clickToContinueButton("payment-info");
 	}
 
 	@AfterClass

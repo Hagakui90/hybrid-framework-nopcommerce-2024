@@ -102,7 +102,7 @@ public class CheckoutPageObject extends BasePage{
 	public boolean verifyInforAddress(BillingAddress billingAddress, ShippingAddress shippingAddress) {
 		boolean verifyBillingAddress = false;
 		boolean verifyShippingAddress = false;
-		if (getInfoText("billing-info", "name").equals(billingAddress.getFirstName() + billingAddress.getLastName())) {
+		if (getInfoText("billing-info", "name").equals(billingAddress.getName())) {
 			if (getInfoText("billing-info", "email").contains(billingAddress.getEmail()) && getInfoText("billing-info", "phone").contains(billingAddress.getPhoneNumber())) {
 					if (getInfoText("billing-info", "country").contains(billingAddress.getCountry()) && getInfoText("billing-info", "stateprovince").contains(billingAddress.getProvince()) && getInfoText("billing-info", "city").contains(billingAddress.getCity())) {
 						if (getInfoText("billing-info", "address1").contains(billingAddress.getAddress1()) && getInfoText("billing-info", "zippostalcode").contains(billingAddress.getZipPostalCode())) {
@@ -112,7 +112,7 @@ public class CheckoutPageObject extends BasePage{
 				}
 			}
 		
-		if (getInfoText("shipping-info", "name").equals(shippingAddress.getFirstName() + shippingAddress.getLastName())) {
+		if (getInfoText("shipping-info", "name").equals(shippingAddress.getName())) {
 			if (getInfoText("shipping-info", "email").contains(shippingAddress.getEmail()) && getInfoText("shipping-shipping", "phone").contains(shippingAddress.getPhoneNumber())) {
 					if (getInfoText("shipping-info", "country").contains(shippingAddress.getCountry()) && getInfoText("shipping-info", "stateprovince").contains(shippingAddress.getProvince()) && getInfoText("shipping-info", "city").contains(shippingAddress.getCity())) {
 						if (getInfoText("shipping-info", "address1").contains(shippingAddress.getAddress1()) && getInfoText("shipping-info", "zippostalcode").contains(shippingAddress.getZipPostalCode())) {
