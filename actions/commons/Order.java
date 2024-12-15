@@ -168,6 +168,15 @@ public class Order {
 		this.totalOfOrder = totalOfOrder;
 	}
 
+	public Order(String skuOfProduct, String titleOfProduct, String unitPrice, String quantityOfOrder, String totalItemPrice, String giftWrapping) {
+		this.skuOfProduct = skuOfProduct;
+		this.titleOfProduct = titleOfProduct;
+		this.unitPrice = unitPrice;
+		this.quantityOfOrder = quantityOfOrder;
+		this.totalItemPrice = totalItemPrice;
+		this.giftWrapping = giftWrapping;
+	}
+
 	private String orderNumber;
 	private String orderDate;
 	private String skuOfProduct;

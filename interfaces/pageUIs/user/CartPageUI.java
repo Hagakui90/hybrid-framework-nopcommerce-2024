@@ -1,9 +1,13 @@
 package pageUIs.user;
 
 public class CartPageUI {
-	public static final String PRODUCT_NAME_IN_CART_TABLE = "xpath=//tr//a[text()=\"%s\"]";
-	public static final String PRICE_PRODUCT_IN_CART_TABLE_BY_NAME = "xpath=//a[text()=\"%s\"]//ancestor::tr//span[@class='product-unit-price']";
-	public static final String TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME = "xpath=//a[text()='%s']//ancestor::tr//span[@class='product-subtotal']";
+	public static final String EXCEPTIONAL_PRODUCT_NAME_IN_CART_TABLE = "xpath=//tr//a[text()=\"%s\"]";
+	public static final String EXCEPTIONAL_PRICE_PRODUCT_IN_CART_TABLE = "xpath=//a[text()=\"%s\"]//ancestor::tr//span[@class='product-unit-price']";
+	
+	public static final String SKU_PRODUCT_IN_CART_TABLE_BY_NAME = "XPATH=//a[text()='%s']//ancestor::tr//span[@class='sku-number']";
+	public static final String PRODUCT_NAME_IN_CART_TABLE = "XPATH=//tr//a[@class='product-name']";
+	public static final String UNIT_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME = "XPATH=//a[text()='%s']//ancestor::tr//span[@class='product-unit-price']";
+	public static final String ITEM_TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME = "xpath=//a[text()='%s']//ancestor::tr//span[@class='product-subtotal']";
 	public static final String QUANTITY_PRODUCT_TEXTBOX_IN_CART_TABLE_BY_NAME = "xpath=//a[text()='%s']//ancestor::tr//input[@class='qty-input']";
 	public static final String LIST_REMOVE_BUTTON = "CSS=button.remove-btn";
 	public static final String EDIT_BUTTON = "xpath=//a[text()='common.edit']";

@@ -142,8 +142,8 @@ public class Order_01_Order extends BaseTest {
 		cartPage.sleepInSecond(10);
 		Assert.assertTrue(cartPage.getItemTotalText("totals.shipping").contains("$1.99"));
 		
-		
 		cartPage.checkToTermOfService();
+		Order draftedOrder = cartPage.createDraftedOrder("Apple iCam");
 		cartPage.clickToCheckoutButton();
 		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
 		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
@@ -166,10 +166,10 @@ public class Order_01_Order extends BaseTest {
 		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
 		checkoutPage.clickToContinueButton("payment-info");
 		
-		checkoutPage.verifyConfirmedOrder("Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
+		draftedOrder =checkoutPage.updateDraftedOrder(draftedOrder, billingAddress, shippingAddress, paymentMethod, shippingMethod);
+		checkoutPage.verifyConfirmedOrder(draftedOrder, "Apple iCam", "2", "$1,300.00", "$2,600.00", "$1.99", "Yes", 
 				"$2,611.99", billingAddress, shippingAddress, paymentMethod, shippingMethod);
 		
-		Order draftedOrder =checkoutPage.createDraftedOrder(billingAddress, shippingAddress, paymentMethod, shippingMethod);
 		checkoutPage.clickToConfirmButton();
 		completedCheckoutPage = PageGeneratorManager.getCompletedCheckoutPage(driver);
 		Order completedOrder = completedCheckoutPage.createCompletedOrder(draftedOrder);

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
+import commons.Order;
 import pageUIs.user.CartPageUI;
 
 public class CartPageObject extends BasePage {
@@ -18,11 +19,11 @@ public class CartPageObject extends BasePage {
 
 	public boolean verifyAddedProductInCart(String nameProduct, String priceProduct) {
 
-		if (isElementUndisplayed(driver, CartPageUI.PRODUCT_NAME_IN_CART_TABLE, nameProduct)) {
+		if (isElementUndisplayed(driver, CartPageUI.EXCEPTIONAL_PRODUCT_NAME_IN_CART_TABLE, nameProduct)) {
 			return false;
 		} else {
-			waitForElementVisible(driver, CartPageUI.PRODUCT_NAME_IN_CART_TABLE, nameProduct);
-			if (getElementText(driver, CartPageUI.PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct).equals(priceProduct)) {
+			waitForElementVisible(driver, CartPageUI.EXCEPTIONAL_PRODUCT_NAME_IN_CART_TABLE, nameProduct);
+			if (getElementText(driver, CartPageUI.EXCEPTIONAL_PRICE_PRODUCT_IN_CART_TABLE, nameProduct).equals(priceProduct)) {
 				return true;
 			} else
 				return false;
@@ -65,8 +66,8 @@ public class CartPageObject extends BasePage {
 	}
 	
 	public String getTotalPriceByProductName(String productName) {
-		waitForElementVisible(driver, CartPageUI.TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
-		return getElementText(driver, CartPageUI.TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
+		waitForElementVisible(driver, CartPageUI.ITEM_TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
+		return getElementText(driver, CartPageUI.ITEM_TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, productName);
 	}
 	
 	public void selectGiftWrapping(String value) {
@@ -107,6 +108,24 @@ public class CartPageObject extends BasePage {
 	public void clickToCheckoutButton() {
 		waitForElementClickable(driver, CartPageUI.CHECKOUT_BUTTON);
 		clickToElement(driver, CartPageUI.CHECKOUT_BUTTON);
+	}
+
+	public Order createDraftedOrder(String nameProduct) {
+		waitForElementVisible(driver, CartPageUI.SKU_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		waitForElementVisible(driver, CartPageUI.PRODUCT_NAME_IN_CART_TABLE);
+		waitForElementVisible(driver, CartPageUI.UNIT_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		waitForElementVisible(driver, CartPageUI.QUANTITY_PRODUCT_TEXTBOX_IN_CART_TABLE_BY_NAME, nameProduct);
+		waitForElementVisible(driver, CartPageUI.ITEM_TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		waitForElementVisible(driver, CartPageUI.GIFT_WRAPPING_LABEL);
+		
+		String skuOfProduct = getElementText(driver, CartPageUI.SKU_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		String titleOfProduct = getElementText(driver, CartPageUI.PRODUCT_NAME_IN_CART_TABLE);
+		String unitPrice = getElementText(driver, CartPageUI.UNIT_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		String quantityOfOrder = getElementAttribute(driver, CartPageUI.QUANTITY_PRODUCT_TEXTBOX_IN_CART_TABLE_BY_NAME, "value", nameProduct);
+		System.out.println("quantityOfOrder " + quantityOfOrder);
+		String totalItemPrice = getElementText(driver, CartPageUI.ITEM_TOTAL_PRICE_PRODUCT_IN_CART_TABLE_BY_NAME, nameProduct);
+		String giftWrapping = getElementText(driver, CartPageUI.GIFT_WRAPPING_LABEL);
+		return new Order(skuOfProduct, titleOfProduct, unitPrice, quantityOfOrder, totalItemPrice, giftWrapping);
 	}
 	
 	

@@ -110,8 +110,15 @@ public class CustomerOrderDetailsPageObject extends BasePage{
 		verifyUnitPrice = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "unit-price").equals(completedOrder.getUnitPrice());
 		verifyQuantityProduct = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity").equals(completedOrder.getQuantityOfOrder());
 		verifyTotalItemPrice = getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "total").equals(completedOrder.getTotalItemPrice());
-		System.out.println(getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "total") + "\t" + completedOrder.getTotalItemPrice());
+		//System.out.println(getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "total") + "\t" + completedOrder.getTotalItemPrice());
+		System.out.println(verifySku);
+		System.out.println(verifyNameProduct);
+		System.out.println(verifyQuantityProduct);
+		System.out.println(completedOrder.getQuantityOfOrder());
+		System.out.println(getElementText(driver, CustomerOrderDetailPageUI.PRODUCT_INFO_ITEM_TEXT_BY_NAME, "quantity"));
+		System.out.println(verifyTotalItemPrice);
 		if (verifySku && verifyNameProduct && verifyUnitPrice && verifyQuantityProduct && verifyTotalItemPrice) {
+			
 			return true;
 		}
 		return false;
