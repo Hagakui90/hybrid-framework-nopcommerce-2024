@@ -20,4 +20,8 @@ public class CheckoutPageUI {
 	public static final String CART_FOOTER_TEXT = "CSS=div.cart-footer";
 	public static final String CART_FOOTER_ITEM_TEXT_BY_NAME = "CSS=div.cart-footer tr.%s td.cart-total-right span";
 	public static final String ORDER_TOTAL_TEXT = "CSS=div.cart-footer tr.order-total td.cart-total-right strong";
+	public static final String TYPE_OF_CREDIT_CARD_DROPDOWN = "css=select#CreditCardType";
+	public static final String INFO_CREDIT_CARD_TEXTBOX_BY_NAME = "CSS=input#%s";
+	public static final String EXPIRE_TIME_DROPDOWN_BY_NAME = "css=select#Expire%s";
+	
 }

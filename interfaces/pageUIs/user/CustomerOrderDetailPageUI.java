@@ -16,4 +16,5 @@ public class CustomerOrderDetailPageUI {
 	public static final String ORDER_TOTAL_AREA = "CSS=table.cart-total";
 	public static final String ORDER_TOTAL_ITEM_TEXT_BY_NAME = "xpath=//label[contains(text(),'%s')]//parent::td//following-sibling::td/span";
 	public static final String ORDER_TOTAL_TEXT = "CSS=table.cart-total td.cart-total-right span strong";
+	public static final String LOGO_LINK_TEXT = "css=div.header-logo";
 }

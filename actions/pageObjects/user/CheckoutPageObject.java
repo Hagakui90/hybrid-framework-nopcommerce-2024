@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.BillingAddress;
+import commons.CreditCard;
 import commons.Order;
 import commons.PaymentMethod;
 import commons.ShippingAddress;
@@ -209,4 +210,29 @@ public class CheckoutPageObject extends BasePage{
 		waitForElementClickable(driver, CheckoutPageUI.CONFIRM_BUTTON);
 		clickToElement(driver, CheckoutPageUI.CONFIRM_BUTTON);
 	}
+
+	public CreditCard createCreditCard(String typeOfCreditCard, String cardHolderName, String cardNumber, String expirationDate, String cardCode) {
+		return new CreditCard(typeOfCreditCard, cardHolderName, cardNumber, expirationDate, cardCode);
+	}
+	
+	public void inputPaymentInfoForm(CreditCard creditCard) {
+		String[] expireTimeCard = creditCard.getExpirationDate().split("/");
+		waitForElementClickable(driver, CheckoutPageUI.TYPE_OF_CREDIT_CARD_DROPDOWN);
+		selectItemInDefaultDropdown(driver, CheckoutPageUI.TYPE_OF_CREDIT_CARD_DROPDOWN, creditCard.getTypeOfCreditCard());
+		
+		waitForElementVisible(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, "CardholderName");
+		sendkeyToElement(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, creditCard.getCardHolderName(), "CardholderName");
+		
+		waitForElementVisible(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, "CardNumber");
+		sendkeyToElement(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, creditCard.getCardNumber(), "CardNumber");
+		
+		waitForElementClickable(driver, CheckoutPageUI.EXPIRE_TIME_DROPDOWN_BY_NAME, "Month");
+		selectItemInDefaultDropdown(driver, CheckoutPageUI.EXPIRE_TIME_DROPDOWN_BY_NAME, expireTimeCard[0], "Month");
+		waitForElementClickable(driver, CheckoutPageUI.EXPIRE_TIME_DROPDOWN_BY_NAME, "Year");
+		selectItemInDefaultDropdown(driver, CheckoutPageUI.EXPIRE_TIME_DROPDOWN_BY_NAME, expireTimeCard[1], "Year");
+		
+		waitForElementVisible(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, "CardCode");
+		sendkeyToElement(driver, CheckoutPageUI.INFO_CREDIT_CARD_TEXTBOX_BY_NAME, creditCard.getCardCode(), "CardCode");
+	}
+
 }

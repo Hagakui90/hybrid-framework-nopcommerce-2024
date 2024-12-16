@@ -63,16 +63,15 @@ public class CustomerOrderDetailsPageObject extends BasePage{
 			verifyProvinceAddress = getInfoByName(nameInfo, "stateprovince").contains(completedOrder.getBillingAddress().getProvince());
 			verifyAddress1 = getInfoByName(nameInfo, "address1").contains(completedOrder.getBillingAddress().getAddress1());
 			verifyZippostalcodeAddress = getInfoByName(nameInfo, "zippostalcode").contains(completedOrder.getBillingAddress().getZipPostalCode());
-			System.out.println(getInfoByName(nameInfo, "name") + "\t" + completedOrder.getBillingAddress().getName());
 		}
 		else {
 			verifyNameAddress = getInfoByName(nameInfo, "name").contains(completedOrder.getShippingAddress().getName());
-			verifyEmailAddress = getInfoByName(nameInfo, "email").contains(completedOrder.getBillingAddress().getEmail());
-			verifyPhoneAddress = getInfoByName(nameInfo, "phone").contains(completedOrder.getBillingAddress().getPhoneNumber());
-			verifyCountryAddress = getInfoByName(nameInfo, "country").contains(completedOrder.getBillingAddress().getCountry());
-			verifyProvinceAddress = getInfoByName(nameInfo, "stateprovince").contains(completedOrder.getBillingAddress().getProvince());
-			verifyAddress1 = getInfoByName(nameInfo, "address1").contains(completedOrder.getBillingAddress().getAddress1());
-			verifyZippostalcodeAddress = getInfoByName(nameInfo, "zippostalcode").contains(completedOrder.getBillingAddress().getZipPostalCode());
+			verifyEmailAddress = getInfoByName(nameInfo, "email").contains(completedOrder.getShippingAddress().getEmail());
+			verifyPhoneAddress = getInfoByName(nameInfo, "phone").contains(completedOrder.getShippingAddress().getPhoneNumber());
+			verifyCountryAddress = getInfoByName(nameInfo, "country").contains(completedOrder.getShippingAddress().getCountry());
+			verifyProvinceAddress = getInfoByName(nameInfo, "stateprovince").contains(completedOrder.getShippingAddress().getProvince());
+			verifyAddress1 = getInfoByName(nameInfo, "address1").contains(completedOrder.getShippingAddress().getAddress1());
+			verifyZippostalcodeAddress = getInfoByName(nameInfo, "zippostalcode").contains(completedOrder.getShippingAddress().getZipPostalCode());
 		}
 		
 		if (verifyNameAddress && verifyEmailAddress && verifyPhoneAddress && verifyCountryAddress && verifyProvinceAddress && verifyAddress1 && verifyZippostalcodeAddress) {
@@ -153,6 +152,11 @@ public class CustomerOrderDetailsPageObject extends BasePage{
 			return true;
 		}
 		return false;
+	}
+	
+	public void clickToLogoLink() {
+		waitForElementVisible(driver, CustomerOrderDetailPageUI.LOGO_LINK_TEXT);
+		clickToElement(driver, CustomerOrderDetailPageUI.LOGO_LINK_TEXT);
 	}
 	
 }

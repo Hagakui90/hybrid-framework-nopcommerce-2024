@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.BillingAddress;
+import commons.CreditCard;
 import commons.Order;
 import commons.PageGeneratorManager;
 import commons.PaymentMethod;
@@ -41,6 +42,7 @@ public class Order_01_Order extends BaseTest {
 	private ShippingAddress shippingAddress;
 	private ShippingMethod shippingMethod;
 	private PaymentMethod paymentMethod;
+	private CreditCard creditCard;
 	private CompletedCheckoutPageObject completedCheckoutPage;
 	private CustomerOrderPageObject customerOrderPage;
 	private CustomerOrderDetailsPageObject customerOrderDetailsPage;
@@ -119,6 +121,7 @@ public class Order_01_Order extends BaseTest {
 		cartPage.updateQuantity("Lenovo IdeaCentre", "5");
 		Assert.assertTrue(cartPage.getTotalPriceByProductName("Lenovo IdeaCentre").equals("$2,500.00"));
 	}
+	
 	@Test
 	public void Order_05_Checkout() {
 		homePage.backToPage(driver);
@@ -206,7 +209,7 @@ public class Order_01_Order extends BaseTest {
 	
 	@Test
 	public void Order_06_Checkout() {
-		homePage.backToPage(driver);
+		customerOrderDetailsPage.clickToLogoLink();
 		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage.clickToShoppingCart();
 		cartPage = PageGeneratorManager.getCartPage(driver);
@@ -233,11 +236,11 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage = PageGeneratorManager.getCheckoutPage(driver);
 		checkoutPage.clickToAddressDropdownByType("billing-address-select", "checkout.newaddress");
 		
-		billingAddress = checkoutPage.createBillingAddress("Kenna", "Olivia", "happygirls99@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		billingAddress = checkoutPage.createBillingAddress("Kenna", "Olivia", "happygirls99@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "32 Yen Hoa, Cau Giay", "550000", "03843737");
 		checkoutPage.inputBillingNewAddressForm(billingAddress);
 		checkoutPage.clickToContinueButton("billing");
 		
-		shippingAddress = checkoutPage.createShippingAddress("Le", "Minh Trang", "naughtyboy567@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "123 Hoàn Kiếm, Hưng Đạo", "550000", "03843737");
+		shippingAddress = checkoutPage.createShippingAddress("Le", "Minh Trang", "naughtyboy567@gmail.com", "Vietnam", "Hà Nội", "Hà Nội", "PVI Tower, Cau Giay", "550000", "03843737");
 		checkoutPage.inputShippingNewAddressForm(shippingAddress);
 		checkoutPage.clickToContinueButton("shipping");
 		
@@ -245,11 +248,47 @@ public class Order_01_Order extends BaseTest {
 		checkoutPage.selectShippingMethod("Shipping by land transpor");
 		checkoutPage.clickToContinueButton("shipping-method");
 		
-		paymentMethod = checkoutPage.createPaymentMethod("Check / Money Order");
+		paymentMethod = checkoutPage.createPaymentMethod("Credit Card");
 		checkoutPage.selectPaymentMethod(paymentMethod.getPaymentMethodType());
 		checkoutPage.clickToContinueButton("payment-method");
-		Assert.assertTrue(checkoutPage.verifySelectedPaymentMethod("Check / Money Order"));
+		creditCard = checkoutPage.createCreditCard("Master card", "Sheri Barton", "5279780900277013", "12/2027", "470");
+		checkoutPage.inputPaymentInfoForm(creditCard);
 		checkoutPage.clickToContinueButton("payment-info");
+		
+		draftedOrder =checkoutPage.updateDraftedOrder(draftedOrder, billingAddress, shippingAddress, paymentMethod, shippingMethod);
+		checkoutPage.verifyConfirmedOrder(draftedOrder, "Dear Reader: The Comfort and Joy of Books", "2", "$9.99", "$19.98", "$0.00", "Yes", 
+				"$29.98", billingAddress, shippingAddress, paymentMethod, shippingMethod);
+		
+		checkoutPage.clickToConfirmButton();
+		completedCheckoutPage = PageGeneratorManager.getCompletedCheckoutPage(driver);
+		Order completedOrder = completedCheckoutPage.createCompletedOrder(draftedOrder);
+		
+		Assert.assertEquals(completedCheckoutPage.getPageTitleText(), "checkout.thankyou");
+		Assert.assertEquals(completedCheckoutPage.getOrderCompletedTitleText(), "checkout.yourorderhasbeensuccessfullyprocessed");
+		
+		homePage = completedCheckoutPage.clickToThankYouContinueButton();
+		customerPage = homePage.clickToMyAccountLink();
+		customerPage.openDynamicSideBarPage("account.customerorders");
+		customerOrderPage = PageGeneratorManager.getCustomerOrderPage(driver);
+		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("account.customerorders"));
+		
+		customerOrderPage.clickToDetailCustomerOrderByOrderNumber(completedOrder.getOrderNumber());
+		customerOrderDetailsPage = PageGeneratorManager.getCustomerOrderDetailsPage(driver);
+		Assert.assertTrue(customerOrderPage.getPageTitleText().contains("order.orderinformation"));
+		
+		Assert.assertTrue(customerOrderDetailsPage.getOrderNumber().contains(completedOrder.getOrderNumber())) ;
+		Assert.assertTrue(!customerOrderDetailsPage.getOrderOverviewTextByName("order-date").equals(""));
+		completedOrder.setOrderDate(customerOrderDetailsPage.getOrderOverviewTextByName("order-date"));
+		Assert.assertTrue(customerOrderDetailsPage.getOrderOverviewTextByName("order-status").contains(completedOrder.getStatusOfOrder()));
+		Assert.assertTrue(customerOrderDetailsPage.getTotalOrderOverview().contains(completedOrder.getTotalOfOrder()));
+		
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderInfoAddress("billing", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderInfoAddress("shipping", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyInfoMethod("payment", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyInfoMethod("shipping", completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.verifyOrderProduct(completedOrder));
+		Assert.assertTrue(customerOrderDetailsPage.getGiftWrappingOption().contains(completedOrder.getGiftWrapping()));
+		Assert.assertTrue(customerOrderDetailsPage.verifyTotalOrder(completedOrder));
 	}
 
 	@AfterClass
