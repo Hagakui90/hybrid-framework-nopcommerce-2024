@@ -6,9 +6,9 @@
     <classes>
       <class name="com.nopcommerce.order.Order_01_Order">
         <methods>
-          <include name="Order_05_Checkout"/>
           <include name="beforeClass"/>
           <include name="afterClass"/>
+          <include name="Order_06_Checkout"/>
         </methods>
       </class> <!-- com.nopcommerce.order.Order_01_Order -->
     </classes>

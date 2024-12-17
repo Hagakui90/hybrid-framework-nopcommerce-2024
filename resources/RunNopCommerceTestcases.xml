@@ -3,7 +3,7 @@
 	<test name="Run on Chrome">
 	<parameter name ="browser" value="chrome"/>
     <classes>
-      <class name="com.nopcommerce.order.Order_01_Order"/>
+      <class name="com.nopcommerce.admin.Admin_01_Search"/>
     </classes>
   </test> 
 		<!-- <test name="Run on Firefox">

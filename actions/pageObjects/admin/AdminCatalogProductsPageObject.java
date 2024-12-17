@@ -55,7 +55,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 
 	public List<Product> getListCreatedOnPerCatalogProductEachPage() {
 		int columnIndex = getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.common.edit") + 1;
-		List<WebElement> listResultProductEachPage = getListWebElement(driver, AdminCatalogProductsPageUI.ALL_VALUES_COLUMN_INDEX, String.valueOf(columnIndex));
+		List<WebElement> listResultProductEachPage = getListWebElement(driver, AdminCatalogProductsPageUI.ALL_VALUES_BY_COLUMN_INDEX, String.valueOf(columnIndex));
 		List<Product> listCreatedOnPerCatalogProductEachPage = new ArrayList<Product>();
 		for (int i = 1; i <= listResultProductEachPage.size(); i++) {
 			listCreatedOnPerCatalogProductEachPage.add(clickToEveryEditButtonProduct(String.valueOf(i)));
@@ -105,4 +105,44 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		return listCreatedOnPerCatalogProductAllPage;
 	}
 
+	public void searchByName(String productName) {
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, "SearchProductName");
+		sendkeyToElement(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, productName, "SearchProductName");
+		
+		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
+		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
+	}
+	
+	public List<Product> getListProductSearchByName() {
+		String currentNumberPage = getElementText(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
+		String nameColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.name") + 1);
+		String skuColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.sku") + 1);
+		String priceColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.price") + 1);
+		String stockQuantityColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.stockquantity") + 1);
+		String publishedColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.published") + 1);
+		List<WebElement> listProductResult = getListWebElement(driver, AdminCatalogProductsPageUI.LIST_PRODUCT_SEARCH);
+		List<Product> listProduct = new ArrayList<Product>();
+		do {
+			for (int i = 0; i < listProductResult.size(); i++) {
+				String rowIndex = String.valueOf(i + 1);
+				waitForElementVisible(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, nameColumnIndex);
+				waitForElementVisible(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, skuColumnIndex);
+				waitForElementVisible(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, priceColumnIndex);
+				waitForElementVisible(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, stockQuantityColumnIndex);
+				waitForElementVisible(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, publishedColumnIndex);
+				String nameProduct = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, nameColumnIndex);
+				String skuProduct = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, skuColumnIndex);
+				String priceProduct = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, priceColumnIndex);
+				String stockQuantity = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, stockQuantityColumnIndex);
+				String statusOfPublished = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, publishedColumnIndex);
+				Product product = new Product(skuProduct, nameProduct, priceProduct, stockQuantity, statusOfPublished);
+				listProduct.add(product);
+			}
+			waitForElementVisible(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT, currentNumberPage);
+			clickToElementByJS(driver, AdminCatalogProductsPageUI.NEXT_PAGE_LINK_TEXT, currentNumberPage);
+			currentNumberPage = getElementText(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
+		}while (isNextPageButtonActived(currentNumberPage));
+		
+		return listProduct;
+	}
 }
