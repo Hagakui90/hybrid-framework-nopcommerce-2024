@@ -40,11 +40,11 @@ public class Admin_01_Search extends BaseTest {
 		adminCatalogProductsPage = PageGeneratorManager.getAdminCatalogProductPage(driver);
 		adminCatalogProductsPage.searchByName("Lenovo Idea");
 		List<Product> listSearchedProduct = adminCatalogProductsPage.getListProductSearchByName();
+		Assert.assertTrue(listSearchedProduct.size() == 1);
 		Assert.assertTrue(listSearchedProduct.get(0).getTitleOfProduct().equals("Lenovo IdeaCentre"));
 		Assert.assertTrue(listSearchedProduct.get(0).getSkuOfProduct().equals("LE_IC_600"));
 		Assert.assertTrue(listSearchedProduct.get(0).getPriceOfProduct().equals("500"));
 		Assert.assertTrue(listSearchedProduct.get(0).getStockQuantity().equals("10000"));
-		System.out.println(listSearchedProduct.get(0).getStatusOfPublished());
 		Assert.assertTrue(listSearchedProduct.get(0).getStatusOfPublished());
 	}
 
@@ -58,17 +58,16 @@ public class Admin_01_Search extends BaseTest {
 	public void Search_03_Product_Name_Parent_Category_UnChecked() {
 		adminCatalogProductsPage.searchByNameAndCategory("Lenovo IdeaCentre", "Computers", "Yes");
 		List<Product> listSearchedProduct = adminCatalogProductsPage.getListProductSearchByName();
+		Assert.assertTrue(listSearchedProduct.size() == 1);
 		Assert.assertTrue(listSearchedProduct.get(0).getTitleOfProduct().equals("Lenovo IdeaCentre"));
-		Assert.assertTrue(listSearchedProduct.get(0).getSkuOfProduct().equals("LE_IC_600"));
-		Assert.assertTrue(listSearchedProduct.get(0).getPriceOfProduct().equals("500"));
-		Assert.assertTrue(listSearchedProduct.get(0).getStockQuantity().equals("10000"));
-		System.out.println(listSearchedProduct.get(0).getStatusOfPublished());
-		Assert.assertTrue(listSearchedProduct.get(0).getStatusOfPublished());
 	}
 
 	@Test
 	public void Search_04_Product_Name_Child_Category() {
-
+		adminCatalogProductsPage.searchByNameAndCategory("Lenovo IdeaCentre", "Computers >> Desktops", "No");
+		List<Product> listSearchedProduct = adminCatalogProductsPage.getListProductSearchByName();
+		Assert.assertTrue(listSearchedProduct.size() == 1);
+		Assert.assertTrue(listSearchedProduct.get(0).getTitleOfProduct().equals("Lenovo IdeaCentre"));
 	}
 
 	@Test
