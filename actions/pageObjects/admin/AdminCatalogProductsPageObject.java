@@ -134,7 +134,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 				String skuProduct = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, skuColumnIndex);
 				String priceProduct = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, priceColumnIndex);
 				String stockQuantity = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, stockQuantityColumnIndex);
-				String statusOfPublished = getElementText(driver, AdminCatalogProductsPageUI.VALUE_BY_ROW_INDEX_COLUMN_INDEX, rowIndex, publishedColumnIndex);
+				boolean statusOfPublished = Boolean.valueOf(getElementAttribute(driver, AdminCatalogProductsPageUI.PUBLISH_ICON_BY_ROW_INDEX_COLUMN_INDEX, "nop-value", rowIndex, publishedColumnIndex));
 				Product product = new Product(skuProduct, nameProduct, priceProduct, stockQuantity, statusOfPublished);
 				listProduct.add(product);
 			}
@@ -145,4 +145,20 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		
 		return listProduct;
 	}
+
+	public void searchByNameAndCategory(String productName, String categoryName) {
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, "SearchProductName");
+		sendkeyToElement(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, productName, "SearchProductName");
+		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_CATEGORY_DROPDOWN);
+		selectItemInDefaultDropdown(driver, AdminCatalogProductsPageUI.SEARCH_CATEGORY_DROPDOWN, categoryName);
+		
+		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
+		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
+	}
+
+	public String getEmptyTableText() {
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.EMPTY_TABLE_TEXT);
+		return getElementText(driver, AdminCatalogProductsPageUI.EMPTY_TABLE_TEXT);
+	}
+	
 }

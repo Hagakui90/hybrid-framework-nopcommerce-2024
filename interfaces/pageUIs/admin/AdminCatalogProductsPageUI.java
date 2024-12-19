@@ -12,4 +12,6 @@ public class AdminCatalogProductsPageUI {
 	public static final String ACTIVE_PAGE_LINK = "xpath=//li[contains(@class,'active')]/a";
 	public static final String LIST_PRODUCT_SEARCH = "CSS=tbody>tr";
 	public static final String VALUE_BY_ROW_INDEX_COLUMN_INDEX = "XPATH=//tbody//tr[%s]//td[%s]";
-}//tbody//tr[1]//td[3]
+	public static final String PUBLISH_ICON_BY_ROW_INDEX_COLUMN_INDEX = "XPATH=//tbody//tr[%s]//td[%s]/i";
+	public static final String EMPTY_TABLE_TEXT = "CSS=tbody>tr>td";
+}

@@ -37,10 +37,10 @@ public class Product implements Comparable<Product>{
 	public void setStockQuantity(String stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
-	public String getStatusOfPublished() {
+	public boolean getStatusOfPublished() {
 		return statusOfPublished;
 	}
-	public void setStatusOfPublished(String statusOfPublished) {
+	public void setStatusOfPublished(boolean statusOfPublished) {
 		this.statusOfPublished = statusOfPublished;
 	}
 	public Product(String titleOfProduct, Date createdOn) {
@@ -53,7 +53,7 @@ public class Product implements Comparable<Product>{
 		this.priceOfProduct = priceOfProduct;
 	}
 	
-	public Product(String skuOfProduct, String titleOfProduct, String priceOfProduct, String stockQuantity, String statusOfPublished) {
+	public Product(String skuOfProduct, String titleOfProduct, String priceOfProduct, String stockQuantity, boolean statusOfPublished) {
 		this.skuOfProduct = skuOfProduct;
 		this.titleOfProduct = titleOfProduct;
 		this.priceOfProduct = priceOfProduct;
@@ -75,7 +75,7 @@ public class Product implements Comparable<Product>{
 	private String skuOfProduct;
 	private String titleOfProduct;
 	private String stockQuantity;
-	private String statusOfPublished;
+	private boolean statusOfPublished;
 	private Date createdOn;
 	private String priceOfProduct;
 	
