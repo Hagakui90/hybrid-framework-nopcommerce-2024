@@ -3,6 +3,8 @@ package commons;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.admin.AdminCatalogProductsPageObject;
+import pageObjects.admin.AdminCustomerCreatePageObject;
+import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminEditProductDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
@@ -147,5 +149,13 @@ public class PageGeneratorManager {
 	
 	public static CustomerOrderDetailsPageObject getCustomerOrderDetailsPage(WebDriver driver) {
 		return new CustomerOrderDetailsPageObject(driver);
+	}
+
+	public static AdminCustomersCustomersPageObject getAdminCustomersCustomerPage(WebDriver driver) {
+		return new AdminCustomersCustomersPageObject(driver);
+	}
+	
+	public static AdminCustomerCreatePageObject getAdminCustomerCreatePage(WebDriver driver) {
+		return new AdminCustomerCreatePageObject(driver);
 	}
 }

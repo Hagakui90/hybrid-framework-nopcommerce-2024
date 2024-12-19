@@ -7,7 +7,7 @@
       <class name="com.nopcommerce.admin.Admin_01_Search">
         <methods>
           <include name="afterClass"/>
-          <include name="Search_01_Product_Name"/>
+          <include name="Search_02_Product_Name_Parent_Category_Unchecked"/>
           <include name="beforeClass"/>
         </methods>
       </class> <!-- com.nopcommerce.admin.Admin_01_Search -->
