@@ -50,13 +50,20 @@ public class Admin_01_Search extends BaseTest {
 
 	@Test
 	public void Search_02_Product_Name_Parent_Category_Unchecked() {
-		adminCatalogProductsPage.searchByNameAndCategory("Lenovo IdeaCentre", "Computers");
+		adminCatalogProductsPage.searchByNameAndCategory("Lenovo IdeaCentre", "Computers", "No");
 		Assert.assertEquals(adminCatalogProductsPage.getEmptyTableText(), "admin.dt.emptytable");
 	}
 
 	@Test
-	public void Search_03_Product_Name_Parent_Category_UChecked() {
-
+	public void Search_03_Product_Name_Parent_Category_UnChecked() {
+		adminCatalogProductsPage.searchByNameAndCategory("Lenovo IdeaCentre", "Computers", "Yes");
+		List<Product> listSearchedProduct = adminCatalogProductsPage.getListProductSearchByName();
+		Assert.assertTrue(listSearchedProduct.get(0).getTitleOfProduct().equals("Lenovo IdeaCentre"));
+		Assert.assertTrue(listSearchedProduct.get(0).getSkuOfProduct().equals("LE_IC_600"));
+		Assert.assertTrue(listSearchedProduct.get(0).getPriceOfProduct().equals("500"));
+		Assert.assertTrue(listSearchedProduct.get(0).getStockQuantity().equals("10000"));
+		System.out.println(listSearchedProduct.get(0).getStatusOfPublished());
+		Assert.assertTrue(listSearchedProduct.get(0).getStatusOfPublished());
 	}
 
 	@Test

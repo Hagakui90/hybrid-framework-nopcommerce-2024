@@ -114,6 +114,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 	}
 	
 	public List<Product> getListProductSearchByName() {
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
 		String currentNumberPage = getElementText(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
 		String nameColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.name") + 1);
 		String skuColumnIndex = String.valueOf(getListElementSize(driver, AdminCatalogProductsPageUI.COLUMN_INDEX_BY_COLUMN_NAME, "admin.catalog.products.fields.sku") + 1);
@@ -146,11 +147,17 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		return listProduct;
 	}
 
-	public void searchByNameAndCategory(String productName, String categoryName) {
+	public void searchByNameAndCategory(String productName, String categoryName, String subCategories) {
 		waitForElementVisible(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, "SearchProductName");
 		sendkeyToElement(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, productName, "SearchProductName");
 		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_CATEGORY_DROPDOWN);
 		selectItemInDefaultDropdown(driver, AdminCatalogProductsPageUI.SEARCH_CATEGORY_DROPDOWN, categoryName);
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.SUB_CATEGORIES_CHECKBOX);
+		if (subCategories.equals("Yes")) {
+			checkToElement(driver, AdminCatalogProductsPageUI.SUB_CATEGORIES_CHECKBOX);
+		}else {
+			uncheckToElement(driver, AdminCatalogProductsPageUI.SUB_CATEGORIES_CHECKBOX);
+		}
 		
 		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);

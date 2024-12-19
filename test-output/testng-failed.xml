@@ -4,13 +4,13 @@
   <test thread-count="5" name="Run on Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.nopcommerce.order.Order_01_Order">
+      <class name="com.nopcommerce.admin.Admin_01_Search">
         <methods>
-          <include name="beforeClass"/>
           <include name="afterClass"/>
-          <include name="Order_06_Checkout"/>
+          <include name="Search_01_Product_Name"/>
+          <include name="beforeClass"/>
         </methods>
-      </class> <!-- com.nopcommerce.order.Order_01_Order -->
+      </class> <!-- com.nopcommerce.admin.Admin_01_Search -->
     </classes>
   </test> <!-- Run on Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

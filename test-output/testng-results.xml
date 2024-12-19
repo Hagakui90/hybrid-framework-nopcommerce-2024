@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-17T09:05:09Z" name="Suite" finished-at="2024-12-17T09:05:54Z" duration-ms="45248">
+  <suite started-at="2024-12-19T04:08:17Z" name="Suite" finished-at="2024-12-19T04:08:34Z" duration-ms="17325">
     <groups>
     </groups>
-    <test started-at="2024-12-17T09:05:09Z" name="Run on Chrome" finished-at="2024-12-17T09:05:54Z" duration-ms="45248">
+    <test started-at="2024-12-19T04:08:17Z" name="Run on Chrome" finished-at="2024-12-19T04:08:34Z" duration-ms="17325">
       <class name="com.nopcommerce.admin.Admin_01_Search">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:09Z" name="beforeClass" finished-at="2024-12-17T09:05:38Z" duration-ms="29073" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:17Z" name="beforeClass" finished-at="2024-12-19T04:08:25Z" duration-ms="7585" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,31 +18,31 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Search_01_Product_Name()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:38Z" name="Search_01_Product_Name" finished-at="2024-12-17T09:05:54Z" duration-ms="16161" status="PASS">
+        <test-method signature="Search_01_Product_Name()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:25Z" name="Search_01_Product_Name" finished-at="2024-12-19T04:08:33Z" duration-ms="8252" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search_01_Product_Name -->
-        <test-method signature="Search_02_Product_Name_Parent_Category_Unchecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="Search_02_Product_Name_Parent_Category_Unchecked" finished-at="2024-12-17T09:05:54Z" duration-ms="1" status="PASS">
+        <test-method signature="Search_02_Product_Name_Parent_Category_Unchecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:33Z" name="Search_02_Product_Name_Parent_Category_Unchecked" finished-at="2024-12-19T04:08:33Z" duration-ms="461" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search_02_Product_Name_Parent_Category_Unchecked -->
-        <test-method signature="Search_04_Product_Name_Child_Category()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="Search_04_Product_Name_Child_Category" finished-at="2024-12-17T09:05:54Z" duration-ms="1" status="PASS">
+        <test-method signature="Search_03_Product_Name_Parent_Category_UnChecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:33Z" name="Search_03_Product_Name_Parent_Category_UnChecked" finished-at="2024-12-19T04:08:34Z" duration-ms="1014" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Search_03_Product_Name_Parent_Category_UnChecked -->
+        <test-method signature="Search_04_Product_Name_Child_Category()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:34Z" name="Search_04_Product_Name_Child_Category" finished-at="2024-12-19T04:08:34Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search_04_Product_Name_Child_Category -->
-        <test-method signature="Search_03_Product_Name_Parent_Category_UChecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="Search_03_Product_Name_Parent_Category_UChecked" finished-at="2024-12-17T09:05:54Z" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Search_03_Product_Name_Parent_Category_UChecked -->
-        <test-method signature="Search_05_Product_Name_Manufacturer()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="Search_05_Product_Name_Manufacturer" finished-at="2024-12-17T09:05:54Z" duration-ms="1" status="PASS">
+        <test-method signature="Search_05_Product_Name_Manufacturer()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:34Z" name="Search_05_Product_Name_Manufacturer" finished-at="2024-12-19T04:08:34Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search_05_Product_Name_Manufacturer -->
-        <test-method signature="Search_06_Product_SKU()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="Search_06_Product_SKU" finished-at="2024-12-17T09:05:54Z" duration-ms="0" status="PASS">
+        <test-method signature="Search_06_Product_SKU()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:34Z" name="Search_06_Product_SKU" finished-at="2024-12-19T04:08:34Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Search_06_Product_SKU -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-17T09:05:54Z" name="afterClass" finished-at="2024-12-17T09:05:54Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T04:08:34Z" name="afterClass" finished-at="2024-12-19T04:08:34Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
