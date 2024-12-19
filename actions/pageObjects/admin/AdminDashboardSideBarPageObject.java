@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import pageUIs.admin.AdminDashboardSideBarPageUI;
-import pageUIs.guest.CategoriesSideBarPageUI;
 
 public class AdminDashboardSideBarPageObject extends BasePage{
 	WebDriver driver;

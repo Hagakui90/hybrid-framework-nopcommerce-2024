@@ -147,7 +147,7 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		return listProduct;
 	}
 
-	public void searchByNameAndCategory(String productName, String categoryName, String subCategories) {
+	public void searchByNameAndCategory(String productName, String categoryName, String subCategories, String manufacturer) {
 		waitForElementVisible(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, "SearchProductName");
 		sendkeyToElement(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, productName, "SearchProductName");
 		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_CATEGORY_DROPDOWN);
@@ -159,6 +159,9 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 			uncheckToElement(driver, AdminCatalogProductsPageUI.SUB_CATEGORIES_CHECKBOX);
 		}
 		
+		waitForElementClickable(driver, AdminCatalogProductsPageUI.MANUFACTURER_DROPDOWN);
+		selectItemInDefaultDropdown(driver, AdminCatalogProductsPageUI.MANUFACTURER_DROPDOWN, manufacturer);
+		
 		waitForElementClickable(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 		clickToElement(driver, AdminCatalogProductsPageUI.SEARCH_BUTTON);
 	}
@@ -167,5 +170,15 @@ public class AdminCatalogProductsPageObject extends AdminDashboardSideBarPageObj
 		waitForElementVisible(driver, AdminCatalogProductsPageUI.EMPTY_TABLE_TEXT);
 		return getElementText(driver, AdminCatalogProductsPageUI.EMPTY_TABLE_TEXT);
 	}
+	
+	public AdminEditProductDetailsPageObject searchBySku(String sku) {
+		waitForElementVisible(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, "GoDirectlyToSku");
+		sendkeyToElement(driver, AdminCatalogProductsPageUI.SEARCH_INFO_TEXTBOX_BY_NAME, sku, "GoDirectlyToSku");
+		waitForElementClickable(driver, AdminCatalogProductsPageUI.GO_BUTTON);
+		clickToElement(driver, AdminCatalogProductsPageUI.GO_BUTTON);
+		return PageGeneratorManager.getAdminEditProductDetailsPage(driver);
+	}
+	
+	
 	
 }

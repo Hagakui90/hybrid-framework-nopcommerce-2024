@@ -89,4 +89,10 @@ public class AdminEditProductDetailsPageObject extends BasePage {
 		}
 		return date;
 	}
+
+	public String getNameProduct() {
+		waitForElementVisible(driver, AdminEditProductDetailsPageUI.NAME_OF_PRODUCT_TEXTFIELD);
+		return getElementAttribute(driver, AdminEditProductDetailsPageUI.NAME_OF_PRODUCT_TEXTFIELD, "value");
+	}
+	
 }

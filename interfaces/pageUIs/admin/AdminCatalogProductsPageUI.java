@@ -15,4 +15,6 @@ public class AdminCatalogProductsPageUI {
 	public static final String PUBLISH_ICON_BY_ROW_INDEX_COLUMN_INDEX = "XPATH=//tbody//tr[%s]//td[%s]/i";
 	public static final String EMPTY_TABLE_TEXT = "CSS=tbody>tr>td";
 	public static final String SUB_CATEGORIES_CHECKBOX = "CSS=input.check-box";
+	public static final String MANUFACTURER_DROPDOWN = "CSS=select#SearchManufacturerId";
+	public static final String GO_BUTTON = "css=button#go-to-product-by-sku";
 }
