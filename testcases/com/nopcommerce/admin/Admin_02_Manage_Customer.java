@@ -1,6 +1,7 @@
 package com.nopcommerce.admin;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -45,6 +46,9 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		Customer newCustomer = adminCustomerCreatePage.createCustomerInfo("ashleigh_gerla@gmail.com", "ashleigh_gerla", "Rosemary", "G Brooks",
 				"Female", "The Wiz", "Guest", true, "Hipster-friendly web advocate. Wannabe tv maven. Devoted writer. Subtly charming travel fanatic.");
 		adminCustomerCreatePage.inputToAddNewForm(newCustomer);
+		adminCustomerCreatePage.sleepInSecond(3);
+		adminCustomerCreatePage.clickToSaveButton("save-continue");
+		Assert.assertEquals(adminCustomerCreatePage.getAlertSuccessMessage(), " admin.customers.customers.added");
 		
 	}
 
