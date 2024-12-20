@@ -50,9 +50,6 @@ public class AdminCustomerCreatePageObject extends AdminDashboardSideBarPageObje
 		clickToElement(driver, AdminCustomerCreatePageUI.SUBMIT_BUTTON_BY_NAME, typeSave);
 	}
 
-	public String getAlertSuccessMessage() {
-		waitForElementVisible(driver, AdminCustomerCreatePageUI.ALERT_SUCCESS_MESSAGE);
-		return getElementText(driver, AdminCustomerCreatePageUI.ALERT_SUCCESS_MESSAGE);
-	}
+
 
 }

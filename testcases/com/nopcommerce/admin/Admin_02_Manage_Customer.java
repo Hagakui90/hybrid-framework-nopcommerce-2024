@@ -11,11 +11,10 @@ import commons.BaseTest;
 import commons.Customer;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
-import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminEditProductDetailsPageObject;
+import pageObjects.admin.AdminEditCustomerDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 
 public class Admin_02_Manage_Customer extends BaseTest {
@@ -24,11 +23,10 @@ public class Admin_02_Manage_Customer extends BaseTest {
 
 	private AdminLoginPageObject adminLoginPage;
 	private AdminDashboardPageObject adminDashboardPage;
-	private AdminCatalogProductsPageObject adminCatalogProductsPage;
-	private AdminEditProductDetailsPageObject adminEditProductDetailsPage;
 	private AdminCustomersCustomersPageObject adminCustomersCustomersPage;
 	private AdminCustomerCreatePageObject adminCustomerCreatePage;
-
+	private AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage;
+	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
@@ -43,12 +41,22 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		adminCustomersCustomersPage.clickToAddNewButton();
 		adminCustomerCreatePage = PageGeneratorManager.getAdminCustomerCreatePage(driver);
-		Customer newCustomer = adminCustomerCreatePage.createCustomerInfo("ashleigh_gerla@gmail.com", "ashleigh_gerla", "Rosemary", "G Brooks",
+		Customer newCustomer = adminCustomerCreatePage.createCustomerInfo("julio19962008@hotmail.com", "ashleigh_gerla", "Rosemary", "G Brooks",
 				"Female", "The Wiz", "Guest", true, "Hipster-friendly web advocate. Wannabe tv maven. Devoted writer. Subtly charming travel fanatic.");
 		adminCustomerCreatePage.inputToAddNewForm(newCustomer);
-		adminCustomerCreatePage.sleepInSecond(3);
 		adminCustomerCreatePage.clickToSaveButton("save-continue");
-		Assert.assertEquals(adminCustomerCreatePage.getAlertSuccessMessage(), " admin.customers.customers.added");
+		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminCustomerDetailsPage(driver);
+		adminEditCustomerDetailsPage.sleepInSecond(3);
+		
+		Assert.assertTrue(adminEditCustomerDetailsPage.getAlertSuccessMessage().contains("admin.customers.customers.added"));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyEmail(newCustomer.getEmail()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyFirstName(newCustomer.getFirstName()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyLastName(newCustomer.getLastName()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyGender(newCustomer.getSex()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyCompany(newCustomer.getCompany()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyRole(newCustomer.getRole()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyActive(newCustomer.isActive()));
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAdminComment(newCustomer.getAdminComment()));
 		
 	}
 

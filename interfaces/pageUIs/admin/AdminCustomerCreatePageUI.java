@@ -9,5 +9,5 @@ public class AdminCustomerCreatePageUI {
 	public static final String ACTIVE_CHECKBOX = "CSS=input#Active";
 	public static final String ADMIN_COMMENT_TEXTAREA = "CSS=textarea#AdminComment";
 	public static final String SUBMIT_BUTTON_BY_NAME = "xpath=//button[@name='%s']";
-	public static final String ALERT_SUCCESS_MESSAGE = "CSS=div.alert-success";
+
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-19T08:42:27Z" name="Suite" finished-at="2024-12-19T08:44:22Z" duration-ms="115085">
+  <suite started-at="2024-12-20T08:50:23Z" name="Suite" finished-at="2024-12-20T08:50:41Z" duration-ms="18221">
     <groups>
     </groups>
-    <test started-at="2024-12-19T08:42:27Z" name="Run on Chrome" finished-at="2024-12-19T08:44:22Z" duration-ms="115085">
-      <class name="com.nopcommerce.admin.Admin_01_Search">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:42:27Z" name="beforeClass" finished-at="2024-12-19T08:42:50Z" duration-ms="23306" status="PASS">
+    <test started-at="2024-12-20T08:50:23Z" name="Run on Chrome" finished-at="2024-12-20T08:50:41Z" duration-ms="18221">
+      <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:23Z" name="beforeClass" finished-at="2024-12-20T08:50:28Z" duration-ms="4780" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,35 +18,47 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Search_01_Product_Name()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:42:50Z" name="Search_01_Product_Name" finished-at="2024-12-19T08:43:35Z" duration-ms="45084" status="PASS">
+        <test-method signature="Manage_Customer_01_Add_New()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:28Z" name="Manage_Customer_01_Add_New" finished-at="2024-12-20T08:50:41Z" duration-ms="13424" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_01_Product_Name -->
-        <test-method signature="Search_02_Product_Name_Parent_Category_Unchecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:43:35Z" name="Search_02_Product_Name_Parent_Category_Unchecked" finished-at="2024-12-19T08:43:36Z" duration-ms="530" status="PASS">
+        </test-method> <!-- Manage_Customer_01_Add_New -->
+        <test-method signature="Manage_Customer_02_Search_With_Email()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_02_Search_With_Email" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_02_Product_Name_Parent_Category_Unchecked -->
-        <test-method signature="Search_03_Product_Name_Parent_Category_UnChecked()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:43:36Z" name="Search_03_Product_Name_Parent_Category_UnChecked" finished-at="2024-12-19T08:43:37Z" duration-ms="1101" status="PASS">
+        </test-method> <!-- Manage_Customer_02_Search_With_Email -->
+        <test-method signature="Manage_Customer_03_Search_With_First_Name_Last_Name()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_03_Search_With_First_Name_Last_Name" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_03_Product_Name_Parent_Category_UnChecked -->
-        <test-method signature="Search_04_Product_Name_Child_Category()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:43:37Z" name="Search_04_Product_Name_Child_Category" finished-at="2024-12-19T08:43:38Z" duration-ms="1055" status="PASS">
+        </test-method> <!-- Manage_Customer_03_Search_With_First_Name_Last_Name -->
+        <test-method signature="Manage_Customer_04_Search_With_Customer_Company()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_04_Search_With_Customer_Company" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_04_Product_Name_Child_Category -->
-        <test-method signature="Search_05_Product_Name_Manufacturer()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:43:38Z" name="Search_05_Product_Name_Manufacturer" finished-at="2024-12-19T08:43:38Z" duration-ms="516" status="PASS">
+        </test-method> <!-- Manage_Customer_04_Search_With_Customer_Company -->
+        <test-method signature="Manage_Customer_05_Search_With_Customer_Full_Data()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_05_Search_With_Customer_Full_Data" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_05_Product_Name_Manufacturer -->
-        <test-method signature="Search_06_Product_SKU()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:43:38Z" name="Search_06_Product_SKU" finished-at="2024-12-19T08:44:22Z" duration-ms="43480" status="PASS">
+        </test-method> <!-- Manage_Customer_05_Search_With_Customer_Full_Data -->
+        <test-method signature="Manage_Customer_06_Edit()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_06_Edit" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Search_06_Product_SKU -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_01_Search@15b204a1]" started-at="2024-12-19T08:44:22Z" name="afterClass" finished-at="2024-12-19T08:44:22Z" duration-ms="0" status="PASS">
+        </test-method> <!-- Manage_Customer_06_Edit -->
+        <test-method signature="Manage_Customer_07_Add_New_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_07_Add_New_Address" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Manage_Customer_07_Add_New_Address -->
+        <test-method signature="Manage_Customer_08_Edit_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_08_Edit_Address" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Manage_Customer_08_Edit_Address -->
+        <test-method signature="Manage_Customer_09_Delete_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="Manage_Customer_09_Delete_Address" finished-at="2024-12-20T08:50:41Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Manage_Customer_09_Delete_Address -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@2ddc8ecb]" started-at="2024-12-20T08:50:41Z" name="afterClass" finished-at="2024-12-20T08:50:41Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- com.nopcommerce.admin.Admin_01_Search -->
+      </class> <!-- com.nopcommerce.admin.Admin_02_Manage_Customer -->
     </test> <!-- Run on Chrome -->
   </suite> <!-- Suite -->
 </testng-results>

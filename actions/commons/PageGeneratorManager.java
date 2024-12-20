@@ -6,6 +6,7 @@ import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminEditCustomerDetailsPageObject;
 import pageObjects.admin.AdminEditProductDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.guest.BooksCategoryPageObject;
@@ -157,5 +158,9 @@ public class PageGeneratorManager {
 	
 	public static AdminCustomerCreatePageObject getAdminCustomerCreatePage(WebDriver driver) {
 		return new AdminCustomerCreatePageObject(driver);
+	}
+	
+	public static AdminEditCustomerDetailsPageObject getAdminCustomerDetailsPage(WebDriver driver) {
+		return new AdminEditCustomerDetailsPageObject(driver);
 	}
 }
