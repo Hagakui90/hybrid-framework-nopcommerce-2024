@@ -41,8 +41,8 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		adminCustomersCustomersPage.clickToAddNewButton();
 		adminCustomerCreatePage = PageGeneratorManager.getAdminCustomerCreatePage(driver);
-		Customer newCustomer = adminCustomerCreatePage.createCustomerInfo("julio19962008@hotmail.com", "ashleigh_gerla", "Rosemary", "G Brooks",
-				"Female", "The Wiz", "Guest", true, "Hipster-friendly web advocate. Wannabe tv maven. Devoted writer. Subtly charming travel fanatic.");
+		Customer newCustomer = adminCustomerCreatePage.createCustomerInfo("murphy_powlows@hotmail.com", "heJoo1ohph", "Misty", "E Brooks",
+				"Female", "Security Sporting Goods", "Guest", true, "Food scholar. Zombie evangelist. Reader. Total bacon fanatic. Analyst. Student. Alcohol junkie. Evil twitter fanatic.");
 		adminCustomerCreatePage.inputToAddNewForm(newCustomer);
 		adminCustomerCreatePage.clickToSaveButton("save-continue");
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminCustomerDetailsPage(driver);
@@ -57,6 +57,12 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		Assert.assertTrue(adminEditCustomerDetailsPage.verifyRole(newCustomer.getRole()));
 		Assert.assertTrue(adminEditCustomerDetailsPage.verifyActive(newCustomer.isActive()));
 		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAdminComment(newCustomer.getAdminComment()));
+		
+		adminEditCustomerDetailsPage.clickToBackToList();
+		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
+		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
+		adminCustomersCustomersPage.sleepInSecond(3);
+		Assert.assertTrue(adminCustomersCustomersPage.verifyCustomer(newCustomer));
 		
 	}
 

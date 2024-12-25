@@ -80,4 +80,11 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 		}
 		return false;
 	}
+	
+	public void clickToBackToList() {
+		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.BACK_TO_LIST);
+		clickToElement(driver, AdminEditCustomerDetailsPageUI.BACK_TO_LIST);
+	}
+	
+	
 }

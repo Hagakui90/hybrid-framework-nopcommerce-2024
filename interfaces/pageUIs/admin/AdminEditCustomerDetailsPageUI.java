@@ -7,5 +7,6 @@ public class AdminEditCustomerDetailsPageUI {
 	public static final String ACTIVE_CHECKBOX = "CSS=input#Active";
 	public static final String ADMIN_COMMENT_TEXTAREA = "CSS=textarea#AdminComment";
 	public static final String SELECTED_ROLE = "XPATH=//li[contains(@class,'choice')]";
+	public static final String BACK_TO_LIST = "xpath=//a[contains(text(),'backtolist')]";
 
 }
