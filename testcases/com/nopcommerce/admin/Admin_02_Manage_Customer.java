@@ -43,7 +43,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.clickToAddNewButton();
 		adminCustomerCreatePage = PageGeneratorManager.getAdminCustomerCreatePage(driver);
 		newCustomer = adminCustomerCreatePage.createCustomerInfo("murphy_powlows@hotmail.com", "heJoo1ohph", "Misty", "E Brooks",
-				"Female", "Security Sporting Goods", "Guest", true, "Food scholar. Zombie evangelist. Reader. Total bacon fanatic. Analyst. Student. Alcohol junkie. Evil twitter fanatic.");
+				"Female", "Security Sporting Goods", "Guests", true, "Food scholar. Zombie evangelist. Reader. Total bacon fanatic. Analyst. Student. Alcohol junkie. Evil twitter fanatic.");
 		adminCustomerCreatePage.inputToAddNewForm(newCustomer);
 		adminCustomerCreatePage.clickToSaveButton("save-continue");
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
@@ -67,24 +67,34 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		
 	}
 
-	@Test
+	
 	public void Manage_Customer_02_Search_With_Email() {
 		adminDashboardPage.openAdminDashBoardSideBarPage("customers", "customers.customers");
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		
-		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "murphy_powlows@hotmail.com");
 		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
 		adminCustomersCustomersPage.sleepInSecond(3);
 		
-		adminCustomersCustomersPage.verifyCustomerByEmailAndRole("murphy_powlows@hotmail.com", "Guests");
+		Assert.assertTrue(adminCustomersCustomersPage.verifyCustomerByEmailAndRole("murphy_powlows@hotmail.com", "Guests"));
 		adminCustomersCustomersPage.backToPage(driver);
+		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
 	@Test
 	public void Manage_Customer_03_Search_With_First_Name_Last_Name() {
-
+		adminDashboardPage.openAdminDashBoardSideBarPage("customers", "customers.customers");
+		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
+		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "Misty");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchLastName", "E Brooks");
+		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
+		adminCustomersCustomersPage.sleepInSecond(3);
+		
+		Assert.assertTrue(adminCustomersCustomersPage.verifyCustomerByFullNameAndRole("Misty", "E Brooks", "Guests"));
+		adminCustomersCustomersPage.backToPage(driver);
+		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
+		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
 	@Test

@@ -82,4 +82,22 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 		
 		return false;
 	}
+	
+	public boolean verifyCustomerByFullNameAndRole(String firstName, String lastName, String role) {
+		List<WebElement> listCustomerResult = getListWebElement(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
+		boolean verifyQuantityResult;
+		if (listCustomerResult.size() == 1) {
+			verifyQuantityResult = true;
+			int roleColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "customerroles");
+			boolean verifyRole = getElementText(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(roleColumnIndex + 1)).equals(role);
+			int editColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "edit");
+			clickToElement(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(editColumnIndex + 1));
+			AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
+			if (adminEditCustomerDetailsPage.verifyFirstName(firstName) && adminEditCustomerDetailsPage.verifyLastName(lastName) && verifyQuantityResult && verifyRole) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
