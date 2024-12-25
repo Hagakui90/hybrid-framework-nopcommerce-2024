@@ -160,7 +160,9 @@ public class PageGeneratorManager {
 		return new AdminCustomerCreatePageObject(driver);
 	}
 	
-	public static AdminEditCustomerDetailsPageObject getAdminCustomerDetailsPage(WebDriver driver) {
+	public static AdminEditCustomerDetailsPageObject getAdminEditCustomerDetailsPage(WebDriver driver) {
 		return new AdminEditCustomerDetailsPageObject(driver);
 	}
+	
+
 }

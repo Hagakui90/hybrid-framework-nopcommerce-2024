@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import commons.Customer;
+import commons.PageGeneratorManager;
 import pageUIs.admin.AdminCatalogProductsPageUI;
 import pageUIs.admin.AdminCustomersCustomersPageUI;
 
@@ -40,7 +41,7 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 			return true;
 	}
 
-	public boolean verifyCustomer(Customer customer) {
+	public boolean verifyCustomerByRole(Customer customer) {
 		int companyColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "company") + 1;
 		waitForElementVisible(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
 		String currentNumberPage = getElementText(driver, AdminCatalogProductsPageUI.ACTIVE_PAGE_LINK);
@@ -56,6 +57,29 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 			clickToElementByJS(driver, AdminCustomersCustomersPageUI.NEXT_PAGE_LINK_TEXT, currentNumberPage);
 			currentNumberPage = getElementText(driver, AdminCustomersCustomersPageUI.ACTIVE_PAGE_LINK);
 		} while (isNextPageButtonActived(currentNumberPage));
+		return false;
+	}
+	
+	public void inputInfoTextbox(String info, String value) {
+		waitForElementVisible(driver, AdminCustomersCustomersPageUI.INFO_SEARCH_TEXTBOX, info);
+		sendkeyToElement(driver, AdminCustomersCustomersPageUI.INFO_SEARCH_TEXTBOX, value, info);
+	}
+	
+	public boolean verifyCustomerByEmailAndRole(String email, String role) {
+		List<WebElement> listCustomerResult = getListWebElement(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
+		boolean verifyQuantityResult;
+		if (listCustomerResult.size() == 1) {
+			verifyQuantityResult = true;
+			int roleColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "customerroles");
+			boolean verifyRole = getElementText(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(roleColumnIndex + 1)).equals(role);
+			int editColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "edit");
+			clickToElement(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(editColumnIndex + 1));
+			AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
+			if (adminEditCustomerDetailsPage.verifyEmail(email) && verifyQuantityResult && verifyRole) {
+				return true;
+			}
+		}
+		
 		return false;
 	}
 }
