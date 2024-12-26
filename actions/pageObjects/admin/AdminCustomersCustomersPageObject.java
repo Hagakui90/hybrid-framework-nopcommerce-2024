@@ -100,4 +100,20 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 		
 		return false;
 	}
+
+	public boolean verifyCustomerByCompanyAndRole(String company, String role) {
+		List<WebElement> listCustomerResult = getListWebElement(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
+		boolean verifyQuantityResult;
+		if (listCustomerResult.size() == 1) {
+			verifyQuantityResult = true;
+			int roleColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "customerroles");
+			boolean verifyRole = getElementText(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(roleColumnIndex + 1)).equals(role);
+			int companyColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "company");
+			boolean verifyCompany = getElementText(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(companyColumnIndex + 1)).equals(company);
+			if (verifyCompany && verifyQuantityResult && verifyRole) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
