@@ -85,6 +85,9 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.BACK_TO_LIST);
 		clickToElement(driver, AdminEditCustomerDetailsPageUI.BACK_TO_LIST);
 	}
+	public void editCustomer(String string, String string2, String string3, String string4) {
+		
+	}
 	
 	
 }

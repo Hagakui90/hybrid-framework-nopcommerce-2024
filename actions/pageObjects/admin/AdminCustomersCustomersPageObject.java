@@ -24,7 +24,6 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 	}
 
 	public void searchListCustomerRoles(String role) {
-		waitForElementVisible(driver, AdminCustomersCustomersPageUI.CUSTOMER_ROLE_TEXTBOX);
 		clickToElement(driver, AdminCustomersCustomersPageUI.CUSTOMER_ROLE_TEXTBOX);
 		waitForElementClickable(driver, AdminCustomersCustomersPageUI.CUSTOMER_ROLE_CUSTOM_DROPDOWN);
 		selectItemInCustomDropdown(driver, AdminCustomersCustomersPageUI.CUSTOMER_ROLE_CUSTOM_DROPDOWN, AdminCustomersCustomersPageUI.CUSTOMER_ROLE, role);
@@ -66,6 +65,7 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 	}
 	
 	public boolean verifyCustomerByEmailAndRole(String email, String role) {
+		waitForListElementVisible(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
 		List<WebElement> listCustomerResult = getListWebElement(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
 		boolean verifyQuantityResult;
 		if (listCustomerResult.size() == 1) {
@@ -79,7 +79,6 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	
@@ -115,5 +114,14 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 			}
 		}
 		return false;
+	}
+
+	public void selectEditCustomerButton() {
+		List<WebElement> listCustomerResult = getListWebElement(driver, AdminCustomersCustomersPageUI.LIST_CUSTOMER_RESULT);
+		if (listCustomerResult.size() == 1) {
+			int editColumnIndex = getListElementSize(driver, AdminCustomersCustomersPageUI.COLUMN_INDEX_BY_NAME, "edit");
+			clickToElement(driver, AdminCustomersCustomersPageUI.VALUE_BY_COLUMN_INDEX, "1", String.valueOf(editColumnIndex + 1));
+			
+		}
 	}
 }
