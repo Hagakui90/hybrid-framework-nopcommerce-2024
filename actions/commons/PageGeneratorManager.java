@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.admin.AdminAddNewAddressesPageObject;
 import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
@@ -162,6 +163,10 @@ public class PageGeneratorManager {
 	
 	public static AdminEditCustomerDetailsPageObject getAdminEditCustomerDetailsPage(WebDriver driver) {
 		return new AdminEditCustomerDetailsPageObject(driver);
+	}
+
+	public static AdminAddNewAddressesPageObject getAdminAddNewAddressesPage(WebDriver driver) {
+		return new AdminAddNewAddressesPageObject(driver);
 	}
 	
 

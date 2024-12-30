@@ -12,4 +12,5 @@ public class AdminCustomersCustomersPageUI {
 	public static final String ACTIVE_PAGE_LINK = "xpath=//li[contains(@class,'active')]/a";
 	public static final String NEXT_PAGE_LINK_TEXT = "XPATH=//li[contains(@class,'paginate_button page-item next')]";
 	public static final String INFO_SEARCH_TEXTBOX = "css=input#%s";
+	public static final String ALERT_SUCCESS_MESSAGE = "CSS=div.alert-success";
 }

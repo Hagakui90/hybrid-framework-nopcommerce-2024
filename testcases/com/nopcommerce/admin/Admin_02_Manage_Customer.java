@@ -7,10 +7,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.Address;
 import commons.BaseTest;
 import commons.Customer;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
+import pageObjects.admin.AdminAddNewAddressesPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
@@ -26,6 +28,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 	private AdminCustomersCustomersPageObject adminCustomersCustomersPage;
 	private AdminCustomerCreatePageObject adminCustomerCreatePage;
 	private AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage;
+	private AdminAddNewAddressesPageObject adminAddNewAddressesPage;
 	private Customer newCustomer;
 
 	@Parameters("browser")
@@ -150,12 +153,42 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		
 		adminCustomersCustomersPage.selectEditCustomerButton();
 		AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
-		adminEditCustomerDetailsPage.editCustomer("edited_murphy_powlows@hotmail.com", "edited_Misty", "edited_E Brooks", "edited_Security Sporting Goods");
+		adminEditCustomerDetailsPage.editCustomer("edited_murphy_powlows@hotmail.com", "edited_Misty", "edited_E Brooks", "edited_Security Sporting Goods", "Edit Customer (Guests)");
+		
+		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
+		Assert.assertTrue(adminCustomersCustomersPage.getAlertSuccessMessage().contains("updated"));
+		
+		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "edited_murphy_powlows@hotmail.com");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "edited_Misty");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchLastName", "edited_E Brooks");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchCompany", "edited_Security Sporting Goods");
+		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
+		adminCustomersCustomersPage.isPageLoadedSuccess(driver);
+		
+		Assert.assertTrue(adminCustomersCustomersPage.verifyCustomerByCompanyAndRole("edited_Security Sporting Goods", "Guests"));
+		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
 	@Test
 	public void Manage_Customer_07_Add_New_Address() {
+		adminCustomersCustomersPage.selectEditCustomerButton();
+		AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
+		
+		adminAddNewAddressesPage = adminEditCustomerDetailsPage.clickToAddNewAddress();
+		
+		adminAddNewAddressesPage.isPageLoadedSuccess(driver);
+		
+		Address address = new Address("Nash", "Oberbrunner", "murphy_powlows@hotmail.com", "", "United States of America", "South Carolina", "", "Spartanburg", "2161 E Main St",
+				"", "29307", "(864) 579-9845", "3534545");
+		adminAddNewAddressesPage.inputFormAddNewAddress(address);
+		Assert.assertTrue(adminAddNewAddressesPage.getAlertSuccessMessage().contains("added"));
+		
+		Assert.assertTrue(adminAddNewAddressesPage.verifyAddedNewAddress(address));
+		adminAddNewAddressesPage.backToCustomerList();
+		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(address));
+		
 	}
 
 	@Test

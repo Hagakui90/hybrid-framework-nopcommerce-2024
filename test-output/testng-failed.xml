@@ -6,9 +6,9 @@
     <classes>
       <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
         <methods>
-          <include name="Manage_Customer_03_Search_With_First_Name_Last_Name"/>
           <include name="beforeClass"/>
           <include name="afterClass"/>
+          <include name="Manage_Customer_07_Add_New_Address"/>
         </methods>
       </class> <!-- com.nopcommerce.admin.Admin_02_Manage_Customer -->
     </classes>

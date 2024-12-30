@@ -124,4 +124,9 @@ public class AdminCustomersCustomersPageObject extends AdminDashboardSideBarPage
 			
 		}
 	}
+	
+	public String getAlertSuccessMessage() {
+		waitForElementVisible(driver, AdminCustomersCustomersPageUI.ALERT_SUCCESS_MESSAGE);
+		return getElementText(driver, AdminCustomersCustomersPageUI.ALERT_SUCCESS_MESSAGE);
+	}
 }
