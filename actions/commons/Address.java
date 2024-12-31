@@ -13,7 +13,6 @@ public class Address {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
 	public String getName() {
 		return firstName + " " + lastName;
 	}
@@ -59,28 +58,24 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
 	public String getCompany() {
 		return company;
 	}
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
 	public String getAddress2() {
 		return address2;
 	}
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	
 	public String getFaxNumber() {
 		return faxNumber;
 	}
 	public void setFaxNumber(String faxNumber) {
 		this.faxNumber = faxNumber;
 	}
-	
 	public String getCounty() {
 		return county;
 	}

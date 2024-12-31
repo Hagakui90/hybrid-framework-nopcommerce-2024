@@ -121,7 +121,7 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 		return PageGeneratorManager.getAdminAddNewAddressesPage(driver);
 	}
 	
-	public String getValueEveryCellByRowAndColumn(String cardName, String rowNumber, String columnNumber) {
+	public String getValueEveryCellByRowAndColumnAtAnyCard(String cardName, String rowNumber, String columnNumber) {
 		waitForElementVisible(driver, AdminEditCustomerDetailsPageUI.VALUE_BY_COLUMN_INDEX_AND_CARD_NAME, cardName, rowNumber, columnNumber);
 		return getElementText(driver, AdminEditCustomerDetailsPageUI.VALUE_BY_COLUMN_INDEX_AND_CARD_NAME, cardName, rowNumber, columnNumber);
 	}
@@ -134,17 +134,22 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 		int faxNumberColumnIndex = getListElementSize(driver, AdminEditCustomerDetailsPageUI.COLUMN_INDEX_BY_NAME_AND_CARD_NAME, "addresses", "faxnumber") + 1;
 		int addressColumnIndex = getListElementSize(driver, AdminEditCustomerDetailsPageUI.COLUMN_INDEX_BY_NAME_AND_CARD_NAME, "addresses", "address") + 1;
 		
-		boolean verifyFirstName = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(firstNameColumnIndex)).equals(address.getFirstName());
-		boolean verifyLastName = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(lastNameColumnIndex)).equals(address.getLastName());
-		boolean verifyEmail = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(emailColumnIndex)).equals(address.getEmail());
-		boolean verifyPhoneNumber = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(phoneNumberColumnIndex)).equals(address.getPhoneNumber());
-		boolean verifyFaxNumber = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(faxNumberColumnIndex)).equals(address.getFaxNumber());
-		boolean verifyAddress = getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getCountry())
-				&& getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getCity())
-				&& getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getProvince())
-				&& getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getAddress1())
-				&& getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getAddress2())
-				&& getValueEveryCellByRowAndColumn("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getZipPostalCode());
+		boolean verifyFirstName = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(firstNameColumnIndex)).equals(address.getFirstName());
+		boolean verifyLastName = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(lastNameColumnIndex)).equals(address.getLastName());
+		boolean verifyEmail = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(emailColumnIndex)).equals(address.getEmail());
+		boolean verifyPhoneNumber = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(phoneNumberColumnIndex)).equals(address.getPhoneNumber());
+		boolean verifyFaxNumber = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(faxNumberColumnIndex)).equals(address.getFaxNumber());
+		boolean verifyAddress = getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getCountry())
+				&& getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getCity())
+				&& getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getProvince())
+				&& getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getAddress1())
+				&& getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getAddress2())
+				&& getValueEveryCellByRowAndColumnAtAnyCard("addresses", "1", String.valueOf(addressColumnIndex)).contains(address.getZipPostalCode());
 		return verifyFirstName && verifyLastName && verifyEmail && verifyPhoneNumber && verifyFaxNumber && verifyAddress;
+	}
+
+	public void clickToEditOrDeleteButtonAtAnyCard(String cardName, String buttonName) {
+		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
+		clickToElement(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
 	}
 }

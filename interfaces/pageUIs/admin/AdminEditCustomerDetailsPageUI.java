@@ -13,5 +13,6 @@ public class AdminEditCustomerDetailsPageUI {
 	public static final String ADD_ADDRESS_BUTTON = "XPATH=//button[contains(text(),'addresses')]";
 	public static final String COLUMN_INDEX_BY_NAME_AND_CARD_NAME = "xpath=//div[contains(text(),'%s')]/parent::div//following-sibling::div//th[contains(text(),'%s')]//preceding-sibling::th";
 	public static final String VALUE_BY_COLUMN_INDEX_AND_CARD_NAME = "XPATH=//div[contains(text(),'%s')]/parent::div//following-sibling::div//tbody//tr[%s]//td[%s]";
+	public static final String BUTTON_BY_CARD_NAME = "XPATH=//div[contains(text(),'%s')]/parent::div//following-sibling::div//tbody//a[contains(text(),'%s')]";
 
 }

@@ -16,6 +16,7 @@ import pageObjects.admin.AdminAddNewAddressesPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminEditAddressPageObject;
 import pageObjects.admin.AdminEditCustomerDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 
@@ -29,6 +30,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 	private AdminCustomerCreatePageObject adminCustomerCreatePage;
 	private AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage;
 	private AdminAddNewAddressesPageObject adminAddNewAddressesPage;
+	private AdminEditAddressPageObject adminEditAddressPage;
 	private Customer newCustomer;
 
 	@Parameters("browser")
@@ -45,8 +47,8 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		adminCustomersCustomersPage.clickToAddNewButton();
 		adminCustomerCreatePage = PageGeneratorManager.getAdminCustomerCreatePage(driver);
-		newCustomer = adminCustomerCreatePage.createCustomerInfo("murphy_powlows@hotmail.com", "heJoo1ohph", "Misty", "E Brooks", "Female", "Security Sporting Goods", "Guests", true,
-				"Food scholar. Zombie evangelist. Reader. Total bacon fanatic. Analyst. Student. Alcohol junkie. Evil twitter fanatic.");
+		newCustomer = adminCustomerCreatePage.createCustomerInfo("lexie.shiel@gmail.com", "ihie5Cie", "J Davis", "Dorothy ", "Female", "Wheels Discount Auto", "Guests", true,
+				"Creator. Extreme coffee specialist. Subtly charming twitter nerd. Certified analyst. Devoted alcohol guru. Avid gamer.");
 		adminCustomerCreatePage.inputToAddNewForm(newCustomer);
 		adminCustomerCreatePage.clickToSaveButton("save-continue");
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
@@ -139,7 +141,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
-	@Test
+	
 	public void Manage_Customer_06_Edit() {
 		adminDashboardPage.openAdminDashBoardSideBarPage("customers", "customers.customers");
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
@@ -188,12 +190,21 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 
 		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(address));
-		
 	}
 
 	@Test
 	public void Manage_Customer_08_Edit_Address() {
-
+		adminEditCustomerDetailsPage.clickToEditOrDeleteButtonAtAnyCard("addresses", "edit");
+		adminEditAddressPage = PageGeneratorManager.getAdminEditAddressPage(driver);
+		Address newAddress = new Address("J Davis", "Dorothy", "lexie.shiel@gmail.com", "Wheels Discount Auto", "United States of America", "New Jersey", 
+				"Mercer County", "Mercerville", "4797 Moonlight Drive", "", "08619", "609-229-5630", "");
+		adminEditAddressPage.inputFormEditAddress(newAddress);
+		
+		Assert.assertTrue(adminEditAddressPage.getAlertSuccessMessage().contains("updated"));
+		Assert.assertTrue(adminEditAddressPage.verifyEditedAddress(newAddress));
+		adminEditAddressPage.backToCustomerList();
+		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
+		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(newAddress));
 	}
 
 	@Test

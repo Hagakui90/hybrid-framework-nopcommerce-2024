@@ -7,6 +7,7 @@ import pageObjects.admin.AdminCatalogProductsPageObject;
 import pageObjects.admin.AdminCustomerCreatePageObject;
 import pageObjects.admin.AdminCustomersCustomersPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
+import pageObjects.admin.AdminEditAddressPageObject;
 import pageObjects.admin.AdminEditCustomerDetailsPageObject;
 import pageObjects.admin.AdminEditProductDetailsPageObject;
 import pageObjects.admin.AdminLoginPageObject;
@@ -169,5 +170,8 @@ public class PageGeneratorManager {
 		return new AdminAddNewAddressesPageObject(driver);
 	}
 	
+	public static AdminEditAddressPageObject getAdminEditAddressPage(WebDriver driver) {
+		return new AdminEditAddressPageObject(driver);
+	}
 
 }

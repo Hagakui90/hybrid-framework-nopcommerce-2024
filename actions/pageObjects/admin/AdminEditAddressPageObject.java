@@ -4,59 +4,56 @@ import org.openqa.selenium.WebDriver;
 
 import commons.Address;
 import commons.BasePage;
-import pageUIs.admin.AdminAddNewAddressesPageUI;
-import pageUIs.admin.AdminCustomersCustomersPageUI;
+import pageUIs.admin.AdminEditAddressPageUI;
 
-public class AdminAddNewAddressesPageObject extends BasePage{
+public class AdminEditAddressPageObject extends BasePage{
 	WebDriver driver;
 
-	public AdminAddNewAddressesPageObject(WebDriver driver) {
+	public AdminEditAddressPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 	public void inputTextToInfoTextboxByName(String nameInfo, String value) {
-		waitForElementVisible(driver, AdminAddNewAddressesPageUI.INFO_TEXTBOX_BY_NAME, nameInfo);
-		sendkeyToElement(driver, AdminAddNewAddressesPageUI.INFO_TEXTBOX_BY_NAME, value, nameInfo);
+		waitForElementVisible(driver, AdminEditAddressPageUI.INFO_TEXTBOX_BY_NAME, nameInfo);
+		sendkeyToElement(driver, AdminEditAddressPageUI.INFO_TEXTBOX_BY_NAME, value, nameInfo);
 	}
 	
 	public void selectDropdownInfoByName(String nameInfo, String value) {
-		waitForElementClickable(driver, AdminAddNewAddressesPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
-		selectItemInDefaultDropdown(driver, AdminAddNewAddressesPageUI.INFO_DROPDOWN_BY_NAME, value, nameInfo);
+		waitForElementClickable(driver, AdminEditAddressPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
+		selectItemInDefaultDropdown(driver, AdminEditAddressPageUI.INFO_DROPDOWN_BY_NAME, value, nameInfo);
 	}
-	
-	public void inputFormAddNewAddress(Address address) {
+	public void inputFormEditAddress(Address address) {
 		inputTextToInfoTextboxByName("FirstName", address.getFirstName());
 		inputTextToInfoTextboxByName("LastName", address.getLastName());
 		inputTextToInfoTextboxByName("Email", address.getEmail());
 		inputTextToInfoTextboxByName("Company", address.getCompany());
 		selectDropdownInfoByName("CountryId", address.getCountry());
 		selectDropdownInfoByName("StateProvinceId", address.getProvince());
-		inputTextToInfoTextboxByName("County", "");
+		inputTextToInfoTextboxByName("County", address.getCounty());
 		inputTextToInfoTextboxByName("City", address.getCity());
 		inputTextToInfoTextboxByName("Address1", address.getAddress1());
 		inputTextToInfoTextboxByName("Address2", address.getAddress2());
 		inputTextToInfoTextboxByName("ZipPostalCode", address.getZipPostalCode());
 		inputTextToInfoTextboxByName("PhoneNumber", address.getPhoneNumber());
 		inputTextToInfoTextboxByName("FaxNumber", address.getFaxNumber());
-		waitForElementClickable(driver, AdminAddNewAddressesPageUI.SAVE_BUTTON);
-		clickToElement(driver, AdminAddNewAddressesPageUI.SAVE_BUTTON);
+		waitForElementClickable(driver, AdminEditAddressPageUI.SAVE_BUTTON);
+		clickToElement(driver, AdminEditAddressPageUI.SAVE_BUTTON);
 	}
-	
 	public String getAlertSuccessMessage() {
-		waitForElementVisible(driver, AdminCustomersCustomersPageUI.ALERT_SUCCESS_MESSAGE);
-		return getElementText(driver, AdminCustomersCustomersPageUI.ALERT_SUCCESS_MESSAGE);
+		waitForElementVisible(driver, AdminEditAddressPageUI.ALERT_SUCCESS_MESSAGE);
+		return getElementText(driver, AdminEditAddressPageUI.ALERT_SUCCESS_MESSAGE);
 	}
 	
 	public String getValueAttributeInfo(String nameInfo) {
 		if (nameInfo.equals("CountryId") || nameInfo.equals("StateProvinceId")) {
-			waitForElementVisible(driver, AdminAddNewAddressesPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
-			return getFirstSelectedTextInDefaultDropdown(driver, AdminAddNewAddressesPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
+			waitForElementVisible(driver, AdminEditAddressPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
+			return getFirstSelectedTextInDefaultDropdown(driver, AdminEditAddressPageUI.INFO_DROPDOWN_BY_NAME, nameInfo);
 		} else {
-			waitForElementVisible(driver, AdminAddNewAddressesPageUI.INFO_TEXTBOX_BY_NAME, nameInfo);
-			return getElementAttribute(driver, AdminAddNewAddressesPageUI.INFO_TEXTBOX_BY_NAME, "value", nameInfo);
+			waitForElementVisible(driver, AdminEditAddressPageUI.INFO_TEXTBOX_BY_NAME, nameInfo);
+			return getElementAttribute(driver, AdminEditAddressPageUI.INFO_TEXTBOX_BY_NAME, "value", nameInfo);
 		}
 	}
 	
-	public boolean verifyAddedNewAddress(Address address) {
+	public boolean verifyEditedAddress(Address address) {
 		boolean verifyFirstName = getValueAttributeInfo("FirstName").equals(address.getFirstName());
 		boolean verifyLastName = getValueAttributeInfo("LastName").equals(address.getLastName());
 		boolean verifyEmail = getValueAttributeInfo("Email").equals(address.getEmail());
@@ -75,9 +72,7 @@ public class AdminAddNewAddressesPageObject extends BasePage{
 	}
 	
 	public void backToCustomerList() {
-		waitForElementClickable(driver, AdminAddNewAddressesPageUI.BACK_TO_CUSTOMER_BUTTON);
-		clickToElement(driver, AdminAddNewAddressesPageUI.BACK_TO_CUSTOMER_BUTTON);
+		waitForElementClickable(driver, AdminEditAddressPageUI.BACK_TO_CUSTOMER_BUTTON);
+		clickToElement(driver, AdminEditAddressPageUI.BACK_TO_CUSTOMER_BUTTON);
 	}
-	
-	
 }
