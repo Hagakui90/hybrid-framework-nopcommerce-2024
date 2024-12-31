@@ -208,7 +208,9 @@ public class Admin_02_Manage_Customer extends BaseTest {
 
 	@Test
 	public void Manage_Customer_09_Delete_Address() {
-
+		adminEditCustomerDetailsPage.clickToEditOrDeleteButtonAtAnyCard("addresses", "delete");
+		adminEditCustomerDetailsPage.acceptToAlert(driver);
+		Assert.assertTrue(adminEditCustomerDetailsPage.isTableEmptyByCardName("addresses"));
 	}
 
 	@AfterClass

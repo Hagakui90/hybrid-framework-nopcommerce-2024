@@ -3,13 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nopcommerce.order.Order_01_Order">
+      <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
         <methods>
           <include name="beforeClass"/>
+          <include name="Manage_Customer_09_Delete_Address"/>
+          <include name="Manage_Customer_06_Edit"/>
           <include name="afterClass"/>
-          <include name="Order_01_Add_To_Cart"/>
+          <include name="Manage_Customer_08_Edit_Address"/>
+          <include name="Manage_Customer_07_Add_New_Address"/>
         </methods>
-      </class> <!-- com.nopcommerce.order.Order_01_Order -->
+      </class> <!-- com.nopcommerce.admin.Admin_02_Manage_Customer -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

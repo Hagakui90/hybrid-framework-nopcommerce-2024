@@ -152,4 +152,12 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
 		clickToElement(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
 	}
+	
+	public boolean isTableEmptyByCardName(String cardName) {
+		waitForElementVisible(driver, AdminEditCustomerDetailsPageUI.STATUS_EMPTY_TABLE_BY_CARD_NAME, cardName);
+		if (getElementText(driver, AdminEditCustomerDetailsPageUI.STATUS_EMPTY_TABLE_BY_CARD_NAME, cardName).contains("empty")) {
+			return true;
+		}
+		return false;
+	}
 }
