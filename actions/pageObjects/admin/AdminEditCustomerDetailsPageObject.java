@@ -108,7 +108,6 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 	public void expandDetailItemByCardName(String cardName) {
 		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.CARD_COLLAPSE_BUTTON, cardName);
 		String statusCollapseButton = getElementAttribute(driver, AdminEditCustomerDetailsPageUI.CARD_COLLAPSE_BUTTON, "class", cardName);
-		System.out.println(statusCollapseButton);
 		if (statusCollapseButton.contains("fa-plus")) {
 			clickToElement(driver, AdminEditProductDetailsPageUI.CARD_COLLAPSE_BUTTON, cardName);
 		}
@@ -149,6 +148,7 @@ public class AdminEditCustomerDetailsPageObject extends BasePage{
 	}
 
 	public void clickToEditOrDeleteButtonAtAnyCard(String cardName, String buttonName) {
+		expandDetailItemByCardName(cardName);
 		waitForElementClickable(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
 		clickToElement(driver, AdminEditCustomerDetailsPageUI.BUTTON_BY_CARD_NAME, cardName, buttonName);
 	}

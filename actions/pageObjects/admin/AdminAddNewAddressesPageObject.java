@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.Address;
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import pageUIs.admin.AdminAddNewAddressesPageUI;
 import pageUIs.admin.AdminCustomersCustomersPageUI;
 
@@ -74,9 +75,10 @@ public class AdminAddNewAddressesPageObject extends BasePage{
 				verifyCity && verifyAddress1 && verifyAddress2 && verifyZipPostalCode && verifyPhoneNumber && verifyFaxNumber;
 	}
 	
-	public void backToCustomerList() {
+	public AdminEditCustomerDetailsPageObject backToCustomerList() {
 		waitForElementClickable(driver, AdminAddNewAddressesPageUI.BACK_TO_CUSTOMER_BUTTON);
 		clickToElement(driver, AdminAddNewAddressesPageUI.BACK_TO_CUSTOMER_BUTTON);
+		return PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 	}
 	
 	

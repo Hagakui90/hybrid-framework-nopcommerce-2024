@@ -141,15 +141,15 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
-	
+	@Test
 	public void Manage_Customer_06_Edit() {
 		adminDashboardPage.openAdminDashBoardSideBarPage("customers", "customers.customers");
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		
-		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "murphy_powlows@hotmail.com");
-		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "Misty");
-		adminCustomersCustomersPage.inputInfoTextbox("SearchLastName", "E Brooks");
-		adminCustomersCustomersPage.inputInfoTextbox("SearchCompany", "Security Sporting Goods");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "lexie.shiel@gmail.com");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "J Davis");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchLastName", "Dorothy");
+		adminCustomersCustomersPage.inputInfoTextbox("SearchCompany", "Wheels Discount Auto");
 		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
 		adminCustomersCustomersPage.isPageLoadedSuccess(driver);
 		
@@ -174,7 +174,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 	@Test
 	public void Manage_Customer_07_Add_New_Address() {
 		adminCustomersCustomersPage.selectEditCustomerButton();
-		AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
+		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 		
 		adminAddNewAddressesPage = adminEditCustomerDetailsPage.clickToAddNewAddress();
 		
@@ -186,10 +186,9 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		Assert.assertTrue(adminAddNewAddressesPage.getAlertSuccessMessage().contains("added"));
 		
 		Assert.assertTrue(adminAddNewAddressesPage.verifyAddedNewAddress(address));
-		adminAddNewAddressesPage.backToCustomerList();
-		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
-
+		adminEditCustomerDetailsPage = adminAddNewAddressesPage.backToCustomerList();
 		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(address));
+		
 	}
 
 	@Test
