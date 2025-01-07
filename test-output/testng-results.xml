@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-31T08:22:07Z" name="Suite" finished-at="2024-12-31T08:22:29Z" duration-ms="21454">
+  <suite started-at="2024-12-31T08:53:57Z" name="Suite" finished-at="2024-12-31T08:54:18Z" duration-ms="21168">
     <groups>
     </groups>
-    <test started-at="2024-12-31T08:22:07Z" name="Run on Chrome" finished-at="2024-12-31T08:22:29Z" duration-ms="21454">
+    <test started-at="2024-12-31T08:53:57Z" name="Run on Chrome" finished-at="2024-12-31T08:54:18Z" duration-ms="21168">
       <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
-        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:07Z" name="beforeClass" finished-at="2024-12-31T08:22:09Z" duration-ms="2059" status="PASS">
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:53:57Z" name="beforeClass" finished-at="2024-12-31T08:53:59Z" duration-ms="2037" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,23 +18,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="Manage_Customer_06_Edit()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:09Z" name="Manage_Customer_06_Edit" finished-at="2024-12-31T08:22:19Z" duration-ms="10206" status="PASS">
+        <test-method signature="Manage_Customer_06_Edit()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:53:59Z" name="Manage_Customer_06_Edit" finished-at="2024-12-31T08:54:08Z" duration-ms="9134" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Manage_Customer_06_Edit -->
-        <test-method signature="Manage_Customer_07_Add_New_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:19Z" name="Manage_Customer_07_Add_New_Address" finished-at="2024-12-31T08:22:24Z" duration-ms="4934" status="PASS">
+        <test-method signature="Manage_Customer_07_Add_New_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:54:08Z" name="Manage_Customer_07_Add_New_Address" finished-at="2024-12-31T08:54:13Z" duration-ms="4898" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Manage_Customer_07_Add_New_Address -->
-        <test-method signature="Manage_Customer_08_Edit_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:24Z" name="Manage_Customer_08_Edit_Address" finished-at="2024-12-31T08:22:29Z" duration-ms="4239" status="PASS">
+        <test-method signature="Manage_Customer_08_Edit_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:54:13Z" name="Manage_Customer_08_Edit_Address" finished-at="2024-12-31T08:54:17Z" duration-ms="4304" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Manage_Customer_08_Edit_Address -->
-        <test-method signature="Manage_Customer_09_Delete_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:29Z" name="Manage_Customer_09_Delete_Address" finished-at="2024-12-31T08:22:29Z" duration-ms="1" status="PASS">
+        <test-method signature="Manage_Customer_09_Delete_Address()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:54:17Z" name="Manage_Customer_09_Delete_Address" finished-at="2024-12-31T08:54:18Z" duration-ms="784" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Manage_Customer_09_Delete_Address -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:22:29Z" name="afterClass" finished-at="2024-12-31T08:22:29Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.nopcommerce.admin.Admin_02_Manage_Customer@6ce139a4]" started-at="2024-12-31T08:54:18Z" name="afterClass" finished-at="2024-12-31T08:54:18Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
