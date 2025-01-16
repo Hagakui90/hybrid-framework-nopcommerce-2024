@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="commons.MethodListener"/>
+  </listeners>
   <test thread-count="5" name="Run on Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
         <methods>
           <include name="beforeClass"/>
-          <include name="Manage_Customer_09_Delete_Address"/>
+          <include name="Manage_Customer_06_Edit"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- com.nopcommerce.admin.Admin_02_Manage_Customer -->

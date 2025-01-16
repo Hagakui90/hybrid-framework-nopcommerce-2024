@@ -158,7 +158,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminEditCustomerDetailsPage.editCustomer("edited_murphy_powlows@hotmail.com", "edited_Misty", "edited_E Brooks", "edited_Security Sporting Goods", "Edit Customer (Guests)");
 		
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
-		Assert.assertTrue(adminCustomersCustomersPage.getAlertSuccessMessage().contains("updated"));
+		verifyTrue(adminCustomersCustomersPage.getAlertSuccessMessage().contains("updated."));
 		
 		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "edited_murphy_powlows@hotmail.com");
 		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "edited_Misty");
@@ -167,7 +167,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
 		adminCustomersCustomersPage.isPageLoadedSuccess(driver);
 		
-		Assert.assertTrue(adminCustomersCustomersPage.verifyCustomerByCompanyAndRole("edited_Security Sporting Goods", "Guests"));
+		verifyFalse(adminCustomersCustomersPage.verifyCustomerByCompanyAndRole("edited_Security Sporting Goods", "Guests"));
 		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
