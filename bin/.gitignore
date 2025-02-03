@@ -1,2 +1,5 @@
-/commons/
+/log4j.dtd
+/log4j2.xml
 /com/
+/commons/
+/reportConfig/

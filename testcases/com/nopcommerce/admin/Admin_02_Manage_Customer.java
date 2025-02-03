@@ -36,6 +36,7 @@ public class Admin_02_Manage_Customer extends BaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
+		log.info("----------Open website-----------");
 		driver = getBrowserDriver(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashboardPage = adminLoginPage.enterToLoginForm(GlobalConstants.DEV_ADMIN_USERNAME, GlobalConstants.DEV_ADMIN_PASSWORD);
@@ -143,9 +144,11 @@ public class Admin_02_Manage_Customer extends BaseTest {
 
 	@Test
 	public void Manage_Customer_06_Edit() {
+		log.info("Manage_Customer_06 - Edit customer: Step 1: Open Customer sidebar");
 		adminDashboardPage.openAdminDashBoardSideBarPage("customers", "customers.customers");
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		
+		log.info("Manage_Customer_06 - Edit customer: Step 2: Input Customer information to search");
 		adminCustomersCustomersPage.inputInfoTextbox("SearchEmail", "lexie.shiel@gmail.com");
 		adminCustomersCustomersPage.inputInfoTextbox("SearchFirstName", "J Davis");
 		adminCustomersCustomersPage.inputInfoTextbox("SearchLastName", "Dorothy");
@@ -153,10 +156,12 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
 		adminCustomersCustomersPage.isPageLoadedSuccess(driver);
 		
+		log.info("Manage_Customer_06 - Edit customer: Step 3: Select Edit button");
 		adminCustomersCustomersPage.selectEditCustomerButton();
 		AdminEditCustomerDetailsPageObject adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 		adminEditCustomerDetailsPage.editCustomer("edited_murphy_powlows@hotmail.com", "edited_Misty", "edited_E Brooks", "edited_Security Sporting Goods", "Edit Customer (Guests)");
 		
+		log.info("Manage_Customer_06 - Edit customer: Step 4: Verify edit successfully.");
 		adminCustomersCustomersPage = PageGeneratorManager.getAdminCustomersCustomerPage(driver);
 		verifyTrue(adminCustomersCustomersPage.getAlertSuccessMessage().contains("updated."));
 		
@@ -167,27 +172,36 @@ public class Admin_02_Manage_Customer extends BaseTest {
 		adminCustomersCustomersPage.searchListCustomerRoles("Guests");
 		adminCustomersCustomersPage.isPageLoadedSuccess(driver);
 		
+		log.info("Manage_Customer_06 - Edit customer: Step 5: Find edited customer and verify edited customer");
 		verifyFalse(adminCustomersCustomersPage.verifyCustomerByCompanyAndRole("edited_Security Sporting Goods", "Guests"));
 		adminCustomersCustomersPage.sleepInSecond(2);
 	}
 
 	@Test
 	public void Manage_Customer_07_Add_New_Address() {
+		log.info("Manage_Customer_07 - Add_New_Address: Step 1: Select Edit button");
 		adminCustomersCustomersPage.selectEditCustomerButton();
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
 		
+		log.info("Manage_Customer_07 - Add_New_Address: Step 2: Click to Add new Address");
 		adminAddNewAddressesPage = adminEditCustomerDetailsPage.clickToAddNewAddress();
 		
 		adminAddNewAddressesPage.isPageLoadedSuccess(driver);
 		
 		Address address = new Address("Nash", "Oberbrunner", "murphy_powlows@hotmail.com", "", "United States of America", "South Carolina", "", "Spartanburg", "2161 E Main St",
 				"", "29307", "(864) 579-9845", "3534545");
+		log.info("Manage_Customer_07 - Add_New_Address: Step 3: Input new Address");
 		adminAddNewAddressesPage.inputFormAddNewAddress(address);
-		Assert.assertTrue(adminAddNewAddressesPage.getAlertSuccessMessage().contains("added"));
 		
-		Assert.assertTrue(adminAddNewAddressesPage.verifyAddedNewAddress(address));
+		log.info("Manage_Customer_07 - Add_New_Address: Step 4: Verify added successfully");
+		verifyTrue(adminAddNewAddressesPage.getAlertSuccessMessage().contains("added"));
+		
+		log.info("Manage_Customer_07 - Add_New_Address: Step 5: New Address added");
+		verifyTrue(adminAddNewAddressesPage.verifyAddedNewAddress(address));
+		
+		log.info("Manage_Customer_07 - Add_New_Address: Step 6: Back To Customer List and verify added address");
 		adminEditCustomerDetailsPage = adminAddNewAddressesPage.backToCustomerList();
-		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(address));
+		verifyTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(address));
 		
 	}
 
@@ -199,18 +213,18 @@ public class Admin_02_Manage_Customer extends BaseTest {
 				"Mercer County", "Mercerville", "4797 Moonlight Drive", "", "08619", "609-229-5630", "");
 		adminEditAddressPage.inputFormEditAddress(newAddress);
 		
-		Assert.assertTrue(adminEditAddressPage.getAlertSuccessMessage().contains("updated"));
-		Assert.assertTrue(adminEditAddressPage.verifyEditedAddress(newAddress));
+		verifyTrue(adminEditAddressPage.getAlertSuccessMessage().contains("updated"));
+		verifyTrue(adminEditAddressPage.verifyEditedAddress(newAddress));
 		adminEditAddressPage.backToCustomerList();
 		adminEditCustomerDetailsPage = PageGeneratorManager.getAdminEditCustomerDetailsPage(driver);
-		Assert.assertTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(newAddress));
+		verifyTrue(adminEditCustomerDetailsPage.verifyAddedNewAddressInList(newAddress));
 	}
 
 	@Test
 	public void Manage_Customer_09_Delete_Address() {
 		adminEditCustomerDetailsPage.clickToEditOrDeleteButtonAtAnyCard("addresses", "delete");
 		adminEditCustomerDetailsPage.acceptToAlert(driver);
-		Assert.assertTrue(adminEditCustomerDetailsPage.isTableEmptyByCardName("addresses"));
+		verifyTrue(adminEditCustomerDetailsPage.isTableEmptyByCardName("addresses"));
 	}
 
 	@AfterClass

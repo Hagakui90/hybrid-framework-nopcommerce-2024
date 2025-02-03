@@ -1,0 +1,26 @@
+[16-01-2025 15:50:37.386 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - ----------Open website-----------
+[16-01-2025 15:50:39.587 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 1: Open Customer sidebar
+[16-01-2025 15:50:40.740 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 2: Input Customer information to search
+[16-01-2025 15:50:43.240 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 3: Select Edit button
+[16-01-2025 15:50:44.702 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 4: Verify edit successfully.
+[16-01-2025 15:50:44.873 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------FAIL-------------------
+[16-01-2025 15:50:47.321 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 5: Find edited customer
+[16-01-2025 15:50:47.408 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------FAIL-------------------
+[16-01-2025 15:50:49.424 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 1: Select Edit button
+[16-01-2025 15:50:49.797 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 2: Click to Add new Address
+[16-01-2025 15:50:50.349 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 3: Input new Address
+[16-01-2025 15:50:52.339 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 4: Verify added successfully
+[16-01-2025 15:50:52.467 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:52.467 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 5: New Address added
+[16-01-2025 15:50:53.491 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:53.491 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 6: Back To Customer List and verify added address
+[16-01-2025 15:50:54.527 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:56.848 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:57.804 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:58.827 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[16-01-2025 15:50:59.625 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - -----------------------------PASS-------------------
+[17-01-2025 08:15:26.988 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - ----------Open website-----------
+[17-01-2025 08:15:37.320 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 1: Open Customer sidebar
+[17-01-2025 08:15:39.093 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 2: Input Customer information to search
+[17-01-2025 08:15:41.677 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_06 - Edit customer: Step 3: Select Edit button
+[17-01-2025 08:16:01.773 INFO com.nopcommerce.admin.Admin_02_Manage_Customer] - Manage_Customer_07 - Add_New_Address: Step 1: Select Edit button

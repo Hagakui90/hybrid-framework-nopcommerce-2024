@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 4 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods, 1 failed,   3 passed</span>
+                    <span class="method-stats">4 methods, 4 failed,   </span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -105,31 +105,22 @@
                         <a href="#" panel-name="suite-Suite" title="com.nopcommerce.admin.Admin_02_Manage_Customer" class="method navigator-link" hash-for-method="Manage_Customer_06_Edit">Manage_Customer_06_Edit</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Suite -->
-                  </li>
-                  <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods passed suite-Suite"> (hide)</a> <!-- hide-methods passed suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods passed suite-Suite"> (show)</a> <!-- show-methods passed suite-Suite -->
-                    </span>
-                    <div class="method-list-content passed suite-Suite">
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.nopcommerce.admin.Admin_02_Manage_Customer" class="method navigator-link" hash-for-method="Manage_Customer_07_Add_New_Address">Manage_Customer_07_Add_New_Address</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.nopcommerce.admin.Admin_02_Manage_Customer" class="method navigator-link" hash-for-method="Manage_Customer_08_Edit_Address">Manage_Customer_08_Edit_Address</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.nopcommerce.admin.Admin_02_Manage_Customer" class="method navigator-link" hash-for-method="Manage_Customer_09_Delete_Address">Manage_Customer_09_Delete_Address</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Suite -->
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -152,33 +143,63 @@
                   <a name="Manage_Customer_06_Edit">
                   </a> <!-- Manage_Customer_06_Edit -->
                   <span class="method-name">Manage_Customer_06_Edit</span>
-                  <div class="stack-trace">java.lang.Throwable: Multiple failures (2):
-Failure 1 of 2
-java.lang.AssertionError: expected [true] but found [false]
-	at commons.BaseTest.verifyTrue(BaseTest.java:84)
-	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:161)
-
-Failure 2 of 2
-java.lang.AssertionError: expected [false] but found [true]
-	at commons.BaseTest.verifyFalse(BaseTest.java:96)
-	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:170)
-... Removed 58 stack frames
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody//tr[1]//td[7]&quot;}
+  (Session info: chrome=131.0.6778.265)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;DESKTOP-GURKCGD&apos;, ip: &apos;100.114.84.25&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.265, chrome: {chromedriverVersion: 131.0.6778.264 (2d05e315153..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59618}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 035b741a77b15e8ce475aea5a54cec0a
+*** Element info: {Using=xpath, value=//tbody//tr[1]//td[7]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at commons.BasePage.getWebElement(BasePage.java:157)
+	at commons.BasePage.clickToElement(BasePage.java:176)
+	at pageObjects.admin.AdminCustomersCustomersPageObject.selectEditCustomerButton(AdminCustomersCustomersPageObject.java:123)
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:160)
+... Removed 30 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-failed -->
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.nopcommerce.admin.Admin_02_Manage_Customer</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
                   <a name="Manage_Customer_07_Add_New_Address">
                   </a> <!-- Manage_Customer_07_Add_New_Address -->
                   <span class="method-name">Manage_Customer_07_Add_New_Address</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody//tr[1]//td[7]&quot;}
+  (Session info: chrome=131.0.6778.265)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;DESKTOP-GURKCGD&apos;, ip: &apos;100.114.84.25&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.265, chrome: {chromedriverVersion: 131.0.6778.264 (2d05e315153..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59618}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 035b741a77b15e8ce475aea5a54cec0a
+*** Element info: {Using=xpath, value=//tbody//tr[1]//td[7]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at commons.BasePage.getWebElement(BasePage.java:157)
+	at commons.BasePage.clickToElement(BasePage.java:176)
+	at pageObjects.admin.AdminCustomersCustomersPageObject.selectEditCustomerButton(AdminCustomersCustomersPageObject.java:123)
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_07_Add_New_Address(Admin_02_Manage_Customer.java:183)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -186,6 +207,10 @@ java.lang.AssertionError: expected [false] but found [true]
                   <a name="Manage_Customer_08_Edit_Address">
                   </a> <!-- Manage_Customer_08_Edit_Address -->
                   <span class="method-name">Manage_Customer_08_Edit_Address</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;pageObjects.admin.AdminEditCustomerDetailsPageObject.clickToEditOrDeleteButtonAtAnyCard(String, String)&quot; because &quot;this.adminEditCustomerDetailsPage&quot; is null
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_08_Edit_Address(Admin_02_Manage_Customer.java:210)
+... Removed 25 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -193,10 +218,14 @@ java.lang.AssertionError: expected [false] but found [true]
                   <a name="Manage_Customer_09_Delete_Address">
                   </a> <!-- Manage_Customer_09_Delete_Address -->
                   <span class="method-name">Manage_Customer_09_Delete_Address</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;pageObjects.admin.AdminEditCustomerDetailsPageObject.clickToEditOrDeleteButtonAtAnyCard(String, String)&quot; because &quot;this.adminEditCustomerDetailsPage&quot; is null
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_09_Delete_Address(Admin_02_Manage_Customer.java:225)
+... Removed 25 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
+          </div> <!-- suite-Suite-class-failed -->
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -257,24 +286,24 @@ data.addRows(4);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'Manage_Customer_06_Edit')
 data.setCell(0, 2, 'com.nopcommerce.admin.Admin_02_Manage_Customer')
-data.setCell(0, 3, 9815);
+data.setCell(0, 3, 24453);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'Manage_Customer_07_Add_New_Address')
 data.setCell(1, 2, 'com.nopcommerce.admin.Admin_02_Manage_Customer')
-data.setCell(1, 3, 5227);
+data.setCell(1, 3, 20084);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'Manage_Customer_08_Edit_Address')
 data.setCell(2, 2, 'com.nopcommerce.admin.Admin_02_Manage_Customer')
-data.setCell(2, 3, 4334);
+data.setCell(2, 3, 1);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'Manage_Customer_09_Delete_Address')
 data.setCell(3, 2, 'com.nopcommerce.admin.Admin_02_Manage_Customer')
-data.setCell(3, 3, 249);
+data.setCell(3, 3, 0);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 19 seconds</span>
+              <span class="suite-total-time">Total running time: 44 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -285,6 +314,20 @@ return data;
             <span class="header-content">Reporter output for Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">Manage_Customer_06_Edit</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Manage_Customer_06 - Edit customer: Step 1: Open Customer sidebar<br></span>
+                <span class="reporter-method-output">Manage_Customer_06 - Edit customer: Step 2: Input Customer information to search<br></span>
+                <span class="reporter-method-output">Manage_Customer_06 - Edit customer: Step 3: Select Edit button<br></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">Manage_Customer_07_Add_New_Address</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Manage_Customer_07 - Add_New_Address: Step 1: Select Edit button<br></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
@@ -309,23 +352,29 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">Manage_Customer_06_Edit</span>
-                <span class="method-start">2132 ms</span>
+                <span class="method-start">10336 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">Manage_Customer_07_Add_New_Address</span>
-                <span class="method-start">11949 ms</span>
+                <span class="method-start">34791 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">Manage_Customer_08_Edit_Address</span>
-                <span class="method-start">17177 ms</span>
+                <span class="method-start">54876 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">Manage_Customer_09_Delete_Address</span>
-                <span class="method-start">21511 ms</span>
+                <span class="method-start">54878 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">21760 ms</span>
+                <span class="method-start">54879 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

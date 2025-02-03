@@ -9,23 +9,63 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Suite</th></tr>
-<tr><td><a href="#t0">Run on Chrome</a></td><td class="num">3</td><td class="num">0</td><td class="num attn">1</td><td class="num">21,765</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Run on Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">4</td><td class="num">54,884</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Run on Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.nopcommerce.admin.Admin_02_Manage_Customer</td><td><a href="#m0">Manage_Customer_06_Edit</a></td><td rowspan="1">1737005408915</td><td rowspan="1">9815</td></tr><tr><th colspan="4">Run on Chrome &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">com.nopcommerce.admin.Admin_02_Manage_Customer</td><td><a href="#m1">Manage_Customer_07_Add_New_Address</a></td><td rowspan="1">1737005418732</td><td rowspan="1">5227</td></tr><tr class="passedeven"><td><a href="#m2">Manage_Customer_08_Edit_Address</a></td><td rowspan="1">1737005423960</td><td rowspan="1">4334</td></tr><tr class="passedeven"><td><a href="#m3">Manage_Customer_09_Delete_Address</a></td><td rowspan="1">1737005428294</td><td rowspan="1">249</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Run on Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="4">com.nopcommerce.admin.Admin_02_Manage_Customer</td><td><a href="#m0">Manage_Customer_06_Edit</a></td><td rowspan="1">1737076537317</td><td rowspan="1">24453</td></tr><tr class="failedeven"><td><a href="#m1">Manage_Customer_07_Add_New_Address</a></td><td rowspan="1">1737076561772</td><td rowspan="1">20084</td></tr><tr class="failedeven"><td><a href="#m2">Manage_Customer_08_Edit_Address</a></td><td rowspan="1">1737076581857</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m3">Manage_Customer_09_Delete_Address</a></td><td rowspan="1">1737076581859</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>Run on Chrome</h2><h3 id="m0">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_06_Edit</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Multiple failures (2):
-Failure 1 of 2
-java.lang.AssertionError: expected [true] but found [false]
-	at commons.BaseTest.verifyTrue(BaseTest.java:84)
-	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:161)
-
-Failure 2 of 2
-java.lang.AssertionError: expected [false] but found [true]
-	at commons.BaseTest.verifyFalse(BaseTest.java:96)
-	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:170)
-... Removed 58 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_07_Add_New_Address</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_08_Edit_Address</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_09_Delete_Address</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Run on Chrome</h2><h3 id="m0">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_06_Edit</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Manage_Customer_06 - Edit customer: Step 1: Open Customer sidebar<br><br/>Manage_Customer_06 - Edit customer: Step 2: Input Customer information to search<br><br/>Manage_Customer_06 - Edit customer: Step 3: Select Edit button<br></div></td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody//tr[1]//td[7]&quot;}
+  (Session info: chrome=131.0.6778.265)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;DESKTOP-GURKCGD&apos;, ip: &apos;100.114.84.25&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.265, chrome: {chromedriverVersion: 131.0.6778.264 (2d05e315153..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59618}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 035b741a77b15e8ce475aea5a54cec0a
+*** Element info: {Using=xpath, value=//tbody//tr[1]//td[7]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at commons.BasePage.getWebElement(BasePage.java:157)
+	at commons.BasePage.clickToElement(BasePage.java:176)
+	at pageObjects.admin.AdminCustomersCustomersPageObject.selectEditCustomerButton(AdminCustomersCustomersPageObject.java:123)
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_06_Edit(Admin_02_Manage_Customer.java:160)
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_07_Add_New_Address</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Manage_Customer_07 - Add_New_Address: Step 1: Select Edit button<br></div></td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//tbody//tr[1]//td[7]&quot;}
+  (Session info: chrome=131.0.6778.265)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
+System info: host: &apos;DESKTOP-GURKCGD&apos;, ip: &apos;100.114.84.25&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.265, chrome: {chromedriverVersion: 131.0.6778.264 (2d05e315153..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59618}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 035b741a77b15e8ce475aea5a54cec0a
+*** Element info: {Using=xpath, value=//tbody//tr[1]//td[7]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at commons.BasePage.getWebElement(BasePage.java:157)
+	at commons.BasePage.clickToElement(BasePage.java:176)
+	at pageObjects.admin.AdminCustomersCustomersPageObject.selectEditCustomerButton(AdminCustomersCustomersPageObject.java:123)
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_07_Add_New_Address(Admin_02_Manage_Customer.java:183)
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_08_Edit_Address</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;pageObjects.admin.AdminEditCustomerDetailsPageObject.clickToEditOrDeleteButtonAtAnyCard(String, String)&quot; because &quot;this.adminEditCustomerDetailsPage&quot; is null
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_08_Edit_Address(Admin_02_Manage_Customer.java:210)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.nopcommerce.admin.Admin_02_Manage_Customer#Manage_Customer_09_Delete_Address</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;pageObjects.admin.AdminEditCustomerDetailsPageObject.clickToEditOrDeleteButtonAtAnyCard(String, String)&quot; because &quot;this.adminEditCustomerDetailsPage&quot; is null
+	at com.nopcommerce.admin.Admin_02_Manage_Customer.Manage_Customer_09_Delete_Address(Admin_02_Manage_Customer.java:225)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

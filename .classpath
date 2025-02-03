@@ -33,9 +33,10 @@
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-annotations-2.10.3.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-core-2.10.3.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jackson-databind-2.10.3.jar"/>
-	<classpathentry kind="lib" path="libWebDriverManager/jcl-over-slf4j-1.7.30.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jna-5.13.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/slf4j-api-2.0.9.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.6.2.jar"/>
+	<classpathentry kind="lib" path="libLog4J/log4j-api-2.23.1.jar"/>
+	<classpathentry kind="lib" path="libLog4J/log4j-core-2.23.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -10,8 +10,11 @@
       <class name="com.nopcommerce.admin.Admin_02_Manage_Customer">
         <methods>
           <include name="beforeClass"/>
+          <include name="Manage_Customer_09_Delete_Address"/>
           <include name="Manage_Customer_06_Edit"/>
           <include name="afterClass"/>
+          <include name="Manage_Customer_08_Edit_Address"/>
+          <include name="Manage_Customer_07_Add_New_Address"/>
         </methods>
       </class> <!-- com.nopcommerce.admin.Admin_02_Manage_Customer -->
     </classes>
